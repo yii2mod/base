@@ -36,14 +36,14 @@ INSTALLATION
 
 ### Install via Composer
 
-1) Create sources folder on the same level as httpdocs
-2) In sources folder run via composer:
+* Create sources folder on the same level as httpdocs
+* In sources folder run via composer:
 ~~~
 php composer.phar create-project --prefer-dist --stability=dev yii2mod/base .
 ~~~
 If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
 at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
-3) Make a symlink for web folder to httpdocs
+* Make a symlink for web folder to httpdocs
 
 CONFIGURATION
 -------------
