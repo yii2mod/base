@@ -17,25 +17,8 @@
 		"yiisoft/yii2-bootstrap": "*",
 		"yiisoft/yii2-swiftmailer": "*"
 	},
-	"require-dev": {
+    "require-dev": {
 		"yiisoft/yii2-debug": "*",
 		"yiisoft/yii2-gii": "*"
-	},
-	"scripts": {
-		"post-create-project-cmd": [
-			"yii\\composer\\Installer::setPermission"
-		]
-	},
-	"config": {
-		"process-timeout": 1800
-	},
-	"extra": {
-		"writable": [
-			"runtime",
-			"web/assets"
-		],
-		"executable": [
-			"yii"
-		]
 	}
 }
