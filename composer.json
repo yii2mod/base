@@ -1,0 +1,17 @@
+{
+    "name": "yii2mod/base",
+    "description": "Base application template for Yii2",
+    "homepage": "https://github.com/yii2mod/base/",
+    "type": "yii-extension",
+    "authors": [
+        {
+            "name": "Dmitry Semenov",
+            "email": "disemx@gmail.com",
+            "homepage": "http://disem.org/"
+        }
+    ],
+    "require": {
+  		"php": ">=5.4.0",
+  		"yiisoft/yii2": "dev-master",
+	  },
+}
