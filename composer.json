@@ -3,6 +3,7 @@
     "description": "Base application template for Yii2",
     "homepage": "https://github.com/yii2mod/base/",
     "type": "yii-extension",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Dmitry Semenov",
@@ -11,7 +12,30 @@
         }
     ],
     "require": {
-  		"php": ">=5.4.0",
-  		"yiisoft/yii2": "dev-master"
-	  }
+		"php": ">=5.4.0",
+		"yiisoft/yii2": "*",
+		"yiisoft/yii2-bootstrap": "*",
+		"yiisoft/yii2-swiftmailer": "*"
+	},
+	"require-dev": {
+		"yiisoft/yii2-debug": "*",
+		"yiisoft/yii2-gii": "*"
+	},
+	"scripts": {
+		"post-create-project-cmd": [
+			"yii\\composer\\Installer::setPermission"
+		]
+	},
+	"config": {
+		"process-timeout": 1800
+	},
+	"extra": {
+		"writable": [
+			"runtime",
+			"web/assets"
+		],
+		"executable": [
+			"yii"
+		]
+	}
 }
