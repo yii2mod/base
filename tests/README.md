@@ -1,33 +1,43 @@
-This folder contains various tests for the basic application.
-These tests are developed with [Codeception PHP Testing Framework](http://codeception.com/).
+1. Install Codeception if it's not yet installed:
 
-After creating the basic application, follow these steps to prepare for the tests:
+```
+composer global require "codeception/codeception=2.0.*"
+composer global require "codeception/specify=*"
+composer global require "codeception/verify=*"
+```
 
-1. Install additional composer packages:
+If you've never used Composer for global packages run `composer global status`. It should output:
 
-   ```
-   php composer.phar require --dev "codeception/codeception: 1.8.*@dev" "codeception/specify: *" "codeception/verify: *"
-   ```
-2. In the file `_bootstrap.php`, modify the definition of the constant `TEST_ENTRY_URL` so
-   that it points to the correct entry script URL.
-3. Go to the application base directory and build the test suites:
+```
+Changed current directory to <directory>
+```
 
-   ```
-   vendor/bin/codecept build
-   ```
+Then add `<directory>/vendor/bin` to you `PATH` environment variable. Now we're able to use `codecept` from command
+line globally.
 
-Now you can run the tests with the following commands:
+2. Build the test suites:
+
+```
+codecept build
+```
+
+3. In order to be able to run acceptance tests you need to start a webserver. The simplest way is to use PHP built in
+webserver. In the `web` directory execute the following:
+
+```
+php -S localhost:8080
+java -jar selenium-server-standalone-2.42.2.jar
+```
+
+4. Now you can run the tests with the following commands:
 
 ```
 # run all available tests
-vendor/bin/codecept run
+codecept run
 # run acceptance tests
-vendor/bin/codecept run acceptance
+codecept run acceptance
 # run functional tests
-vendor/bin/codecept run functional
+codecept run functional
 # run unit tests
-vendor/bin/codecept run unit
+codecept run unit
 ```
-
-Please refer to [Codeception tutorial](http://codeception.com/docs/01-Introduction) for
-more details about writing and running acceptance, functional and unit tests.
