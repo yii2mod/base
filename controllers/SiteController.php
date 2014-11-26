@@ -13,7 +13,7 @@ use yii\filters\VerbFilter;
 class SiteController extends Controller
 {
     /**
-     * @return string
+     * @return yii\filters\AccessControl
      */
     public function behaviors()
     {
