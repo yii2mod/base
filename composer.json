@@ -8,6 +8,9 @@
             "name": "Dmitry Semenov",
             "email": "disemx@gmail.com",
             "homepage": "http://disem.org/"
+        },
+        {
+            "name": "Igor Chepurnoy"
         }
     ],
     "minimum-stability": "dev",
