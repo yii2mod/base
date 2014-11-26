@@ -51,18 +51,4 @@ at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
 
 CONFIGURATION
 -------------
-
-### Database
-
-Edit the file `config/db.php` with real data, for example:
-
-```php
-return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2base',
-    'username' => 'root',
-    'password' => '1234',
-    'charset' => 'utf8',
-];
-```
-**NOTE:**Also check and edit the other files in the `config/` directory to customize your application.
+Check and edit `*.local.php` files in the `config/` directory to customize your application.
