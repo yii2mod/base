@@ -34,7 +34,9 @@
     },
     "scripts": {
         "post-create-project-cmd": [
-            "yii\\composer\\Installer::postCreateProject"
+            "yii\\composer\\Installer::postCreateProject",
+            "php -r \"copy('config/deploy/common.local.php', 'config/common.local.php');\"",
+            "php -r \"copy('config/deploy/main.local.php', 'config/main.local.php');\""
         ]
     },
     "extra": {
