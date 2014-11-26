@@ -1,0 +1,49 @@
+language: php
+
+php:
+  - 5.4
+
+env:
+  - CUBRID_VERSION=9.3.0/CUBRID-9.3.0.0206 CUBRID_PDO_VERSION=9.3.0.0001
+
+matrix:
+  fast_finish: true
+
+# faster builds on new travis setup not using sudo
+sudo: false
+
+# cache vendor dirs
+cache:
+  directories:
+#    - cubrid # caching cubrid breaks the build on a regular basis and has nearly no speedup
+    - vendor
+    - $HOME/.composer/cache
+
+install:
+  - travis_retry composer self-update && composer --version
+  - travis_retry composer global require "fxp/composer-asset-plugin:1.0.0-beta4"
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+# core framework:
+  - travis_retry composer install --prefer-dist --no-interaction
+# codeception
+  - travis_retry composer global require "codeception/codeception=2.0.*" "codeception/specify=*" "codeception/verify=*"
+  - tests/travis/setup-app.sh
+
+before_script:
+  - tests/travis/init-app.sh
+  
+script:
+  - vendor/bin/phpunit --verbose --coverage-clover=coverage.clover --exclude-group mssql,oci,wincache,xcache,zenddata
+  - |
+    if (php --version | grep -i HipHop > /dev/null); then
+      echo "Skipping basic application tests on HHVM"
+    else
+      cd web
+      php -S localhost:8080 > /dev/null 2>&1 &
+      cd ../tests
+      codecept run
+    fi
+after_script:
+  - cd ../../..
+  - travis_retry wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
