@@ -2,7 +2,6 @@
 
 namespace app\controllers;
 
-use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -52,7 +51,7 @@ class SiteController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {
