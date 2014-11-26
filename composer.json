@@ -45,7 +45,8 @@
         "post-create-project-cmd": [
             "yii\\composer\\Installer::postCreateProject",
             "php -r \"copy('config/deploy/common.local.php', 'config/common.local.php');\"",
-            "php -r \"copy('config/deploy/main.local.php', 'config/main.local.php');\""
+            "php -r \"copy('config/deploy/main.local.php', 'config/main.local.php');\"",
+            "php -r \"copy('config/deploy/console.local.php', 'config/console.local.php');\""
         ]
     },
     "extra": {
