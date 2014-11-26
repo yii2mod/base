@@ -27,11 +27,11 @@ install:
   - travis_retry composer install --prefer-dist --no-interaction
 # codeception
   - travis_retry composer global require "codeception/codeception=2.0.*" "codeception/specify=*" "codeception/verify=*"
-  - tests/travis/setup-app.sh
+  - chmod +x tests/travis/setup-app.sh && ./tests/travis/setup-app.sh
 
 before_script:
-  - tests/travis/init-app.sh
-  
+  - chmod +x tests/travis/init-app.sh && ./tests/travis/init-app.sh
+
 script:
   - vendor/bin/phpunit --verbose --coverage-clover=coverage.clover --exclude-group mssql,oci,wincache,xcache,zenddata
   - |
