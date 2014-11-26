@@ -17,7 +17,8 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "yii2mod/yii2-enum": "*",
-        "yii2mod/yii2-cms": "*"
+        "yii2mod/yii2-cms": "*",
+        "yii2mod/yii2-user": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
