@@ -34,13 +34,11 @@ AppAsset::register($this);
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => [
                 ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'About', 'url' => ['/site/about']],
+                ['label' => 'About Us', 'url' => ['/about-us']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
-                Yii::$app->user->isGuest ?
-                    ['label' => 'Login', 'url' => ['/site/login']] :
-                    ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                        'url' => ['/site/logout'],
-                        'linkOptions' => ['data-method' => 'post']],
+                ['label' => 'Signup', 'url' => ['/user/signup'], 'visible' => Yii::$app->user->isGuest],
+                ['label' => 'Login', 'url' => ['/user/login'], 'visible' => Yii::$app->user->isGuest],
+                ['label' => 'Logout', 'url' => ['/user/logout'], 'linkOptions' => ['data-method' => 'post'], 'visible' => !Yii::$app->user->isGuest],
             ],
         ]);
         NavBar::end();
@@ -57,7 +55,13 @@ AppAsset::register($this);
     <footer class="footer">
         <div class="container">
             <p class="pull-left">&copy; My Company <?php echo date('Y'); ?></p>
-            <p class="pull-right"><?php echo Yii::powered(); ?></p>
+            <p class="pull-right"><?php echo \yii\widgets\Menu::widget([
+                    'items' => [
+                        ['label' => 'Terms & Conditions', 'url' => ['/terms-and-conditions']],
+                        ['label' => 'Privacy Policy', 'url' => ['/privacy-policy']],
+                    ],
+                ]);
+                ?></p>
         </div>
     </footer>
 

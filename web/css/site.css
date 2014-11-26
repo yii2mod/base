@@ -89,3 +89,22 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+.footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float:right;
+
+}
+.footer ul li {
+    display: inline;
+    margin: 5px;
+}
+.footer ul li a {
+    text-decoration: none;
+    color: #333;
+}
+.footer ul li a:hover {
+    color: #505050;
+}
+
