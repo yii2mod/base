@@ -1,0 +1,39 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - hhvm
+  - hhvm-nightly
+
+# run build against hhvm but allow them to fail
+# http://docs.travis-ci.com/user/build-configuration/#Rows-That-are-Allowed-To-Fail
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: hhvm
+    - php: hhvm-nightly
+
+services:
+  - redis-server
+  - memcached
+  - elasticsearch
+  - mongodb
+
+install:
+  - composer self-update && composer --version
+  - composer global require "fxp/composer-asset-plugin:1.0.0-beta4"
+  - composer create-project --prefer-dist --stability=dev yii2mod/base .
+
+before_script:
+  - mysql -e 'CREATE DATABASE yiitest;';
+
+script:
+  - vendor/bin/phpunit --verbose --coverage-clover=coverage.clover --exclude-group mssql,oci,wincache,xcache,zenddata
+  - cd tests && php vendor/bin/codecept run
+  
+after_script:
+  - cd ../../..
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
