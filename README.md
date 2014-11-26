@@ -6,6 +6,7 @@ rapidly creating small projects.
 
 It includes all commonly used configurations that would allow you to focus on adding new
 features to your application.
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yii2mod/base/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/base/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/yii2mod/base/badges/build.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/base/build-status/master)
 
 
 DIRECTORY STRUCTURE
