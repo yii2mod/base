@@ -2,12 +2,12 @@
 $config = [
     'id' => 'main',
     'basePath' => dirname(__DIR__),
-    'defaultRoute' => '/',
+    'defaultRoute' => 'site/index',
     'modules' => [
     ],
     'components' => [
         'request' => [
-            'cookieValidationKey' => '',
+            'cookieValidationKey' => 'fYPq2eLM',
         ],
         'session' => [
             'class' => 'yii\web\DbSession',
