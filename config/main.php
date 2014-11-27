@@ -28,6 +28,7 @@ $config = [
             'rules' => [
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
+                ['class' => 'yii2mod\cms\components\PageUrlRule'],
             ]
         ],
     ],

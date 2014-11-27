@@ -74,6 +74,9 @@ class SiteController extends Controller
             'password-reset' => [
                 'class' => 'yii2mod\user\actions\PasswordResetAction'
             ],
+            'page' => [
+                'class' => 'yii2mod\cms\actions\PageAction',
+            ],
         ];
     }
 

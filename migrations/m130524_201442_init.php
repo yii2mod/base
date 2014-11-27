@@ -52,6 +52,43 @@ class m130524_201442_init extends Migration
             'updatedAt' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
 
+        //Insert pages in CMS table
+        $this->insert('Cms',[
+            'url' => 'about-us',
+            'title' => 'About us',
+            'content' => 'About us content',
+            'status' => 1,
+            'metaTitle' => 'About us',
+            'metaDescription' => 'About us description',
+            'metaKeywords' => 'About us keywords',
+            'createdAt' => time(),
+            'updatedAt' => time(),
+        ]);
+
+        $this->insert('Cms',[
+            'url' => 'terms-and-conditions',
+            'title' => 'Terms & Conditions',
+            'content' => 'Content',
+            'status' => 1,
+            'metaTitle' => 'Terms & Conditions',
+            'metaDescription' => 'Terms & Conditions description',
+            'metaKeywords' => 'Terms & Conditions keywords',
+            'createdAt' => time(),
+            'updatedAt' => time(),
+        ]);
+
+        $this->insert('Cms',[
+            'url' => 'privacy-policy',
+            'title' => 'Privacy Policy',
+            'content' => 'Content',
+            'status' => 1,
+            'metaTitle' => 'Privacy Policy',
+            'metaDescription' => 'Privacy Policy description',
+            'metaKeywords' => 'Privacy Policy keywords',
+            'createdAt' => time(),
+            'updatedAt' => time(),
+        ]);
+        
         //Create Session table
         $this->createTable('Session', [
             'id' => 'CHAR(40) NOT NULL PRIMARY KEY',
