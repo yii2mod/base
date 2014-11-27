@@ -34,7 +34,9 @@ script:
   - cd tests && codecept build && cd ..
   - ~/.composer/vendor/bin/phpunit --verbose --coverage-clover=coverage.clover --exclude-group mssql,oci,wincache,xcache,zenddata
   - cd web && php -S localhost:8080 > /dev/null 2>&1 &
-  - cd ../tests/
+  - pwd
+  - ls
+  - cd tests/
   - codecept run
 
 after_script:
