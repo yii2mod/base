@@ -30,7 +30,7 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
         NavBar::begin([
-            'brandLabel' => 'My Company',
+            'brandLabel' => 'Yii2 Basic Template',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'navbar-inverse navbar-fixed-top',
@@ -60,7 +60,7 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-            <p class="pull-left">&copy; My Company <?php echo date('Y'); ?></p>
+            <p class="pull-left">&copy; Yii2 Basic Template <?php echo date('Y'); ?></p>
             <p class="pull-right"><?php echo \yii\widgets\Menu::widget([
                     'items' => [
                         ['label' => 'Terms & Conditions', 'url' => ['/terms-and-conditions']],
