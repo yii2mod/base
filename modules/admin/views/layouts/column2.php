@@ -1,5 +1,6 @@
 <?php
 use app\assets\AdminAsset;
+use kartik\alert\AlertBlock;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
@@ -20,8 +21,12 @@ AdminAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
-
 <?php $this->beginBody() ?>
+<?php echo AlertBlock::widget([
+    'type' => AlertBlock::TYPE_GROWL,
+    'useSessionFlash' => true
+]);
+?>
 <div class="wrap">
     <?php
     NavBar::begin([

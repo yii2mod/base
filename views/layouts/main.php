@@ -1,5 +1,6 @@
 <?php
 use app\widgets\Alert;
+use kartik\alert\AlertBlock;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -20,8 +21,12 @@ AppAsset::register($this);
         <?php $this->head() ?>
     </head>
     <body>
-
     <?php $this->beginBody() ?>
+    <?php echo AlertBlock::widget([
+        'type' => AlertBlock::TYPE_GROWL,
+        'useSessionFlash' => true
+    ]);
+    ?>
     <div class="wrap">
         <?php
         NavBar::begin([
@@ -46,7 +51,6 @@ AppAsset::register($this);
         ?>
 
         <div class="container">
-            <?php echo Alert::widget(); ?>
             <?php echo Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]); ?>
