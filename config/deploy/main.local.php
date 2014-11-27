@@ -15,8 +15,11 @@ $config = [
             'allowedIPs' => ['10.8.4.*'],
             'generators' => [
                 'enumerable' => [
-                    'class' => 'yii2mod\enum\giiTemplate\Generator',
-                ]
+                    'class' => 'yii2mod\gii\enum\Generator',
+                ],
+                'crud' => [
+                    'class' => 'yii2mod\gii\crud\Generator',
+                ],
             ],
         ],
 
