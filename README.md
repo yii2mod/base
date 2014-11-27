@@ -52,4 +52,4 @@ at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
 CONFIGURATION
 -------------
 Check and edit `*.local.php` files in the `config/` directory to customize your application.
-After check configs, execute migrations by command `php yii migrate`.
+After check configs, execute migrations by command `php yii migrate`
