@@ -8,6 +8,13 @@ $config = [
             'password' => '',
             'charset' => 'utf8',
         ],
+        'mail' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => '',
+            ],
+        ],
     ],
     'params' => [
     ]
