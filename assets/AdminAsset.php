@@ -24,17 +24,12 @@ class AdminAsset extends AssetBundle
      */
     public $baseUrl = '@web';
 
-    /*
-     * Example config
-     *
+    /**
+     * @var array
+     */
     public $css = [
         'css/admin.css',
     ];
-
-    public $js = [
-        'js/admin.js'
-    ];
-    */
 
     /**
      * @var array
