@@ -59,12 +59,16 @@ AdminAsset::register($this);
                 'label' => '<i class="glyphicon glyphicon-cog"></i> Settings',
                 'items' => [
                     [
-                        'label' => '<i class="fa fa-pencil-square-o"></i> CMS',
+                        'label' => '<i class="glyphicon glyphicon-file"></i> CMS',
                         'url' => ['/admin/cms/index'],
                     ],
                     [
-                        'label' => '<i class="fa fa-repeat"></i> Clear Cache',
-                        'url' => ['/admin/setting/clear-cache'],
+                        'label' => '<i class="glyphicon glyphicon-cog"></i> Cron Schedule Log',
+                        'url' => ['/admin/settings/cron'],
+                    ],
+                    [
+                        'label' => '<i class="glyphicon glyphicon-repeat"></i> Clear Cache',
+                        'url' => ['/admin/settings/clear-cache'],
                     ]
                 ]
             ],

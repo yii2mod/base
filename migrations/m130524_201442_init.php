@@ -53,7 +53,7 @@ class m130524_201442_init extends Migration
         ], $tableOptions);
 
         //Insert pages in CMS table
-        $this->insert('Cms',[
+        $this->insert('Cms', [
             'url' => 'about-us',
             'title' => 'About us',
             'content' => 'About us content',
@@ -65,7 +65,7 @@ class m130524_201442_init extends Migration
             'updatedAt' => time(),
         ]);
 
-        $this->insert('Cms',[
+        $this->insert('Cms', [
             'url' => 'terms-and-conditions',
             'title' => 'Terms & Conditions',
             'content' => 'Content',
@@ -77,7 +77,7 @@ class m130524_201442_init extends Migration
             'updatedAt' => time(),
         ]);
 
-        $this->insert('Cms',[
+        $this->insert('Cms', [
             'url' => 'privacy-policy',
             'title' => 'Privacy Policy',
             'content' => 'Content',
@@ -88,7 +88,7 @@ class m130524_201442_init extends Migration
             'createdAt' => time(),
             'updatedAt' => time(),
         ]);
-        
+
         //Create Session table
         $this->createTable('Session', [
             'id' => 'CHAR(40) NOT NULL PRIMARY KEY',
@@ -136,6 +136,22 @@ class m130524_201442_init extends Migration
             'FOREIGN KEY (parent) REFERENCES AuthItem (name) ON DELETE CASCADE ON UPDATE CASCADE',
             'FOREIGN KEY (child) REFERENCES AuthItem (name) ON DELETE CASCADE ON UPDATE CASCADE',
         ], $tableOptions);
+
+        // Create Cron Shedule table
+        return $this->createTable('CronSchedule', [
+            'id' => Schema::TYPE_PK,
+            'jobCode' => Schema::TYPE_STRING . '(255)',
+            'status' => Schema::TYPE_STRING . '(255)',
+            'messages' => Schema::TYPE_TEXT,
+            'status' => Schema::TYPE_SMALLINT,
+            'dateCreated' => Schema::TYPE_TIMESTAMP,
+            'dateScheduled' => Schema::TYPE_TIMESTAMP,
+            'dateExecuted' => Schema::TYPE_TIMESTAMP,
+            'dateFinished' => Schema::TYPE_TIMESTAMP,
+        ], $tableOptions);
+
+        $this->createIndex('IDX_CRON_SCHEDULE_JOB_CODE', 'CronSchedule', ['jobCode']);
+        $this->createIndex('IDX_CRON_SCHEDULE_SCHEDULED_AT_STATUS', 'CronSchedule', ['dateScheduled', 'status']);
     }
 
     /**
@@ -156,5 +172,7 @@ class m130524_201442_init extends Migration
         $this->dropTable('AuthItemChild');
         $this->dropTable('AuthItem');
         $this->dropTable('AuthRule');
+        //Drop cron table
+        $this->dropTable('CronSchedule');
     }
 }
