@@ -5,7 +5,7 @@ if (php --version | grep -i HipHop > /dev/null); then
 else
 
     mysql -e 'CREATE DATABASE yii2mod_tests;';
-    cd tests/codeception/bin
-    php yii migrate --interactive=0
-    cd ../../../../..
+    #cd tests/codeception/bin
+    #php yii migrate --interactive=0
+    #cd ../../../../..
 fi
