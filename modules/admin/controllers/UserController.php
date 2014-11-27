@@ -8,16 +8,17 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii2mod\user\models\SignupForm;
 
 /**
  * UserController implements the CRUD actions for UserModel model.
  */
 class UserController extends Controller
 {
-   /**
-    * Behaviors
-    * @return array
-    */
+    /**
+     * Behaviors
+     * @return array
+     */
     public function behaviors()
     {
         return [
@@ -52,11 +53,12 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new UserModel();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', 'User has been created.');
-            return $this->redirect(['index']);
+        $model = new SignupForm();
+        if ($model->load(\Yii::$app->request->post())) {
+            if ($model->signup()) {
+                Yii::$app->session->setFlash('success', 'User has been created.');
+                return $this->redirect(['index']);
+            }
         }
 
         return $this->render('create', [
