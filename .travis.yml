@@ -1,3 +1,5 @@
+#/home/travis/build/yii2mod/base/tests/codeception/config/functional.php
+
 language: php
 
 php:
@@ -22,28 +24,19 @@ cache:
 install:
   - travis_retry composer self-update && composer --version
   - travis_retry composer global require "fxp/composer-asset-plugin:1.0.0-beta4"
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
-# core framework:
-  - travis_retry composer install --prefer-dist --no-interaction
-# codeception
   - travis_retry composer global require "codeception/codeception=2.0.*" "codeception/specify=*" "codeception/verify=*"
-  - chmod +x tests/travis/setup-app.sh && ./tests/travis/setup-app.sh
-
-before_script:
-  - chmod +x tests/travis/init-app.sh && ./tests/travis/init-app.sh
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 script:
-  - vendor/bin/phpunit --verbose --coverage-clover=coverage.clover --exclude-group mssql,oci,wincache,xcache,zenddata
-  - |
-    if (php --version | grep -i HipHop > /dev/null); then
-      echo "Skipping basic application tests on HHVM"
-    else
-      cd web
-      php -S localhost:8080 > /dev/null 2>&1 &
-      cd ../tests
-      codecept run
-    fi
+  - pwd
+  - mysql -e 'CREATE DATABASE yii2mod_tests;';
+  - composer create-project
+  - cd tests && codecept build && cd ..
+  - ~/.composer/vendor/bin/phpunit --verbose --coverage-clover=coverage.clover --exclude-group mssql,oci,wincache,xcache,zenddata
+  - cd web && php -S localhost:8080 > /dev/null 2>&1 &
+  - cd tests && codecept run
+
 after_script:
-  - cd ../../..
+  - cd ~/build/yii2mod/base/
   - travis_retry wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
