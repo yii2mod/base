@@ -30,14 +30,11 @@ install:
 script:
   - pwd
   - mysql -e 'CREATE DATABASE yii2mod_tests;';
-  - composer install --dev --prefer-dist
+  - composer create-project
   - cd tests && codecept build && cd ..
   - ~/.composer/vendor/bin/phpunit --verbose --coverage-clover=coverage.clover --exclude-group mssql,oci,wincache,xcache,zenddata
   - cd web && php -S localhost:8080 > /dev/null 2>&1 &
-  - pwd
-  - ls
-  - cd tests/
-  - codecept run
+  - cd tests && codecept run
 
 after_script:
   - cd ~/build/yii2mod/base/
