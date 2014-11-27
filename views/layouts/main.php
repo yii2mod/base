@@ -1,77 +1,127 @@
 <?php
-use app\widgets\Alert;
+use app\assets\AdminAsset;
 use kartik\alert\AlertBlock;
-use yii\helpers\Html;
+use kartik\sidenav\SideNav;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
+
 /* @var $this \yii\web\View */
 /* @var $content string */
-AppAsset::register($this);
+AdminAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
-    <!DOCTYPE html>
-    <html lang="<?php echo Yii::$app->language; ?>">
-    <head>
-        <meta charset="<?php echo Yii::$app->charset; ?>"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <?php echo Html::csrfMetaTags(); ?>
-        <title><?php echo Html::encode($this->title); ?></title>
-        <?php $this->head() ?>
-    </head>
-    <body>
-    <?php $this->beginBody() ?>
-    <?php echo AlertBlock::widget([
-        'type' => AlertBlock::TYPE_GROWL,
-        'useSessionFlash' => true
+<!DOCTYPE html>
+<html lang="<?php echo Yii::$app->language ?>">
+<head>
+    <meta charset="<?php echo Yii::$app->charset ?>"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php echo Html::csrfMetaTags() ?>
+    <title><?php echo Html::encode($this->title) ?></title>
+    <?php $this->head() ?>
+</head>
+<body>
+<?php $this->beginBody() ?>
+<?php echo AlertBlock::widget([
+    'type' => AlertBlock::TYPE_GROWL,
+    'useSessionFlash' => true
+]);
+?>
+<div class="wrap">
+    <?php
+    NavBar::begin([
+        'brandLabel' => 'Admin Panel',
+        'brandUrl' => '/admin',
+        'options' => [
+            'class' => 'navbar-inverse',
+        ],
     ]);
-    ?>
-    <div class="wrap">
-        <?php
-        NavBar::begin([
-            'brandLabel' => 'Yii2 Basic Template',
-            'brandUrl' => Yii::$app->homeUrl,
-            'options' => [
-                'class' => 'navbar-inverse navbar-fixed-top',
-            ],
-        ]);
-        echo Nav::widget([
-            'options' => ['class' => 'navbar-nav navbar-right'],
-            'items' => [
-                ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'About Us', 'url' => ['/about-us']],
-                ['label' => 'Contact', 'url' => ['/site/contact']],
-                ['label' => 'Signup', 'url' => ['/site/signup'], 'visible' => Yii::$app->user->isGuest],
-                ['label' => 'Login', 'url' => ['/site/login'], 'visible' => Yii::$app->user->isGuest],
-                ['label' => 'Logout', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post'], 'visible' => !Yii::$app->user->isGuest],
-            ],
-        ]);
-        NavBar::end();
-        ?>
 
-        <div class="container">
-            <?php echo Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]); ?>
-            <?php echo $content; ?>
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav'],
+        'encodeLabels' => false,
+        'items' => [
+            [
+                'label' => '<i class="glyphicon glyphicon-user"></i> Users',
+                'items' => [
+                    [
+                        'label' => '<i class="glyphicon glyphicon-th-list"></i> User List',
+                        'url' => ['/admin/user/index'],
+                    ],
+                    [
+                        'label' => '<i class="glyphicon glyphicon-plus"></i> Create User',
+                        'url' => ['/admin/user/create'],
+                    ]
+                ]
+            ],
+
+            [
+                'label' => '<i class="glyphicon glyphicon-cog"></i> Settings',
+                'items' => [
+                    [
+                        'label' => '<i class="glyphicon glyphicon-file"></i> CMS',
+                        'url' => ['/admin/cms/index'],
+                    ],
+                    [
+                        'label' => '<i class="glyphicon glyphicon-cog"></i> Cron Schedule Log',
+                        'url' => ['/admin/settings/cron'],
+                    ],
+                    [
+                        'label' => '<i class="glyphicon glyphicon-user"></i> RBAC',
+                        'url' => ['/admin/rbac'],
+                    ],
+                    [
+                        'label' => '<i class="glyphicon glyphicon-repeat"></i> Clear Cache',
+                        'url' => ['/admin/settings/clear-cache'],
+                    ]
+                ]
+            ],
+
+        ],
+    ]);
+    if (!Yii::$app->user->isGuest) {
+        $menuItems = [
+            ['label' => '<i class="glyphicon glyphicon-globe"></i> Public Area', 'url' => ['/']],
+            ['label' => '<i class="glyphicon glyphicon-off"></i> Logout (' . Yii::$app->user->identity->username . ')',
+                'url' => ['/site/logout'],
+                'linkOptions' => ['data-method' => 'post'],
+            ]
+        ];
+
+    } else {
+        $menuItems = [];
+    }
+
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => $menuItems,
+        'encodeLabels' => false,
+    ]);
+    NavBar::end();
+    ?>
+
+    <div class="container-fluid">
+        <?php echo Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
+        <div class="row">
+            <div class="col-md-2">
+                <?php if (isset($this->params['sidebar'])): ?>
+                    <?php echo SideNav::widget(['items' => $this->params['sidebar'],
+                        'headingOptions' => ['class' => 'head-style'],
+                        'encodeLabels' => false,
+                    ]); ?>
+                <?php endif; ?>
+            </div>
+            <div class="col-md-10">
+                <?php echo $content; ?>
+            </div>
         </div>
     </div>
-
-    <footer class="footer">
-        <div class="container">
-            <p class="pull-left">&copy; Yii2 Basic Template <?php echo date('Y'); ?></p>
-            <p class="pull-right"><?php echo \yii\widgets\Menu::widget([
-                    'items' => [
-                        ['label' => 'Terms & Conditions', 'url' => ['/terms-and-conditions']],
-                        ['label' => 'Privacy Policy', 'url' => ['/privacy-policy']],
-                    ],
-                ]);
-                ?></p>
-        </div>
-    </footer>
-
-    <?php $this->endBody() ?>
-    </body>
-    </html>
+</div>
+</div>
+<?php $this->endBody() ?>
+</body>
+</html>
 <?php $this->endPage() ?>
