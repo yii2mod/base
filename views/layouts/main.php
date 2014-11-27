@@ -36,9 +36,9 @@ AppAsset::register($this);
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'About Us', 'url' => ['/about-us']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
-                ['label' => 'Signup', 'url' => ['/user/signup'], 'visible' => Yii::$app->user->isGuest],
-                ['label' => 'Login', 'url' => ['/user/login'], 'visible' => Yii::$app->user->isGuest],
-                ['label' => 'Logout', 'url' => ['/user/logout'], 'linkOptions' => ['data-method' => 'post'], 'visible' => !Yii::$app->user->isGuest],
+                ['label' => 'Signup', 'url' => ['/site/signup'], 'visible' => Yii::$app->user->isGuest],
+                ['label' => 'Login', 'url' => ['/site/login'], 'visible' => Yii::$app->user->isGuest],
+                ['label' => 'Logout', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post'], 'visible' => !Yii::$app->user->isGuest],
             ],
         ]);
         NavBar::end();

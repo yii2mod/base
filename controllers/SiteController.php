@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\forms\ContactForm;
+use app\models\UserDetailsModel;
+use app\models\UserModel;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -15,7 +17,10 @@ use Yii;
 class SiteController extends Controller
 {
     /**
-     * @return yii\filters\AccessControl
+     * Returns a list of behaviors that this component should behave as.
+     *
+     * Child classes may override this method to specify the behaviors they want to behave as.
+     * @return array
      */
     public function behaviors()
     {
@@ -41,7 +46,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Actions
+     * Declares external actions for the controller.
      * @return array
      */
     public function actions()
@@ -53,6 +58,21 @@ class SiteController extends Controller
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+            'login' => [
+                'class' => 'yii2mod\user\actions\LoginAction'
+            ],
+            'logout' => [
+                'class' => 'yii2mod\user\actions\LogoutAction'
+            ],
+            'signup' => [
+                'class' => 'yii2mod\user\actions\SignupAction'
+            ],
+            'request-password-reset' => [
+                'class' => 'yii2mod\user\actions\RequestPasswordResetAction'
+            ],
+            'password-reset' => [
+                'class' => 'yii2mod\user\actions\PasswordResetAction'
             ],
         ];
     }
