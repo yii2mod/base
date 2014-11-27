@@ -10,6 +10,9 @@ $config = [
                 'cms' => 'yii2mod\cms\controllers\CmsController'
             ],
         ],
+        'gridview' => [
+            'class' => '\kartik\grid\Module'
+        ],
     ],
     'components' => [
         'request' => [
