@@ -1,20 +1,8 @@
 #WebDrivder
-#class_name: AcceptanceTester
-#modules:
-#    enabled:
-#        - PhpBrowser
-#    config:
-#        PhpBrowser:
-#            url: 'http://localhost:8080'
-
-#SELENIUM http://codeception.com/docs/04-AcceptanceTests#Selenium
 class_name: AcceptanceTester
 modules:
     enabled:
-        - WebDriver
-        - AcceptanceHelper
+        - PhpBrowser
     config:
-        WebDriver:
+        PhpBrowser:
             url: 'http://localhost:8080'
-            browser: firefox
-            restart: true
