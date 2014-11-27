@@ -4,6 +4,12 @@ $config = [
     'basePath' => dirname(__DIR__),
     'defaultRoute' => 'site/index',
     'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'controllerMap' => [
+                'cms' => 'yii2mod\cms\controllers\CmsController'
+            ],
+        ],
     ],
     'components' => [
         'request' => [
