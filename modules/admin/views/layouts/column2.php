@@ -1,6 +1,7 @@
 <?php
 use app\assets\AdminAsset;
 use kartik\alert\AlertBlock;
+use kartik\sidenav\SideNav;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
@@ -33,7 +34,7 @@ AdminAsset::register($this);
         'brandLabel' => 'Admin Panel',
         'brandUrl' => '/admin',
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-inverse',
         ],
     ]);
 
@@ -100,11 +101,23 @@ AdminAsset::register($this);
     NavBar::end();
     ?>
 
-    <div class="container">
+    <div class="container-fluid">
         <?php echo Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
-        <?php echo $content; ?>
+        <div class="row">
+            <div class="col-md-2">
+                <?php if (isset($this->params['sidebar'])): ?>
+                    <?php echo SideNav::widget(['items' => $this->params['sidebar'],
+                        'headingOptions' => ['class' => 'head-style'],
+                        'encodeLabels' => false,
+                    ]); ?>
+                <?php endif; ?>
+            </div>
+            <div class="col-md-10">
+                <?php echo $content; ?>
+            </div>
+        </div>
     </div>
 </div>
 </div>
