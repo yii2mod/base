@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii2mod\user\models\enumerables\UserStatus;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -16,14 +17,19 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?php echo Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?php \yii\widgets\Pjax::begin(['enablePushState' => false,'timeout' => 3000]); ?>
+    <?php \yii\widgets\Pjax::begin(['enablePushState' => false, 'timeout' => 3000]); ?>
     <?php echo GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
             'id',
             'username',
             'email:email',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => function ($model) {
+                    return UserStatus::getLabel($model->status);
+                }
+            ],
             [
                 'header' => 'Action',
                 'class' => 'yii\grid\ActionColumn',

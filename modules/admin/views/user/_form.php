@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii2mod\user\models\enumerables\UserStatus;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\UserModel */
@@ -16,7 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?php echo $form->field($model, 'email')->textInput(['maxlength' => 255]) ?>
 
-    <?php echo $form->field($model, 'status')->textInput() ?>
+    <?php echo $form->field($model,'status')->dropDownList(UserStatus::listData()); ?>
 
     <div class="form-group">
         <?php echo Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
