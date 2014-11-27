@@ -32,6 +32,12 @@ class m130524_201442_init extends Migration
             'updatedAt' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
 
+        //Create user details table
+        $this->createTable('UserDetails', [
+            'userId' => Schema::TYPE_PK,
+            'FOREIGN KEY (userId) REFERENCES {{%User}} (id) ON DELETE CASCADE ON UPDATE CASCADE',
+        ], $tableOptions);
+
         //Create Cms table
         $this->createTable('Cms', [
             'id' => Schema::TYPE_PK,
@@ -101,8 +107,9 @@ class m130524_201442_init extends Migration
      */
     public function down()
     {
-        //Drop user table
+        //Drop user & userDetails tables
         $this->dropTable('{{%User}}');
+        $this->dropTable('UserDetails');
         //Drop cms table
         $this->dropTable('Cms');
         //Drop session table
