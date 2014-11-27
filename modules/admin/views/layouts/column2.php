@@ -67,6 +67,10 @@ AdminAsset::register($this);
                         'url' => ['/admin/settings/cron'],
                     ],
                     [
+                        'label' => '<i class="glyphicon glyphicon-user"></i> RBAC',
+                        'url' => ['/admin/rbac'],
+                    ],
+                    [
                         'label' => '<i class="glyphicon glyphicon-repeat"></i> Clear Cache',
                         'url' => ['/admin/settings/clear-cache'],
                     ]
@@ -102,6 +106,7 @@ AdminAsset::register($this);
         ]) ?>
         <?php echo $content; ?>
     </div>
+</div>
 </div>
 <?php $this->endBody() ?>
 </body>

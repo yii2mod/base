@@ -3,6 +3,10 @@ $config = [
     'language' => 'en-US',
     'bootstrap' => ['log'],
     'components' => [
+        'authManager' => [
+            'class' => 'yii2mod\rbac\components\DbManager',
+            'defaultRoles' => ['guest', 'user'],
+        ],
         'formatter' => [
             'class' => 'yii\i18n\Formatter',
         ],

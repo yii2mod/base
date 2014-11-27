@@ -9,6 +9,11 @@ $config = [
             'controllerMap' => [
                 'cms' => 'yii2mod\cms\controllers\CmsController'
             ],
+            'modules' => [
+                'rbac' => [
+                    'class' => 'yii2mod\rbac\Module',
+                ],
+            ]
         ],
         'gridview' => [
             'class' => '\kartik\grid\Module'
