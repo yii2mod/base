@@ -34,7 +34,7 @@
     "require-dev": {
         "codeception/codeception": "2.0.*@dev",
         "codeception/specify": "*",
-        "codeception/verify": "*"
+        "codeception/verify": "*",
         "yiisoft/yii2-codeception": "*",
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*"
