@@ -138,7 +138,7 @@ class m130524_201442_init extends Migration
         ], $tableOptions);
 
         // Create Cron Shedule table
-        return $this->createTable('CronSchedule', [
+        $this->createTable('CronSchedule', [
             'id' => Schema::TYPE_PK,
             'jobCode' => Schema::TYPE_STRING . '(255)',
             'status' => Schema::TYPE_STRING . '(255)',
@@ -152,6 +152,373 @@ class m130524_201442_init extends Migration
 
         $this->createIndex('IDX_CRON_SCHEDULE_JOB_CODE', 'CronSchedule', ['jobCode']);
         $this->createIndex('IDX_CRON_SCHEDULE_SCHEDULED_AT_STATUS', 'CronSchedule', ['dateScheduled', 'status']);
+
+        //Insert admin user
+        $this->insert('User', [
+            'id' => 1,
+            'username' => 'admin',
+            'authKey' => '6OFUxxVvoz067LISkZBY0JmZ-30NJK5j',
+            'passwordHash' => '$2y$13$BtICgI3WpoMuUe3/t4AXOuRQD6cx90mttQUfi7uYkC2nvGE8dh4Ve',
+            'passwordResetToken' => 'FFFONvY8njNEkm16-czMKmoWSQtT9eoC_1417103710',
+            'email' => 'admin@mail.com',
+            'status' => 1,
+            'createdAt' => 1417101427,
+            'updatedAt' => 1417101427,
+        ]);
+
+        $this->insert('UserDetails', [
+            'userId' => 1,
+        ]);
+        $this->execute('SET FOREIGN_KEY_CHECKS=0;');
+        //Insert auth assignment
+        $this->insert('AuthAssignment', [
+            'itemName' => 'admin',
+            'userId' => 1,
+            'createdAt' => 1417165845,
+        ]);
+        $this->insert('AuthAssignment', [
+            'itemName' => 'guest',
+            'userId' => 1,
+            'createdAt' => 1417165845,
+        ]);
+        //insest auth item
+        $this->insert('AuthItem', [
+            'name' => '/admin/*',
+            'type' => 2,
+            'description' => NULL,
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => '/site/captcha',
+            'type' => 2,
+            'description' => NULL,
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => '/site/contact',
+            'type' => 2,
+            'description' => NULL,
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => '/site/error',
+            'type' => 2,
+            'description' => NULL,
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => '/site/index',
+            'type' => 2,
+            'description' => NULL,
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => '/site/login',
+            'type' => 2,
+            'description' => NULL,
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => '/site/logout',
+            'type' => 2,
+            'description' => NULL,
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => '/site/page',
+            'type' => 2,
+            'description' => NULL,
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => '/site/password-reset',
+            'type' => 2,
+            'description' => NULL,
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => '/site/request-password-reset',
+            'type' => 2,
+            'description' => NULL,
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => '/site/signup',
+            'type' => 2,
+            'description' => NULL,
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => 'admin',
+            'type' => 1,
+            'description' => 'admin role',
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => 'adminManage',
+            'type' => 2,
+            'description' => 'user can manage admin settings',
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => 'contactUs',
+            'type' => 2,
+            'description' => 'user can send email via contact form',
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => 'error',
+            'type' => 2,
+            'description' => 'view error',
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => 'guest',
+            'type' => 1,
+            'description' => 'guest role',
+            'ruleName' => 'guest',
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => 'login',
+            'type' => 2,
+            'description' => 'user can login',
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => 'logout',
+            'type' => 2,
+            'description' => 'user can logout',
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => 'signup',
+            'type' => 2,
+            'description' => 'User can sign up',
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => 'user',
+            'type' => 1,
+            'description' => 'default user role',
+            'ruleName' => 'user',
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => 'viewCmsPage',
+            'type' => 2,
+            'description' => 'user can view cms pages',
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => 'viewHomePage',
+            'type' => 2,
+            'description' => 'user can view home page',
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItem', [
+            'name' => 'repairPassword',
+            'type' => 2,
+            'description' => 'user can repair own password',
+            'ruleName' => NULL,
+            'data' => NULL,
+            'createdAt' => 1417165845,
+            'updatedAt' => 1417165845,
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'repairPassword',
+            'child' => '/site/password-reset',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'repairPassword',
+            'child' => '/site/request-password-reset',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'guest',
+            'child' => 'repairPassword',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'adminManage',
+            'child' => '/admin/*',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'contactUs',
+            'child' => '/site/captcha',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'contactUs',
+            'child' => '/site/contact',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'error',
+            'child' => '/site/error',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'viewHomePage',
+            'child' => '/site/index',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'login',
+            'child' => '/site/login',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'logout',
+            'child' => '/site/logout',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'viewCmsPage',
+            'child' => '/site/page',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'signup',
+            'child' => '/site/signup',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'admin',
+            'child' => 'adminManage',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'admin',
+            'child' => 'contactUs',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'guest',
+            'child' => 'contactUs',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'user',
+            'child' => 'contactUs',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'admin',
+            'child' => 'error',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'guest',
+            'child' => 'error',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'user',
+            'child' => 'error',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'guest',
+            'child' => 'login',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'admin',
+            'child' => 'logout',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'user',
+            'child' => 'logout',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'guest',
+            'child' => 'signup',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'admin',
+            'child' => 'viewCmsPage',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'guest',
+            'child' => 'viewCmsPage',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'user',
+            'child' => 'viewCmsPage',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'admin',
+            'child' => 'viewHomePage',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'guest',
+            'child' => 'viewHomePage',
+        ]);
+        $this->insert('AuthItemChild', [
+            'parent' => 'user',
+            'child' => 'viewHomePage',
+        ]);
+        //Insert auth rules
+        $this->insert('AuthRule', [
+            'name' => 'guest',
+            'data' => 'O:31:"yii2mod\\rbac\\components\\BizRule":4:{s:10:"expression";s:32:"return Yii::$app->user->isGuest;";s:4:"name";s:5:"guest";s:9:"createdAt";i:1417110668;s:9:"updatedAt";i:1417110668;}',
+            'createdAt' => 1417101427,
+            'updatedAt' => 1417101427,
+        ]);
+        $this->insert('AuthRule', [
+            'name' => 'user',
+            'data' => 'O:31:"yii2mod\\rbac\\components\\BizRule":4:{s:10:"expression";s:33:"return !Yii::$app->user->isGuest;";s:4:"name";s:4:"user";s:9:"createdAt";i:1417165484;s:9:"updatedAt";i:1417165484;}',
+            'createdAt' => 1417101427,
+            'updatedAt' => 1417101427,
+        ]);
+        $this->execute('SET FOREIGN_KEY_CHECKS=1;');
     }
 
     /**
