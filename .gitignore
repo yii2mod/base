@@ -1,0 +1,4 @@
+vendor/*
+runtime/debug/*
+runtime/logs/*
+composer.lock

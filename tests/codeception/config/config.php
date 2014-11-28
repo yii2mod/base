@@ -4,6 +4,11 @@
  */
 return [
     'components' => [
+	'db' => [
+            'dsn' => 'mysql:host=localhost;dbname=yii2base',
+            'username' => 'root',
+            'password' => '',
+        ],
         'mailer' => [
             'useFileTransport' => true,
         ],

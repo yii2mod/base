@@ -26,17 +26,15 @@
         "yii2mod/yii2-gii-extended": "*",
         "yii2mod/yii2-cron-log": "*",
         "yii2mod/yii2-image": "*",
-        "yii2mod/yii2-behaviors": "*"
+        "yii2mod/yii2-behaviors": "*",
     },
     "require-dev": {
+        "codeception/codeception": "2.0.*@dev",
+        "codeception/specify": "*",
+        "codeception/verify": "*"
         "yiisoft/yii2-codeception": "*",
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*"
-    },
-    "suggest": {
-        "codeception/codeception": "Codeception, 1.8.*@dev is currently works well with Yii.",
-        "codeception/specify": "BDD style code blocks for PHPUnit and Codeception",
-        "codeception/verify": "BDD Assertions for PHPUnit and Codeception"
     },
     "config": {
         "process-timeout": 1800
