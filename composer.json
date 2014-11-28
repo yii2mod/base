@@ -27,6 +27,9 @@
         "yii2mod/yii2-cron-log": "*",
         "yii2mod/yii2-image": "*",
         "yii2mod/yii2-behaviors": "*",
+        "kartik-v/yii2-widget-growl": "*",
+        "kartik-v/yii2-widget-alert": "*",
+        "kartik-v/yii2-widget-sidenav": "*"
     },
     "require-dev": {
         "codeception/codeception": "2.0.*@dev",

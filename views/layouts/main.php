@@ -1,5 +1,6 @@
 <?php
 use app\widgets\Alert;
+use kartik\alert\AlertBlock;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -20,12 +21,16 @@ AppAsset::register($this);
         <?php $this->head() ?>
     </head>
     <body>
-
     <?php $this->beginBody() ?>
+    <?php echo AlertBlock::widget([
+        'type' => AlertBlock::TYPE_GROWL,
+        'useSessionFlash' => true
+    ]);
+    ?>
     <div class="wrap">
         <?php
         NavBar::begin([
-            'brandLabel' => 'My Company',
+            'brandLabel' => 'Yii2 Basic Template',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'navbar-inverse navbar-fixed-top',
@@ -39,6 +44,7 @@ AppAsset::register($this);
                 ['label' => 'Contact', 'url' => ['/site/contact']],
                 ['label' => 'Signup', 'url' => ['/site/signup'], 'visible' => Yii::$app->user->isGuest],
                 ['label' => 'Login', 'url' => ['/site/login'], 'visible' => Yii::$app->user->isGuest],
+                ['label' => 'Administration', 'url' => ['/admin'], 'visible' => Yii::$app->getUser()->can('admin')],
                 ['label' => 'Logout', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post'], 'visible' => !Yii::$app->user->isGuest],
             ],
         ]);
@@ -46,7 +52,6 @@ AppAsset::register($this);
         ?>
 
         <div class="container">
-            <?php echo Alert::widget(); ?>
             <?php echo Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]); ?>
@@ -56,7 +61,7 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-            <p class="pull-left">&copy; My Company <?php echo date('Y'); ?></p>
+            <p class="pull-left">&copy; Yii2 Basic Template <?php echo date('Y'); ?></p>
             <p class="pull-right"><?php echo \yii\widgets\Menu::widget([
                     'items' => [
                         ['label' => 'Terms & Conditions', 'url' => ['/terms-and-conditions']],

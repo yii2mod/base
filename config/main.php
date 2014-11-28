@@ -4,6 +4,20 @@ $config = [
     'basePath' => dirname(__DIR__),
     'defaultRoute' => 'site/index',
     'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'controllerMap' => [
+                'cms' => 'yii2mod\cms\controllers\CmsController'
+            ],
+            'modules' => [
+                'rbac' => [
+                    'class' => 'yii2mod\rbac\Module',
+                ],
+            ]
+        ],
+        'gridview' => [
+            'class' => '\kartik\grid\Module'
+        ],
     ],
     'components' => [
         'request' => [
@@ -16,7 +30,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\UserModel',
             'enableAutoLogin' => true,
-            'loginUrl' => '/user/login',
+            'loginUrl' => '/site/login',
         ],
         'errorHandler' => [
             'errorAction' => '/site/error',
