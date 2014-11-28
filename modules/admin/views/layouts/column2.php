@@ -22,6 +22,7 @@ AdminAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+
 <?php $this->beginBody() ?>
 <?php echo AlertBlock::widget([
     'type' => AlertBlock::TYPE_GROWL,
@@ -34,7 +35,7 @@ AdminAsset::register($this);
         'brandLabel' => 'Admin Panel',
         'brandUrl' => '/admin',
         'options' => [
-            'class' => 'navbar-inverse',
+            'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
 
@@ -80,45 +81,40 @@ AdminAsset::register($this);
 
         ],
     ]);
-    if (!Yii::$app->user->isGuest) {
-        $menuItems = [
+
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => [
             ['label' => '<i class="glyphicon glyphicon-globe"></i> Public Area', 'url' => ['/']],
             ['label' => '<i class="glyphicon glyphicon-off"></i> Logout (' . Yii::$app->user->identity->username . ')',
                 'url' => ['/site/logout'],
                 'linkOptions' => ['data-method' => 'post'],
             ]
-        ];
-
-    } else {
-        $menuItems = [];
-    }
-
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
+        ],
         'encodeLabels' => false,
     ]);
     NavBar::end();
     ?>
 
-    <div class="container-fluid">
+    <div class="container">
         <?php echo Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <div class="row">
-            <div class="col-md-2">
-                <?php if (isset($this->params['sidebar'])): ?>
+            <?php if (isset($this->params['sidebar'])): ?>
+                <div class="col-lg-2">
                     <?php echo SideNav::widget(['items' => $this->params['sidebar'],
                         'headingOptions' => ['class' => 'head-style'],
                         'encodeLabels' => false,
                     ]); ?>
-                <?php endif; ?>
-            </div>
-            <div class="col-md-10">
+                </div>
+            <?php endif; ?>
+            <div class="col-lg-10">
                 <?php echo $content; ?>
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
 <?php $this->endBody() ?>
