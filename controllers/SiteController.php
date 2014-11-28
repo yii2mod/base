@@ -5,10 +5,10 @@ namespace app\controllers;
 use app\models\forms\ContactForm;
 use app\models\UserDetailsModel;
 use app\models\UserModel;
-use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use Yii;
+use yii2mod\rbac\components\AccessControl;
 
 /**
  * Class SiteController
@@ -27,14 +27,6 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),

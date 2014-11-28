@@ -30,7 +30,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\UserModel',
             'enableAutoLogin' => true,
-            'loginUrl' => '/user/login',
+            'loginUrl' => '/site/login',
         ],
         'errorHandler' => [
             'errorAction' => '/site/error',

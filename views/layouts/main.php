@@ -44,6 +44,7 @@ AppAsset::register($this);
                 ['label' => 'Contact', 'url' => ['/site/contact']],
                 ['label' => 'Signup', 'url' => ['/site/signup'], 'visible' => Yii::$app->user->isGuest],
                 ['label' => 'Login', 'url' => ['/site/login'], 'visible' => Yii::$app->user->isGuest],
+                ['label' => 'Administration', 'url' => ['/admin'], 'visible' => Yii::$app->getUser()->can('admin')],
                 ['label' => 'Logout', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post'], 'visible' => !Yii::$app->user->isGuest],
             ],
         ]);
