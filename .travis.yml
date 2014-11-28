@@ -30,7 +30,7 @@ script:
   - pwd
   - mysql -e 'CREATE DATABASE yii2base;';
   - composer create-project
-  - yii migrate --interactive=0
+  - chmod +x yii && ./yii migrate --interactive=0
   - vendor/bin/codecept build
   - cd web && php -S localhost:8080 > /dev/null 2>&1 &
   - vendor/bin/codecept run --coverage --coverage-xml --coverage-html
