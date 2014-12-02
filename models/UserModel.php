@@ -33,7 +33,7 @@ class UserModel extends BaseUserModel
     public function attributeLabels()
     {
         return ArrayHelper::merge([
-            'username' => Yii::t('user', 'Practice Name'),
+            //Extends AttributeLabels
         ], parent::attributeLabels());
     }
 
