@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii2mod\editable\EditableAction;
 use yii2mod\user\models\SignupForm;
 
 /**
@@ -28,6 +29,22 @@ class UserController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+        ];
+    }
+
+    /**
+     * Declares external actions for the controller.
+     * This method is meant to be overwritten to declare external actions for the controller.
+     * @return array
+     */
+    public function actions()
+    {
+        return [
+            'edit-user' => [
+                'class' => EditableAction::className(),
+                'modelClass' => UserModel::className(),
+                'forceCreate' => false
+            ]
         ];
     }
 
