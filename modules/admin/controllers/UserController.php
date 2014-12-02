@@ -2,9 +2,9 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\UserModelSearch;
 use Yii;
 use app\models\UserModel;
-use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -49,17 +49,17 @@ class UserController extends Controller
     }
 
     /**
-     * Lists all UserModel models.
+     * Lists all users.
      * @return mixed
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => UserModel::find(),
-        ]);
+        $searchModel = new UserModelSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
         ]);
     }
 

@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::begin(['enablePushState' => false, 'timeout' => 3000]); ?>
     <?php echo GridView::widget([
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => [
             'id',
             'username',
@@ -41,6 +42,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         'value' => $model->status,
                     ];
                 },
+                'filter' => UserStatus::listData(),
+                'filterInputOptions' => ['prompt' => 'Select Status', 'class' => 'form-control'],
             ],
             [
                 'attribute' => 'createdAt',
@@ -48,6 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function ($model) {
                     return date("d-M-Y", $model->createdAt);
                 },
+                'filter' => false,
             ],
             [
                 'header' => 'Action',
