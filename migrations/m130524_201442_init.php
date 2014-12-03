@@ -176,12 +176,7 @@ class m130524_201442_init extends Migration
             'userId' => 1,
             'createdAt' => 1417165845,
         ]);
-        $this->insert('AuthAssignment', [
-            'itemName' => 'guest',
-            'userId' => 1,
-            'createdAt' => 1417165845,
-        ]);
-        //insest auth item
+       //insest auth item
         $this->insert('AuthItem', [
             'name' => '/admin/*',
             'type' => 2,
