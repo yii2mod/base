@@ -30,6 +30,7 @@ class m130524_201442_init extends Migration
             'status' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
             'createdAt' => Schema::TYPE_INTEGER . ' NOT NULL',
             'updatedAt' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'lastLogin' => Schema::TYPE_INTEGER,
         ], $tableOptions);
 
         //Create user details table
