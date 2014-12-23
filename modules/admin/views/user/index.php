@@ -26,7 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             'id',
-            'username',
+            [
+                'class' => EditableColumn::className(),
+                'attribute' => 'username',
+                'url' => ['edit-user'],
+            ],
             'email:email',
             [
                 'class' => EditableColumn::className(),
@@ -36,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return UserStatus::getLabel($model->status);
                 },
                 'type' => 'select',
-                'editableOptions' => function($model){
+                'editableOptions' => function ($model) {
                     return [
                         'source' => Json::encode(UserStatus::listData()),
                         'value' => $model->status,
