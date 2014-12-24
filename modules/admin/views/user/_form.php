@@ -13,11 +13,15 @@ use yii2mod\user\models\enumerables\UserStatus;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php echo $form->field($model, 'username')->textInput(['maxlength' => 255]) ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?php echo $form->field($model, 'username')->textInput(['maxlength' => 255]) ?>
 
-    <?php echo $form->field($model, 'email')->textInput(['maxlength' => 255]) ?>
+            <?php echo $form->field($model, 'email')->textInput(['maxlength' => 255]) ?>
 
-    <?php echo $form->field($model,'status')->dropDownList(UserStatus::listData()); ?>
+            <?php echo $form->field($model, 'status')->dropDownList(UserStatus::listData()); ?>
+        </div>
+    </div>
 
     <div class="form-group">
         <?php echo Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

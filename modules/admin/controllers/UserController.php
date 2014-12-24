@@ -70,9 +70,9 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new SignupForm();
+        $model = new UserModel(['scenario' => 'createUser']);
         if ($model->load(\Yii::$app->request->post())) {
-            if ($model->signup()) {
+            if ($model->createUser()) {
                 Yii::$app->session->setFlash('success', 'User has been created.');
                 return $this->redirect(['index']);
             }
