@@ -10,7 +10,8 @@
             "homepage": "http://disem.org/"
         },
         {
-            "name": "Igor Chepurnoy"
+            "name": "Igor Chepurnoy",
+            "email": "igorzfort@gmail.com"
         }
     ],
     "minimum-stability": "dev",
