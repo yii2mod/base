@@ -24,7 +24,8 @@ AppAsset::register($this);
     <?php $this->beginBody() ?>
     <?php echo AlertBlock::widget([
         'type' => AlertBlock::TYPE_GROWL,
-        'useSessionFlash' => true
+        'useSessionFlash' => true,
+        'delay' => false
     ]);
     ?>
     <div class="wrap">
