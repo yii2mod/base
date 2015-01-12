@@ -97,15 +97,15 @@ class m130524_201442_init extends Migration
             'data' => 'LONGBLOB'
         ]);
 
-        $this->createTable('{{%auth_rule}}', [
+       $this->createTable('{{%AuthRule}}', [
             'name' => Schema::TYPE_STRING . '(64) NOT NULL',
             'data' => Schema::TYPE_TEXT,
             'created_at' => Schema::TYPE_INTEGER,
             'updated_at' => Schema::TYPE_INTEGER,
             'PRIMARY KEY (name)',
         ], $tableOptions);
-
-        $this->createTable('{{%auth_item}}', [
+        
+        $this->createTable('{{%AuthItem}}', [
             'name' => Schema::TYPE_STRING . '(64) NOT NULL',
             'type' => Schema::TYPE_INTEGER . ' NOT NULL',
             'description' => Schema::TYPE_TEXT,
@@ -114,25 +114,26 @@ class m130524_201442_init extends Migration
             'created_at' => Schema::TYPE_INTEGER,
             'updated_at' => Schema::TYPE_INTEGER,
             'PRIMARY KEY (name)',
-            'FOREIGN KEY (rule_name) REFERENCES ' . '{{%auth_rule}}' . ' (name) ON DELETE SET NULL ON UPDATE CASCADE',
+            'FOREIGN KEY (rule_name) REFERENCES ' . '{{%AuthRule}}' . ' (name) ON DELETE SET NULL ON UPDATE CASCADE',
         ], $tableOptions);
-        $this->createIndex('idx-auth_item-type', '{{%auth_item}}', 'type');
-
-        $this->createTable('{{%auth_item_child}}', [
+        $this->createIndex('idx-auth_item-type', '{{%AuthItem}}', 'type');
+        
+        $this->createTable('{{%AuthItemChild}}', [
             'parent' => Schema::TYPE_STRING . '(64) NOT NULL',
             'child' => Schema::TYPE_STRING . '(64) NOT NULL',
             'PRIMARY KEY (parent, child)',
-            'FOREIGN KEY (parent) REFERENCES ' . '{{%auth_item}}' . ' (name) ON DELETE CASCADE ON UPDATE CASCADE',
-            'FOREIGN KEY (child) REFERENCES ' . '{{%auth_item}}' . ' (name) ON DELETE CASCADE ON UPDATE CASCADE',
+            'FOREIGN KEY (parent) REFERENCES ' . '{{%AuthItem}}' . ' (name) ON DELETE CASCADE ON UPDATE CASCADE',
+            'FOREIGN KEY (child) REFERENCES ' . '{{%AuthItem}}' . ' (name) ON DELETE CASCADE ON UPDATE CASCADE',
         ], $tableOptions);
-
-        $this->createTable('{{%auth_assignment}}', [
+        
+        $this->createTable('{{%AuthAssignment}}', [
             'item_name' => Schema::TYPE_STRING . '(64) NOT NULL',
             'user_id' => Schema::TYPE_STRING . '(64) NOT NULL',
             'created_at' => Schema::TYPE_INTEGER,
             'PRIMARY KEY (item_name, user_id)',
-            'FOREIGN KEY (item_name) REFERENCES ' . '{{%auth_item}}' . ' (name) ON DELETE CASCADE ON UPDATE CASCADE',
+            'FOREIGN KEY (item_name) REFERENCES ' . '{{%AuthItem}}' . ' (name) ON DELETE CASCADE ON UPDATE CASCADE',
         ], $tableOptions);
+
 
         // Create Cron Shedule table
         $this->createTable('CronSchedule', [
@@ -168,13 +169,13 @@ class m130524_201442_init extends Migration
         ]);
         $this->execute('SET FOREIGN_KEY_CHECKS=0;');
         //Insert auth assignment
-        $this->insert('auth_assignment', [
+        $this->insert('{{%AuthAssignment}}', [
             'item_name' => 'admin',
             'user_id' => 1,
             'created_at' => 1417165845,
         ]);
         //insert auth item
-        $this->batchInsert('auth_item', ['name', 'type', 'description', 'rule_name', 'data', 'created_at', 'updated_at'], [
+        $this->batchInsert('{{%AuthItem}}', ['name', 'type', 'description', 'rule_name', 'data', 'created_at', 'updated_at'], [
             ['/admin/*', 2, NULL, NULL, NULL, 1417165845, 1417165845],
             ['/site/captcha', 2, NULL, NULL, NULL, 1417165845, 1417165845],
             ['/site/contact', 2, NULL, NULL, NULL, 1417165845, 1417165845],
@@ -200,7 +201,7 @@ class m130524_201442_init extends Migration
             ['repairPassword', 2, 'user can repair own password', NULL, NULL, 1417165845, 1417165845],
         ]);
 
-        $this->batchInsert('auth_item_child', ['parent', 'child'], [
+        $this->batchInsert('{{%AuthItemChild}}', ['parent', 'child'], [
             ['repairPassword', '/site/password-reset'],
             ['repairPassword', '/site/request-password-reset'],
             ['guest', 'repairPassword'],
@@ -227,7 +228,7 @@ class m130524_201442_init extends Migration
             ['user', 'viewHomePage']
         ]);
 
-        $this->batchInsert('auth_rule', ['name', 'data', 'created_at', 'updated_at'], [
+        $this->batchInsert('{{%AuthRule}}', ['name', 'data', 'created_at', 'updated_at'], [
             [
                 'guest',
                 'O:31:"yii2mod\\rbac\\components\\BizRule":4:{s:10:"expression";s:32:"return Yii::$app->user->isGuest;";s:4:"name";s:5:"guest";s:9:"createdAt";i:1417110668;s:9:"updatedAt";i:1417110668;}',
@@ -258,10 +259,10 @@ class m130524_201442_init extends Migration
         //Drop session table
         $this->dropTable('Session');
         //Drop auth tables
-        $this->dropTable('{{%auth_assignment}}');
-        $this->dropTable('{{%auth_item_child}}');
-        $this->dropTable('{{%auth_item}}');
-        $this->dropTable('{{%auth_rule}}');
+        $this->dropTable('{{%AuthAssignment}}');
+        $this->dropTable('{{%AuthItemChild}}');
+        $this->dropTable('{{%AuthItem}}');
+        $this->dropTable('{{%AuthRule}}');
         //Drop cron table
         $this->dropTable('CronSchedule');
     }
