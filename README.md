@@ -42,8 +42,8 @@ INSTALLATION
 * Create sources folder on the same level as httpdocs
 * In sources folder run via composer:
 ~~~
-php composer.phar global require "fxp/composer-asset-plugin:1.0.0-beta4"
-php composer.phar create-project --prefer-dist --stability=dev yii2mod/base .
+composer global require "fxp/composer-asset-plugin:1.0.0"
+composer create-project --prefer-dist --stability=dev yii2mod/base .
 ~~~
 If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
 at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
