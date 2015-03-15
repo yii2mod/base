@@ -4,8 +4,12 @@ $config = [
     'bootstrap' => ['log'],
     'components' => [
         'authManager' => [
-            'class' => 'yii2mod\rbac\components\DbManager',
+            'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['guest', 'user'],
+            'itemTable' => 'AuthItem',
+            'itemChildTable' => 'AuthItemChild',
+            'assignmentTable' => 'AuthAssignment',
+            'ruleTable' => 'AuthRule',
         ],
         'formatter' => [
             'class' => 'yii\i18n\Formatter',
