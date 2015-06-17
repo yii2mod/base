@@ -3,6 +3,7 @@
     "description": "Base application template for Yii2",
     "homepage": "https://github.com/yii2mod/base/",
     "type": "yii-extension",
+    "license": "MIT",
     "authors": [
         {
             "name": "Dmitry Semenov",
