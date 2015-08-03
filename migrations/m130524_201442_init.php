@@ -97,7 +97,7 @@ class m130524_201442_init extends Migration
             'data' => 'LONGBLOB'
         ]);
 
-       $this->createTable('{{%AuthRule}}', [
+      $this->createTable('{{%AuthRule}}', [
             'name' => Schema::TYPE_STRING . '(64) NOT NULL',
             'data' => Schema::TYPE_TEXT,
             'created_at' => Schema::TYPE_INTEGER,
@@ -116,6 +116,7 @@ class m130524_201442_init extends Migration
             'PRIMARY KEY (name)',
             'FOREIGN KEY (rule_name) REFERENCES ' . '{{%AuthRule}}' . ' (name) ON DELETE SET NULL ON UPDATE CASCADE',
         ], $tableOptions);
+        
         $this->createIndex('idx-auth_item-type', '{{%AuthItem}}', 'type');
         
         $this->createTable('{{%AuthItemChild}}', [
@@ -128,28 +129,28 @@ class m130524_201442_init extends Migration
         
         $this->createTable('{{%AuthAssignment}}', [
             'item_name' => Schema::TYPE_STRING . '(64) NOT NULL',
-            'user_id' => Schema::TYPE_STRING . '(64) NOT NULL',
+            'user_id' => Schema::TYPE_INTEGER . ' NOT NULL',
             'created_at' => Schema::TYPE_INTEGER,
             'PRIMARY KEY (item_name, user_id)',
             'FOREIGN KEY (item_name) REFERENCES ' . '{{%AuthItem}}' . ' (name) ON DELETE CASCADE ON UPDATE CASCADE',
         ], $tableOptions);
 
-
         // Create Cron Shedule table
-        $this->createTable('CronSchedule', [
-            'id' => Schema::TYPE_PK,
-            'jobCode' => Schema::TYPE_STRING . '(255)',
-            'status' => Schema::TYPE_STRING . '(255)',
-            'messages' => Schema::TYPE_TEXT,
-            'status' => Schema::TYPE_SMALLINT,
-            'dateCreated' => Schema::TYPE_TIMESTAMP,
-            'dateScheduled' => Schema::TYPE_TIMESTAMP,
-            'dateExecuted' => Schema::TYPE_TIMESTAMP,
-            'dateFinished' => Schema::TYPE_TIMESTAMP,
-        ], $tableOptions);
+        $this->createTable('{{%CronSchedule}}',[
+                'id' => Schema::TYPE_PK,
+                'jobCode' => Schema::TYPE_STRING . '(255) NULL DEFAULT NULL',
+                'status' => Schema::TYPE_STRING . '(255) NULL DEFAULT NULL',
+                'messages' => Schema::TYPE_TEXT . ' NULL',
+                'dateCreated' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
+                'dateScheduled' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
+                'dateExecuted' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
+                'dateFinished' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
+            ],
+            $tableOptions
+        );
 
-        $this->createIndex('IDX_CRON_SCHEDULE_JOB_CODE', 'CronSchedule', ['jobCode']);
-        $this->createIndex('IDX_CRON_SCHEDULE_SCHEDULED_AT_STATUS', 'CronSchedule', ['dateScheduled', 'status']);
+        $this->createIndex('IDX_CRON_SCHEDULE_JOB_CODE', '{{%CronSchedule}}', ['jobCode']);
+        $this->createIndex('IDX_CRON_SCHEDULE_SCHEDULED_AT_STATUS', '{{%CronSchedule}}', ['dateScheduled', 'status']);
 
         //Insert admin user
         $this->insert('User', [
