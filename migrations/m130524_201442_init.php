@@ -139,7 +139,7 @@ class m130524_201442_init extends Migration
         $this->createTable('{{%CronSchedule}}',[
                 'id' => Schema::TYPE_PK,
                 'jobCode' => Schema::TYPE_STRING . '(255) NULL DEFAULT NULL',
-                'status' => Schema::TYPE_STRING . '(255) NULL DEFAULT NULL',
+                'status' => Schema::TYPE_SMALLINT . ' NOT NULL',
                 'messages' => Schema::TYPE_TEXT . ' NULL',
                 'dateCreated' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
                 'dateScheduled' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
