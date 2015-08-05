@@ -1,10 +1,9 @@
 <?php
-// @codingStandardsIgnoreFile
+// @codingStandardsIgnoreFile  
 // @codeCoverageIgnoreStart
 
 /**
  * C3 - Codeception Code Coverage
- *
  * @author tiger
  */
 
