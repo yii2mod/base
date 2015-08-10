@@ -3,8 +3,6 @@
 namespace app\controllers;
 
 use app\models\forms\ContactForm;
-use app\models\UserDetailsModel;
-use app\models\UserModel;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use Yii;
