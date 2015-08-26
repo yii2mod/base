@@ -25,7 +25,7 @@ $config = [
         ],
         'session' => [
             'class' => 'yii\web\DbSession',
-            'sessionTable' => 'Session',
+            'sessionTable' => '{{%Session}}',
         ],
         'user' => [
             'identityClass' => 'app\models\UserModel',
