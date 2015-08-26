@@ -34,13 +34,13 @@ class m130524_201442_init extends Migration
         ], $tableOptions);
 
         //Create user details table
-        $this->createTable('UserDetails', [
+        $this->createTable('{{%UserDetails}}', [
             'userId' => Schema::TYPE_PK,
             'FOREIGN KEY (userId) REFERENCES {{%User}} (id) ON DELETE CASCADE ON UPDATE CASCADE',
         ], $tableOptions);
 
         //Create Cms table
-        $this->createTable('Cms', [
+        $this->createTable('{{%Cms}}', [
             'id' => Schema::TYPE_PK,
             'url' => Schema::TYPE_STRING . '(255)',
             'title' => Schema::TYPE_STRING . '(255)',
@@ -54,7 +54,7 @@ class m130524_201442_init extends Migration
         ], $tableOptions);
 
         //Insert pages in CMS table
-        $this->insert('Cms', [
+        $this->insert('{{%Cms}}', [
             'url' => 'about-us',
             'title' => 'About us',
             'content' => 'About us content',
@@ -66,7 +66,7 @@ class m130524_201442_init extends Migration
             'updatedAt' => time(),
         ]);
 
-        $this->insert('Cms', [
+        $this->insert('{{%Cms}}', [
             'url' => 'terms-and-conditions',
             'title' => 'Terms & Conditions',
             'content' => 'Content',
@@ -78,7 +78,7 @@ class m130524_201442_init extends Migration
             'updatedAt' => time(),
         ]);
 
-        $this->insert('Cms', [
+        $this->insert('{{%Cms}}', [
             'url' => 'privacy-policy',
             'title' => 'Privacy Policy',
             'content' => 'Content',
@@ -91,7 +91,7 @@ class m130524_201442_init extends Migration
         ]);
 
         //Create Session table
-        $this->createTable('Session', [
+        $this->createTable('{{%Session}}', [
             'id' => 'CHAR(40) NOT NULL PRIMARY KEY',
             'expire' => 'INTEGER',
             'data' => 'LONGBLOB'
@@ -153,7 +153,7 @@ class m130524_201442_init extends Migration
         $this->createIndex('IDX_CRON_SCHEDULE_SCHEDULED_AT_STATUS', '{{%CronSchedule}}', ['dateScheduled', 'status']);
 
         //Insert admin user
-        $this->insert('User', [
+        $this->insert('{{%User}}', [
             'id' => 1,
             'username' => 'admin',
             'authKey' => '6OFUxxVvoz067LISkZBY0JmZ-30NJK5j',
@@ -165,7 +165,7 @@ class m130524_201442_init extends Migration
             'updatedAt' => 1417101427,
         ]);
 
-        $this->insert('UserDetails', [
+        $this->insert('{{%UserDetails}}', [
             'userId' => 1,
         ]);
         $this->execute('SET FOREIGN_KEY_CHECKS=0;');
@@ -252,19 +252,21 @@ class m130524_201442_init extends Migration
      */
     public function down()
     {
+        $this->execute('SET FOREIGN_KEY_CHECKS=0;');
         //Drop user & userDetails tables
         $this->dropTable('{{%User}}');
-        $this->dropTable('UserDetails');
+        $this->dropTable('{{%UserDetails}}');
         //Drop cms table
-        $this->dropTable('Cms');
+        $this->dropTable('{{%Cms}}');
         //Drop session table
-        $this->dropTable('Session');
+        $this->dropTable('{{%Session}}');
         //Drop auth tables
         $this->dropTable('{{%AuthAssignment}}');
         $this->dropTable('{{%AuthItemChild}}');
         $this->dropTable('{{%AuthItem}}');
         $this->dropTable('{{%AuthRule}}');
         //Drop cron table
-        $this->dropTable('CronSchedule');
+        $this->dropTable('{{%CronSchedule}}');
+        $this->execute('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
