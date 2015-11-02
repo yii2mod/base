@@ -29,7 +29,7 @@ class Module extends \yii\base\Module
     public $controllerNamespace = 'app\modules\admin\controllers';
 
     /**
-     *
+     * Init module
      */
     public function init()
     {
