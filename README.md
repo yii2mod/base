@@ -6,10 +6,9 @@ rapidly creating small projects.
 
 It includes all commonly used configurations that would allow you to focus on adding new
 features to your application.
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yii2mod/base/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/base/?branch=master) 
-[![Build Status](https://scrutinizer-ci.com/g/yii2mod/base/badges/build.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/base/build-status/master)
-[![Code Climate](https://codeclimate.com/github/yii2mod/base/badges/gpa.svg)](https://codeclimate.com/github/yii2mod/base)
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yii2mod/base/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/base/?branch=master) 
+[![Code Climate](https://codeclimate.com/github/yii2mod/base/badges/gpa.svg)](https://codeclimate.com/github/yii2mod/base)
 
 DIRECTORY STRUCTURE
 -------------------
@@ -53,3 +52,7 @@ CONFIGURATION
 -------------
 Check and edit `*.local.php` files in the `config/` directory to customize your application.
 After check configs, execute migrations by command `php yii migrate`
+
+Special thanks to
+------------
+[![PhpStorm](https://www.jetbrains.com/phpstorm/documentation/docs/logo_phpstorm.png)](https://www.jetbrains.com/phpstorm/)
