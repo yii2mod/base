@@ -10,7 +10,7 @@ use yii\codeception\BasePage;
  */
 class LoginPage extends BasePage
 {
-    public $route = 'user/login';
+    public $route = 'site/login';
 
     /**
      * @param string $email
