@@ -9,6 +9,7 @@ use yii2mod\user\models\enumerables\UserStatus;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $searchModel \app\models\UserModelSearch */
 
 $this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;

@@ -1,11 +1,32 @@
-AddDefaultCharset utf-8
-Options +FollowSymLinks
-IndexIgnore */*
+# Block access to "hidden" directories whose names begin with a period. This
+# includes directories used by version control systems such as Subversion or Git.
+<IfModule mod_rewrite.c>
+  RewriteCond %{SCRIPT_FILENAME} -d
+  RewriteCond %{SCRIPT_FILENAME} -f
+  RewriteRule "(^|/)\." - [F]
+</IfModule>
 
+
+# Block access to backup and source files
+# This files may be left by some text/html editors and
+# pose a great security danger, when someone can access them
+<FilesMatch "(\.(bak|bat|config|sql|fla|md|psd|ini|log|sh|inc|swp|dist)|~|init|composer\.json|composer\.lock)$">
+ Order allow,deny
+ Deny from all
+ Satisfy All
+</FilesMatch>
+
+# Increase cookie security
+<IfModule php5_module>
+  php_value session.cookie_httponly true
+</IfModule>
+
+# Settings to hide index.php and ensure pretty urls
 RewriteEngine on
-RewriteRule ^favicon.ico$ - [F,L]
-# If a directory or a file exists, use it directly
+
+# if a directory or a file exists, use it directly
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-# Otherwise forward it to index.php
+
+# otherwise forward it to index.php
 RewriteRule ^([^/].*)$ /index.php/$1 [L]

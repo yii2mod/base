@@ -1,4 +1,5 @@
 <?php
+
 use app\assets\AdminAsset;
 use kartik\alert\AlertBlock;
 use kartik\sidenav\SideNav;
@@ -9,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
+
 AdminAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -31,8 +33,7 @@ AdminAsset::register($this);
 ]);
 ?>
 <div class="wrap">
-    <?php
-    NavBar::begin([
+    <?php NavBar::begin([
         'brandLabel' => 'Admin Panel',
         'brandUrl' => '/admin',
         'options' => [
@@ -57,7 +58,6 @@ AdminAsset::register($this);
                     ]
                 ]
             ],
-
             [
                 'label' => '<i class="glyphicon glyphicon-cog"></i> Settings',
                 'items' => [
@@ -115,8 +115,6 @@ AdminAsset::register($this);
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 <?php $this->endBody() ?>
 </body>
