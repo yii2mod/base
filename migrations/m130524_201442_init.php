@@ -272,8 +272,9 @@ class m130524_201442_init extends Migration
         //Drop user & userDetails tables
         $this->dropTable('{{%User}}');
         $this->dropTable('{{%UserDetails}}');
-        //Drop cms table
+        //Drop cms and comment tables
         $this->dropTable('{{%Cms}}');
+        $this->dropTable('{{%Comment}}');
         //Drop session table
         $this->dropTable('{{%Session}}');
         //Drop auth tables
