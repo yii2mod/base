@@ -7,7 +7,8 @@ $config = [
         'admin' => [
             'class' => 'app\modules\admin\Module',
             'controllerMap' => [
-                'cms' => 'yii2mod\cms\controllers\CmsController'
+                'cms' => 'yii2mod\cms\controllers\CmsController',
+                'comments' => 'yii2mod\comments\controllers\ManageController'
             ],
             'modules' => [
                 'rbac' => [
@@ -15,6 +16,9 @@ $config = [
                 ],
             ]
         ],
+        'comment' => [
+            'class' => 'yii2mod\comments\Module'
+        ]
     ],
     'components' => [
         'request' => [
