@@ -48,7 +48,7 @@ With Composer installed, you can then install the application using the followin
 
 The first command installs the [composer asset plugin](https://github.com/francoispluchino/composer-asset-plugin/)
 which allows managing bower and npm package dependencies through Composer. You only need to run this command
-once for all. The second command installs the advanced application in a directory named `application`.
+once for all. The second command installs the yii2mod/base application in a directory named `application`.
 You can choose a different directory name if you want.
 
 CONFIGURATION
