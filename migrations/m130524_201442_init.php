@@ -40,15 +40,31 @@ class m130524_201442_init extends Migration
         ], $tableOptions);
 
         //Create Cms table
-        $this->createTable('{{%Cms}}', [
+       $this->createTable('{{%Cms}}', [
             'id' => Schema::TYPE_PK,
             'url' => Schema::TYPE_STRING . '(255)',
             'title' => Schema::TYPE_STRING . '(255)',
             'content' => Schema::TYPE_TEXT,
             'status' => Schema::TYPE_SMALLINT,
+            'commentAvailable' => 'TINYINT(1) DEFAULT 0',
             'metaTitle' => Schema::TYPE_TEXT,
             'metaDescription' => Schema::TYPE_TEXT,
             'metaKeywords' => Schema::TYPE_TEXT,
+            'createdAt' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'updatedAt' => Schema::TYPE_INTEGER . ' NOT NULL',
+        ], $tableOptions);
+        
+        //Create Comment table
+        $this->createTable('{{%Comment}}', [
+            'id' => Schema::TYPE_PK,
+            'entity' => 'CHAR(10) NOT NULL',
+            'entityId' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'content' => Schema::TYPE_TEXT . ' NOT NULL',
+            'parentId' => Schema::TYPE_INTEGER . ' DEFAULT NULL',
+            'level' => 'TINYINT(3) NOT NULL DEFAULT 1',
+            'createdBy' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'updatedBy' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'status' => 'TINYINT(2) NOT NULL DEFAULT 1',
             'createdAt' => Schema::TYPE_INTEGER . ' NOT NULL',
             'updatedAt' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
