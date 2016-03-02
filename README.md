@@ -36,22 +36,37 @@ The minimum requirement by this application template that your Web server suppor
 INSTALLATION
 ------------
 
-### Install via Composer
+## Installing using Composer
 
-* Create sources folder on the same level as httpdocs
-* In sources folder run via composer:
-~~~
-composer global require "fxp/composer-asset-plugin:1.0.0"
-composer create-project --prefer-dist --stability=dev yii2mod/base .
-~~~
-If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
-* Make a symlink for web folder to httpdocs
+If you do not have [Composer](http://getcomposer.org/), follow the instructions in the
+[Installing Yii](https://github.com/yiisoft/yii2/blob/master/docs/guide/start-installation.md#installing-via-composer) section of the definitive guide to install it.
+
+With Composer installed, you can then install the application using the following commands:
+
+    composer global require "fxp/composer-asset-plugin:~1.1.1"
+    composer create-project --prefer-dist --stability=dev yii2mod/base application
+
+The first command installs the [composer asset plugin](https://github.com/francoispluchino/composer-asset-plugin/)
+which allows managing bower and npm package dependencies through Composer. You only need to run this command
+once for all. The second command installs the advanced application in a directory named `application`.
+You can choose a different directory name if you want.
 
 CONFIGURATION
 -------------
-Check and edit `*.local.php` files in the `config/` directory to customize your application.
-After check configs, execute migrations by command `php yii migrate`
+After you install the application, you have to conduct the following steps to initialize
+the installed application. You only need to do these once for all.
+
+1. Create a new database and adjust the `components['db']` configuration in `config/main-local.php` accordingly.
+
+2. Apply migrations with console command `yii migrate`.
+
+3. Set document root of your web server to `/path/to/application/web/` folder.
+
+
+####To login into the application, use the following credentials:
+- email - `admin@mail.com`
+- password - `123123`
+
 
 Special thanks to
 ------------
