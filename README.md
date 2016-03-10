@@ -25,6 +25,14 @@ DIRECTORY STRUCTURE
       views/              contains view files for the Web application
       web/                contains the entry script and Web resources
 
+## FEATURES
+- Sign in, Sign up, etc
+- OAuth authorization
+- User management
+- RBAC with predefined `guest`, `user` and `admin` roles
+- RBAC migrations support
+- Content management components: cms, comments
+- Yii2 component for logging cron jobs
 
 
 REQUIREMENTS
