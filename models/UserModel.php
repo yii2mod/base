@@ -74,7 +74,7 @@ class UserModel extends BaseUserModel
     {
         if (parent::beforeSave($insert)) {
             //Update user password, if password is not blank
-            if (!$this->isNewRecord && $this->password != '') {
+            if (!$this->isNewRecord && !empty($this->password)) {
                 $this->setPassword($this->password);
             }
             return true;
