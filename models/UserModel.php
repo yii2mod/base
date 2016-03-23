@@ -55,23 +55,6 @@ class UserModel extends BaseUserModel
         ], parent::attributeLabels());
     }
 
-  /**
-    * update user password when new password not blank.
-    *
-	*/
-
-    public function beforeSave($insert)
-    {
-        if (parent::beforeSave($insert)) {
-            if (!$this->isNewRecord && $this->password != '') {
-              $this->setPassword($this->password);
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     /**
      * Returns a list of scenarios and the corresponding active attributes.
      * @return array
@@ -81,7 +64,25 @@ class UserModel extends BaseUserModel
         $scenarios = parent::scenarios();
         return $scenarios;
     }
-
+	
+    /**
+     * @inheritdoc
+     * @param bool $insert
+     * @return bool
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            //Update user password, if password is not blank
+            if (!$this->isNewRecord && $this->password != '') {
+                $this->setPassword($this->password);
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }	
+	
     /**
      * Create user
      * @return UserModel|null the saved model or null if saving fails
