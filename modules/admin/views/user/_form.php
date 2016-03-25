@@ -20,8 +20,8 @@ use yii2mod\user\models\enumerables\UserStatus;
             <?php echo $form->field($model, 'email')->textInput(['maxlength' => 255]) ?>
 
             <?php echo $form->field($model, 'status')->dropDownList(UserStatus::listData()); ?>
-            
-            <?php echo $form->field($model, 'password')->passwordInput(['value' => ''])->hint('If this field is left blank, the password will not be updated.') ?>
+
+            <?php echo $form->field($model, 'newPassword')->passwordInput(['autocomplete' => 'off']); ?>
         </div>
     </div>
 

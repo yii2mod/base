@@ -40,7 +40,7 @@ class m130524_201442_init extends Migration
         ], $tableOptions);
 
         //Create Cms table
-       $this->createTable('{{%Cms}}', [
+        $this->createTable('{{%Cms}}', [
             'id' => Schema::TYPE_PK,
             'url' => Schema::TYPE_STRING . '(255)',
             'title' => Schema::TYPE_STRING . '(255)',
@@ -53,7 +53,7 @@ class m130524_201442_init extends Migration
             'createdAt' => Schema::TYPE_INTEGER . ' NOT NULL',
             'updatedAt' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
-        
+
         //Create Comment table
         $this->createTable('{{%Comment}}', [
             'id' => Schema::TYPE_PK,
@@ -114,14 +114,14 @@ class m130524_201442_init extends Migration
             'data' => 'LONGBLOB'
         ]);
 
-      $this->createTable('{{%AuthRule}}', [
+        $this->createTable('{{%AuthRule}}', [
             'name' => Schema::TYPE_STRING . '(64) NOT NULL',
             'data' => Schema::TYPE_TEXT,
             'created_at' => Schema::TYPE_INTEGER,
             'updated_at' => Schema::TYPE_INTEGER,
             'PRIMARY KEY (name)',
         ], $tableOptions);
-        
+
         $this->createTable('{{%AuthItem}}', [
             'name' => Schema::TYPE_STRING . '(64) NOT NULL',
             'type' => Schema::TYPE_INTEGER . ' NOT NULL',
@@ -133,9 +133,9 @@ class m130524_201442_init extends Migration
             'PRIMARY KEY (name)',
             'FOREIGN KEY (rule_name) REFERENCES ' . '{{%AuthRule}}' . ' (name) ON DELETE SET NULL ON UPDATE CASCADE',
         ], $tableOptions);
-        
+
         $this->createIndex('idx-auth_item-type', '{{%AuthItem}}', 'type');
-        
+
         $this->createTable('{{%AuthItemChild}}', [
             'parent' => Schema::TYPE_STRING . '(64) NOT NULL',
             'child' => Schema::TYPE_STRING . '(64) NOT NULL',
@@ -143,7 +143,7 @@ class m130524_201442_init extends Migration
             'FOREIGN KEY (parent) REFERENCES ' . '{{%AuthItem}}' . ' (name) ON DELETE CASCADE ON UPDATE CASCADE',
             'FOREIGN KEY (child) REFERENCES ' . '{{%AuthItem}}' . ' (name) ON DELETE CASCADE ON UPDATE CASCADE',
         ], $tableOptions);
-        
+
         $this->createTable('{{%AuthAssignment}}', [
             'item_name' => Schema::TYPE_STRING . '(64) NOT NULL',
             'user_id' => Schema::TYPE_INTEGER . ' NOT NULL',
@@ -154,15 +154,15 @@ class m130524_201442_init extends Migration
 
         // Create Cron Shedule table
         $this->createTable('{{%CronSchedule}}',[
-                'id' => Schema::TYPE_PK,
-                'jobCode' => Schema::TYPE_STRING . '(255) NULL DEFAULT NULL',
-                'status' => Schema::TYPE_SMALLINT . ' NOT NULL',
-                'messages' => Schema::TYPE_TEXT . ' NULL',
-                'dateCreated' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
-                'dateScheduled' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
-                'dateExecuted' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
-                'dateFinished' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
-            ],
+            'id' => Schema::TYPE_PK,
+            'jobCode' => Schema::TYPE_STRING . '(255) NULL DEFAULT NULL',
+            'status' => Schema::TYPE_SMALLINT . ' NOT NULL',
+            'messages' => Schema::TYPE_TEXT . ' NULL',
+            'dateCreated' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
+            'dateScheduled' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
+            'dateExecuted' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
+            'dateFinished' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
+        ],
             $tableOptions
         );
 
@@ -205,7 +205,9 @@ class m130524_201442_init extends Migration
             ['/site/password-reset', 2, NULL, NULL, NULL, 1417165845, 1417165845],
             ['/site/request-password-reset', 2, NULL, NULL, NULL, 1417165845, 1417165845],
             ['/site/signup', 2, NULL, NULL, NULL, 1417165845, 1417165845],
+            ['/site/account', 2, NULL, NULL, NULL, 1417165845, 1417165845],
             ['admin', 1, 'admin role', NULL, NULL, 1417165845, 1417165845],
+            ['account', 2, 'user can view account information', NULL, NULL, 1417165845, 1417165845],
             ['adminManage', 2, 'user can manage admin settings', NULL, NULL, 1417165845, 1417165845],
             ['contactUs', 2, 'user can send email via contact form', NULL, NULL, 1417165845, 1417165845],
             ['error', 2, 'view error', NULL, NULL, 1417165845, 1417165845],
@@ -226,6 +228,7 @@ class m130524_201442_init extends Migration
             ['adminManage', '/admin/*'],
             ['contactUs', '/site/captcha'],
             ['contactUs', '/site/contact'],
+            ['account', '/site/account'],
             ['error', '/site/error'],
             ['viewHomePage', '/site/index'],
             ['login', '/site/login'],
@@ -243,7 +246,8 @@ class m130524_201442_init extends Migration
             ['guest', 'viewCmsPage'],
             ['user', 'viewCmsPage'],
             ['guest', 'viewHomePage'],
-            ['user', 'viewHomePage']
+            ['user', 'viewHomePage'],
+            ['user', 'account'],
         ]);
 
         $this->batchInsert('{{%AuthRule}}', ['name', 'data', 'created_at', 'updated_at'], [

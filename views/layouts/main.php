@@ -7,6 +7,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\widgets\Menu;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -41,13 +42,14 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About Us', 'url' => ['/about-us']],
+        ['label' => 'About Us', 'url' => ['/about-us'], 'active' => Yii::$app->getRequest()->pathInfo == 'about-us'],
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
+        $menuItems[] = ['label' => 'My Account', 'url' => ['/site/account']];
         $menuItems[] = ['label' => 'Administration', 'url' => ['/admin'], 'visible' => Yii::$app->getUser()->can('admin')];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
@@ -76,7 +78,7 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; Yii2 Basic Template <?php echo date('Y'); ?></p>
-        <p class="pull-right"><?php echo \yii\widgets\Menu::widget([
+        <p class="pull-right"><?php echo Menu::widget([
                 'items' => [
                     ['label' => 'Terms & Conditions', 'url' => ['/terms-and-conditions']],
                     ['label' => 'Privacy Policy', 'url' => ['/privacy-policy']],

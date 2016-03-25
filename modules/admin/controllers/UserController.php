@@ -9,7 +9,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii2mod\editable\EditableAction;
-use yii2mod\user\models\SignupForm;
 
 /**
  * UserController implements the CRUD actions for UserModel model.
@@ -71,7 +70,7 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new UserModel(['scenario' => 'createUser']);
-        if ($model->load(\Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post())) {
             if ($model->createUser()) {
                 Yii::$app->session->setFlash('success', 'User has been created.');
                 return $this->redirect(['index']);
@@ -94,7 +93,11 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if (!empty($model->newPassword)) {
+                $model->setPassword($model->newPassword);
+            }
+            $model->save(false);
             Yii::$app->session->setFlash('success', 'User has been saved.');
             return $this->redirect(['index']);
         }

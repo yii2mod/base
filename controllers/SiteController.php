@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\forms\ContactForm;
+use app\models\forms\ResetPasswordForm;
+use app\models\UserModel;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use Yii;
@@ -98,6 +100,24 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    /**
+     * Account action
+     */
+    public function actionAccount()
+    {
+        /* @var $userModel UserModel */
+        $userModel = Yii::$app->user->identity;
+        $resetPasswordForm = new ResetPasswordForm($userModel);
+        if ($resetPasswordForm->load(Yii::$app->request->post()) && $resetPasswordForm->resetPassword()) {
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Password has been updated.'));
+            return $this->refresh();
+        }
+        return $this->render('account', [
+            'resetPasswordForm' => $resetPasswordForm,
+            'userModel' => $userModel
+        ]);
     }
 
 }

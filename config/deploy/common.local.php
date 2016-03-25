@@ -12,7 +12,7 @@ $config = [
             'class' => 'yii\swiftmailer\Mailer',
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => '',
+                'host' => 'localhost',
             ],
         ],
     ],
