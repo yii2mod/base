@@ -14,9 +14,9 @@ use yii2mod\user\models\BaseUserModel;
 class UserModel extends BaseUserModel
 {
     /**
-     * @var string password field
+     * @var string newPassword - for creation user and changing password
      */
-    public $password;
+    public $newPassword;
 
     /**
      * Returns the validation rules for attributes.
@@ -33,9 +33,9 @@ class UserModel extends BaseUserModel
             ['email', 'unique', 'message' => 'This email address has already been taken.'],
             ['username', 'unique', 'message' => 'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 30],
-            ['email','email'],
-            ['password', 'string', 'min' => 6, 'max' => 24],
-            ['password', 'required', 'on' => 'createUser'],
+            ['email', 'email'],
+            ['newPassword', 'string', 'min' => 6, 'max' => 24],
+            ['newPassword', 'required', 'on' => 'createUser'],
         ], parent::rules());
     }
 
@@ -51,7 +51,7 @@ class UserModel extends BaseUserModel
     public function attributeLabels()
     {
         return ArrayHelper::merge([
-            //Extends AttributeLabels
+            'newPassword' => $this->isNewRecord ? Yii::t('app', 'Password') : Yii::t('app', 'New Password'),
         ], parent::attributeLabels());
     }
 
@@ -64,25 +64,7 @@ class UserModel extends BaseUserModel
         $scenarios = parent::scenarios();
         return $scenarios;
     }
-	
-    /**
-     * @inheritdoc
-     * @param bool $insert
-     * @return bool
-     */
-    public function beforeSave($insert)
-    {
-        if (parent::beforeSave($insert)) {
-            //Update user password, if password is not blank
-            if (!$this->isNewRecord && !empty($this->password)) {
-                $this->setPassword($this->password);
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }	
-	
+
     /**
      * Create user
      * @return UserModel|null the saved model or null if saving fails
@@ -90,7 +72,7 @@ class UserModel extends BaseUserModel
     public function createUser()
     {
         if ($this->validate()) {
-            $this->setPassword($this->password);
+            $this->setPassword($this->newPassword);
             $this->generateAuthKey();
             if ($this->save()) {
                 $userDetailsModels = new BaseUserDetailsModel();
