@@ -31,7 +31,8 @@
         "yii2mod/yii2-editable": "*",
         "kartik-v/yii2-widget-growl": "*",
         "kartik-v/yii2-widget-alert": "*",
-        "kartik-v/yii2-widget-sidenav": "*"
+        "kartik-v/yii2-widget-sidenav": "*",
+        "yii2mod/yii2-settings": "*"
     },
     "require-dev": {
         "codeception/codeception": "2.0.*@dev",
