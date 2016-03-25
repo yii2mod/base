@@ -40,7 +40,6 @@ AdminAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'encodeLabels' => false,
@@ -59,31 +58,23 @@ AdminAsset::register($this);
                 ]
             ],
             [
-                'label' => '<i class="glyphicon glyphicon-cog"></i> Settings',
-                'items' => [
-                    [
-                        'label' => '<i class="glyphicon glyphicon-file"></i> CMS',
-                        'url' => ['/admin/cms/index'],
-                    ],
-                    [
-                        'label' => '<i class="glyphicon glyphicon-cog"></i> Cron Schedule Log',
-                        'url' => ['/admin/settings/cron'],
-                    ],
-                    [
-                        'label' => '<i class="glyphicon glyphicon-user"></i> RBAC',
-                        'url' => ['/admin/rbac'],
-                    ],
-                    [
-                        'label' => '<i class="glyphicon glyphicon-wrench"></i> Settings Storage',
-                        'url' => ['/admin/settings-storage'],
-                    ],
-                    [
-                        'label' => '<i class="glyphicon glyphicon-repeat"></i> Clear Cache',
-                        'url' => ['/admin/settings/clear-cache'],
-                    ]
-                ]
+                'label' => '<i class="glyphicon glyphicon-file"></i> CMS',
+                'url' => ['/admin/cms/index'],
             ],
-
+            [
+                'label' => '<i class="glyphicon glyphicon-user"></i> RBAC',
+                'url' => ['/admin/rbac/assignment/index'],
+                'active' => $this->context->module->id == 'rbac'
+            ],
+            [
+                'label' => '<i class="glyphicon glyphicon-wrench"></i> Settings Storage',
+                'url' => ['/admin/settings-storage'],
+                'active' => $this->context->module->id == 'settings-storage'
+            ],
+            [
+                'label' => '<i class="glyphicon glyphicon-cog"></i> Cron Schedule Log',
+                'url' => ['/admin/settings/cron'],
+            ],
         ],
     ]);
 

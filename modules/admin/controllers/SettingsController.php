@@ -21,16 +21,4 @@ class SettingsController extends Controller
         ];
     }
 
-    /**
-     * Clear cache
-     * @return \yii\web\Response
-     */
-    public function actionClearCache()
-    {
-        if (\Yii::$app->cache->flush()) {
-            \Yii::$app->session->setFlash('success', 'Cache has been removed.');
-            return $this->redirect(\Yii::$app->request->getReferrer());
-        }
-    }
-
 }
