@@ -14,6 +14,9 @@ $config = [
                 'rbac' => [
                     'class' => 'yii2mod\rbac\Module',
                 ],
+                'settings-storage' => [
+                    'class' => 'yii2mod\settings\Module',
+                ],
             ]
         ],
         'comment' => [
@@ -21,6 +24,9 @@ $config = [
         ]
     ],
     'components' => [
+        'settings' => [
+            'class' => 'yii2mod\settings\components\Settings',
+        ],
         'request' => [
             'cookieValidationKey' => 'fYPq2eLM',
         ],

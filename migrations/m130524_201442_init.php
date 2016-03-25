@@ -1,4 +1,5 @@
 <?php
+
 use yii\db\Schema;
 use yii\db\Migration;
 
@@ -82,6 +83,18 @@ class m130524_201442_init extends Migration
             'createdAt' => time(),
             'updatedAt' => time(),
         ]);
+
+        $this->createTable('{{%Setting}}', [
+            'id' => Schema::TYPE_PK,
+            'type' => Schema::TYPE_STRING . '(10) NOT NULL',
+            'section' => Schema::TYPE_STRING . ' NOT NULL',
+            'key' => Schema::TYPE_STRING . ' NOT NULL',
+            'value' => Schema::TYPE_STRING . ' NOT NULL',
+            'status' => Schema::TYPE_SMALLINT . ' NOT NULL',
+            'createdAt' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'updatedAt' => Schema::TYPE_INTEGER . ' NOT NULL',
+        ], $tableOptions
+        );
 
         $this->insert('{{%Cms}}', [
             'url' => 'terms-and-conditions',
@@ -289,6 +302,7 @@ class m130524_201442_init extends Migration
         $this->dropTable('{{%AuthRule}}');
         //Drop cron table
         $this->dropTable('{{%CronSchedule}}');
+        $this->dropTable('{{%Setting}}');
         $this->execute('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

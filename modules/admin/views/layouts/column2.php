@@ -74,6 +74,10 @@ AdminAsset::register($this);
                         'url' => ['/admin/rbac'],
                     ],
                     [
+                        'label' => '<i class="glyphicon glyphicon-wrench"></i> Settings Storage',
+                        'url' => ['/admin/settings-storage'],
+                    ],
+                    [
                         'label' => '<i class="glyphicon glyphicon-repeat"></i> Clear Cache',
                         'url' => ['/admin/settings/clear-cache'],
                     ]

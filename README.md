@@ -34,6 +34,7 @@ DIRECTORY STRUCTURE
 - Content management components: cms, comments
 - Yii2 component for logging cron jobs
 - Account page
+- Key-value storage component
 
 
 REQUIREMENTS
