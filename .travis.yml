@@ -1,12 +1,10 @@
-#/home/travis/build/yii2mod/base/tests/codeception/config/functional.php
-
 language: php
 
 php:
   - 5.4
-
-env:
-  - CUBRID_VERSION=9.3.0/CUBRID-9.3.0.0206 CUBRID_PDO_VERSION=9.3.0.0001
+  - 5.5
+  - 5.6
+  - 7.0
 
 matrix:
   fast_finish: true
@@ -17,13 +15,11 @@ sudo: false
 # cache vendor dirs
 cache:
   directories:
-#    - cubrid # caching cubrid breaks the build on a regular basis and has nearly no speedup
-    - vendor
     - $HOME/.composer/cache
 
 install:
   - travis_retry composer self-update && composer --version
-  - travis_retry composer global require "fxp/composer-asset-plugin:1.0.0-beta4"
+  - travis_retry composer global require "fxp/composer-asset-plugin:~1.1.1"
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 script:
@@ -38,4 +34,3 @@ script:
 after_script:
   - cd ~/build/yii2mod/base/
   - travis_retry wget https://scrutinizer-ci.com/ocular.phar
-#  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
