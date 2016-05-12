@@ -29,7 +29,7 @@ script:
   - chmod +x tests/codeception/bin/yii && tests/codeception/bin/yii migrate --interactive=0
   - vendor/bin/codecept build
   - cd web && php -S localhost:8080 > /dev/null 2>&1 &
-  - vendor/bin/codecept run --coverage --coverage-xml --coverage-html
+  - vendor/bin/codecept run
 
 after_script:
   - cd ~/build/yii2mod/base/
