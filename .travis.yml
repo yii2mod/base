@@ -19,6 +19,8 @@ install:
   - travis_retry composer global require "fxp/composer-asset-plugin:~1.1.1"
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - travis_retry composer create-project
+  # codeception
+  - travis_retry composer global require "codeception/codeception=2.0.*" "codeception/specify=*" "codeception/verify=*"
   # setup application:
   - |
     cd tests
