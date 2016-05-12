@@ -6,9 +6,6 @@ php:
   - 5.6
   - 7.0
 
-matrix:
-  fast_finish: true
-
 # faster builds on new travis setup not using sudo
 sudo: false
 
@@ -21,16 +18,20 @@ install:
   - travis_retry composer self-update && composer --version
   - travis_retry composer global require "fxp/composer-asset-plugin:~1.1.1"
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - travis_retry composer install --dev --prefer-dist --no-interaction
+  # setup application:
+  - |
+    cd tests
+    codecept build
+    cd ..
+    
+before_script:
+  - mysql -e 'CREATE DATABASE yii2base;';
+  - cd tests/codeception/bin && php yii migrate --interactive=0 && cd ../../..
 
 script:
-  - pwd
-  - mysql -e 'CREATE DATABASE yii2base;';
-  - composer create-project
-  - chmod +x tests/codeception/bin/yii && tests/codeception/bin/yii migrate --interactive=0
-  - vendor/bin/codecept build
-  - cd web && php -S localhost:8080 > /dev/null 2>&1 &
-  - vendor/bin/codecept run
-
-after_script:
-  - cd ~/build/yii2mod/base/
-  - travis_retry wget https://scrutinizer-ci.com/ocular.phar
+  - |
+    cd web
+    php -S localhost:8080 > /dev/null 2>&1 &
+    cd ../tests
+    codecept run
