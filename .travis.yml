@@ -38,4 +38,4 @@ script:
     cd ../tests
     #codecept run acceptance
     #codecept run functional
-    codecept run unit
+    codecept run unit codeception\unit\models\LoginFormTest::testLoginCorrect
