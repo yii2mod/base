@@ -36,6 +36,6 @@ script:
     cd web
     php -S localhost:8080 > /dev/null 2>&1 &
     cd ../tests
-    codecept run acceptance
-    codecept run functional
-    #codecept run unit
+    #codecept run acceptance
+    #codecept run functional
+    codecept run unit
