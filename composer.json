@@ -35,12 +35,10 @@
         "yii2mod/yii2-settings": "*"
     },
     "require-dev": {
-        "codeception/codeception": "2.0.*@dev",
-        "codeception/specify": "*",
-        "codeception/verify": "*",
         "yiisoft/yii2-codeception": "*",
         "yiisoft/yii2-debug": "*",
-        "yiisoft/yii2-gii": "*"
+        "yiisoft/yii2-gii": "*",
+        "yiisoft/yii2-faker": "*"
     },
     "config": {
         "process-timeout": 1800
