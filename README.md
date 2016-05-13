@@ -7,6 +7,8 @@ rapidly creating small projects.
 It includes all commonly used configurations that would allow you to focus on adding new
 features to your application.
 
+[![Latest Stable Version](https://poser.pugx.org/yii2mod/base/v/stable)](https://packagist.org/packages/yii2mod/base)
+[![Total Downloads](https://poser.pugx.org/yii2mod/base/downloads)](https://packagist.org/packages/yii2mod/base)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yii2mod/base/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/base/?branch=master) 
 [![Code Climate](https://codeclimate.com/github/yii2mod/base/badges/gpa.svg)](https://codeclimate.com/github/yii2mod/base)
 [![Build Status](https://travis-ci.org/yii2mod/base.svg?branch=master)](https://travis-ci.org/yii2mod/base)
