@@ -70,9 +70,9 @@ CONFIGURATION
 After you install the application, you have to conduct the following steps to initialize
 the installed application. You only need to do these once for all.
 
-1. Create a new database and adjust the `components['db']` configuration in `config/main-local.php` accordingly.
+1. Create a new database and adjust the `components['db']` configuration in `config/common-local.php` accordingly.
 
-2. Apply migrations with console command `yii migrate`.
+2. Apply migrations with console command `php yii migrate`.
 
 3. Set document root of your web server to `/path/to/application/web/` folder.
 
