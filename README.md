@@ -31,7 +31,6 @@ DIRECTORY STRUCTURE
 
 ## FEATURES
 - Sign in, Sign up, etc
-- OAuth authorization
 - User management
 - RBAC with predefined `guest`, `user` and `admin` roles
 - RBAC migrations support
