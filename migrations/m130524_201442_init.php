@@ -93,8 +93,7 @@ class m130524_201442_init extends Migration
             'status' => Schema::TYPE_SMALLINT . ' NOT NULL',
             'createdAt' => Schema::TYPE_INTEGER . ' NOT NULL',
             'updatedAt' => Schema::TYPE_INTEGER . ' NOT NULL',
-        ], $tableOptions
-        );
+        ], $tableOptions);
 
         $this->insert('{{%Cms}}', [
             'url' => 'terms-and-conditions',
@@ -125,7 +124,7 @@ class m130524_201442_init extends Migration
             'id' => 'CHAR(40) NOT NULL PRIMARY KEY',
             'expire' => 'INTEGER',
             'data' => 'LONGBLOB'
-        ]);
+        ], $tableOptions);
 
         $this->createTable('{{%AuthRule}}', [
             'name' => Schema::TYPE_STRING . '(64) NOT NULL',
@@ -166,7 +165,7 @@ class m130524_201442_init extends Migration
         ], $tableOptions);
 
         // Create Cron Shedule table
-        $this->createTable('{{%CronSchedule}}',[
+        $this->createTable('{{%CronSchedule}}', [
             'id' => Schema::TYPE_PK,
             'jobCode' => Schema::TYPE_STRING . '(255) NULL DEFAULT NULL',
             'status' => Schema::TYPE_SMALLINT . ' NOT NULL',
@@ -175,9 +174,7 @@ class m130524_201442_init extends Migration
             'dateScheduled' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
             'dateExecuted' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
             'dateFinished' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
-        ],
-            $tableOptions
-        );
+        ], $tableOptions);
 
         $this->createIndex('IDX_CRON_SCHEDULE_JOB_CODE', '{{%CronSchedule}}', ['jobCode']);
         $this->createIndex('IDX_CRON_SCHEDULE_SCHEDULED_AT_STATUS', '{{%CronSchedule}}', ['dateScheduled', 'status']);
@@ -191,8 +188,8 @@ class m130524_201442_init extends Migration
             'passwordResetToken' => 'FFFONvY8njNEkm16-czMKmoWSQtT9eoC_1417103710',
             'email' => 'admin@mail.com',
             'status' => 1,
-            'createdAt' => 1417101427,
-            'updatedAt' => 1417101427,
+            'createdAt' => time(),
+            'updatedAt' => time(),
         ]);
 
         $this->insert('{{%UserDetails}}', [
@@ -203,35 +200,35 @@ class m130524_201442_init extends Migration
         $this->insert('{{%AuthAssignment}}', [
             'item_name' => 'admin',
             'user_id' => 1,
-            'created_at' => 1417165845,
+            'created_at' => time(),
         ]);
         //insert auth item
         $this->batchInsert('{{%AuthItem}}', ['name', 'type', 'description', 'rule_name', 'data', 'created_at', 'updated_at'], [
-            ['/admin/*', 2, NULL, NULL, NULL, 1417165845, 1417165845],
-            ['/site/captcha', 2, NULL, NULL, NULL, 1417165845, 1417165845],
-            ['/site/contact', 2, NULL, NULL, NULL, 1417165845, 1417165845],
-            ['/site/error', 2, NULL, NULL, NULL, 1417165845, 1417165845],
-            ['/site/index', 2, NULL, NULL, NULL, 1417165845, 1417165845],
-            ['/site/login', 2, NULL, NULL, NULL, 1417165845, 1417165845],
-            ['/site/logout', 2, NULL, NULL, NULL, 1417165845, 1417165845],
-            ['/site/page', 2, NULL, NULL, NULL, 1417165845, 1417165845],
-            ['/site/password-reset', 2, NULL, NULL, NULL, 1417165845, 1417165845],
-            ['/site/request-password-reset', 2, NULL, NULL, NULL, 1417165845, 1417165845],
-            ['/site/signup', 2, NULL, NULL, NULL, 1417165845, 1417165845],
-            ['/site/account', 2, NULL, NULL, NULL, 1417165845, 1417165845],
-            ['admin', 1, 'admin role', NULL, NULL, 1417165845, 1417165845],
-            ['account', 2, 'user can view account information', NULL, NULL, 1417165845, 1417165845],
-            ['adminManage', 2, 'user can manage admin settings', NULL, NULL, 1417165845, 1417165845],
-            ['contactUs', 2, 'user can send email via contact form', NULL, NULL, 1417165845, 1417165845],
-            ['error', 2, 'view error', NULL, NULL, 1417165845, 1417165845],
-            ['guest', 1, 'guest role', 'guest', NULL, 1417165845, 1417165845],
-            ['login', 2, 'user can login', NULL, NULL, 1417165845, 1417165845],
-            ['logout', 2, 'user can logout', NULL, NULL, 1417165845, 1417165845],
-            ['signup', 2, 'User can sign up', NULL, NULL, 1417165845, 1417165845],
-            ['user', 1, 'default user role', 'user', NULL, 1417165845, 1417165845],
-            ['viewCmsPage', 2, 'user can view cms pages', NULL, NULL, 1417165845, 1417165845],
-            ['viewHomePage', 2, 'user can view home page', NULL, NULL, 1417165845, 1417165845],
-            ['repairPassword', 2, 'user can repair own password', NULL, NULL, 1417165845, 1417165845],
+            ['/admin/*', 2, NULL, NULL, NULL, time(), time()],
+            ['/site/captcha', 2, NULL, NULL, NULL, time(), time()],
+            ['/site/contact', 2, NULL, NULL, NULL, time(), time()],
+            ['/site/error', 2, NULL, NULL, NULL, time(), time()],
+            ['/site/index', 2, NULL, NULL, NULL, time(), time()],
+            ['/site/login', 2, NULL, NULL, NULL, time(), time()],
+            ['/site/logout', 2, NULL, NULL, NULL, time(), time()],
+            ['/site/page', 2, NULL, NULL, NULL, time(), time()],
+            ['/site/password-reset', 2, NULL, NULL, NULL, time(), time()],
+            ['/site/request-password-reset', 2, NULL, NULL, NULL, time(), time()],
+            ['/site/signup', 2, NULL, NULL, NULL, time(), time()],
+            ['/site/account', 2, NULL, NULL, NULL, time(), time()],
+            ['admin', 1, 'admin role', NULL, NULL, time(), time()],
+            ['account', 2, 'user can view account information', NULL, NULL, time(), time()],
+            ['adminManage', 2, 'user can manage admin settings', NULL, NULL, time(), time()],
+            ['contactUs', 2, 'user can send email via contact form', NULL, NULL, time(), time()],
+            ['error', 2, 'view error', NULL, NULL, time(), time()],
+            ['guest', 1, 'guest role', 'guest', NULL, time(), time()],
+            ['login', 2, 'user can login', NULL, NULL, time(), time()],
+            ['logout', 2, 'user can logout', NULL, NULL, time(), time()],
+            ['signup', 2, 'User can sign up', NULL, NULL, time(), time()],
+            ['user', 1, 'default user role', 'user', NULL, time(), time()],
+            ['viewCmsPage', 2, 'user can view cms pages', NULL, NULL, time(), time()],
+            ['viewHomePage', 2, 'user can view home page', NULL, NULL, time(), time()],
+            ['repairPassword', 2, 'user can repair own password', NULL, NULL, time(), time()],
         ]);
 
         $this->batchInsert('{{%AuthItemChild}}', ['parent', 'child'], [
@@ -267,14 +264,14 @@ class m130524_201442_init extends Migration
             [
                 'guest',
                 'O:31:"yii2mod\\rbac\\components\\BizRule":4:{s:10:"expression";s:32:"return Yii::$app->user->isGuest;";s:4:"name";s:5:"guest";s:9:"createdAt";i:1417110668;s:9:"updatedAt";i:1417110668;}',
-                1417101427,
-                1417101427
+                time(),
+                time()
             ],
             [
                 'user',
                 'O:31:"yii2mod\\rbac\\components\\BizRule":4:{s:10:"expression";s:33:"return !Yii::$app->user->isGuest;";s:4:"name";s:4:"user";s:9:"createdAt";i:1417165484;s:9:"updatedAt";i:1417165484;}',
-                1417101427,
-                1417101427
+                time(),
+                time()
             ]
         ]);
         $this->execute('SET FOREIGN_KEY_CHECKS=1;');
@@ -287,20 +284,15 @@ class m130524_201442_init extends Migration
     public function down()
     {
         $this->execute('SET FOREIGN_KEY_CHECKS=0;');
-        //Drop user & userDetails tables
         $this->dropTable('{{%User}}');
         $this->dropTable('{{%UserDetails}}');
-        //Drop cms and comment tables
         $this->dropTable('{{%Cms}}');
         $this->dropTable('{{%Comment}}');
-        //Drop session table
         $this->dropTable('{{%Session}}');
-        //Drop auth tables
         $this->dropTable('{{%AuthAssignment}}');
         $this->dropTable('{{%AuthItemChild}}');
         $this->dropTable('{{%AuthItem}}');
         $this->dropTable('{{%AuthRule}}');
-        //Drop cron table
         $this->dropTable('{{%CronSchedule}}');
         $this->dropTable('{{%Setting}}');
         $this->execute('SET FOREIGN_KEY_CHECKS=1;');
