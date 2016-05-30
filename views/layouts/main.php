@@ -18,10 +18,10 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?php echo Yii::$app->language; ?>">
 <head>
-    <meta charset="<?php echo Yii::$app->charset; ?>"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php $this->registerMetaTag(['charset' => Yii::$app->charset]); ?>
+    <?php $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1']); ?>
     <?php echo Html::csrfMetaTags(); ?>
-    <title><?php echo Html::encode($this->title); ?></title>
+    <title><?php echo implode(' | ', array_filter([Html::encode($this->title), Yii::$app->name])); ?></title>
     <?php $this->head() ?>
 </head>
 <body>
@@ -29,12 +29,15 @@ AppAsset::register($this);
 <?php echo AlertBlock::widget([
     'type' => AlertBlock::TYPE_GROWL,
     'useSessionFlash' => true,
-    'delay' => false
+    'delay' => false,
+    'options' => [
+        'id' => 'alert-' . uniqid()
+    ]
 ]);
 ?>
 <div class="wrap">
     <?php NavBar::begin([
-        'brandLabel' => 'Yii2 Basic Template',
+        'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -66,7 +69,6 @@ AppAsset::register($this);
     ]);
     NavBar::end();
     ?>
-
     <div class="container">
         <?php echo Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -77,15 +79,14 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Yii2 Basic Template <?php echo date('Y'); ?></p>
-        <p class="pull-right"><?php echo Menu::widget([
-                'items' => [
-                    ['label' => 'Terms & Conditions', 'url' => ['/terms-and-conditions']],
-                    ['label' => 'Privacy Policy', 'url' => ['/privacy-policy']],
-                ],
-            ]);
-            ?>
-        </p>
+        <p class="pull-left">&copy; <?php echo Yii::$app->name . ' ' . date('Y'); ?></p>
+        <?php echo Menu::widget([
+            'items' => [
+                ['label' => 'Terms & Conditions', 'url' => ['/terms-and-conditions']],
+                ['label' => 'Privacy Policy', 'url' => ['/privacy-policy']],
+            ],
+        ]);
+        ?>
     </div>
 </footer>
 

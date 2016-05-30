@@ -1,7 +1,6 @@
 <?php
 $config = [
     'id' => 'main',
-    'basePath' => dirname(__DIR__),
     'defaultRoute' => 'site/index',
     'modules' => [
         'admin' => [
@@ -43,7 +42,6 @@ $config = [
             'errorAction' => '/site/error',
         ],
         'urlManager' => [
-            'cache' => false,
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
@@ -52,16 +50,20 @@ $config = [
                 ['class' => 'yii2mod\cms\components\PageUrlRule'],
             ]
         ],
-    ],
-    'params' => [
-        'adminEmail' => 'admin@mail.com',
-        'defaultPageSize' => 20,
-        'pageSizeArray' => [
-            10 => '10 items',
-            20 => '20 items',
-            50 => '50 items',
-        ],
-    ],
+    ]
 ];
+
+if (YII_ENV_DEV) {
+    // configuration adjustments for 'dev' environment
+    $config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = [
+        'class' => 'yii\debug\Module'
+    ];
+
+    $config['bootstrap'][] = 'gii';
+    $config['modules']['gii'] = [
+        'class' => 'yii\gii\Module'
+    ];
+}
 
 return $config;

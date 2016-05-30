@@ -1,6 +1,9 @@
 <?php
+
 $config = [
+    'name' => 'Yii2 Basic Template',
     'language' => 'en-US',
+    'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
         'authManager' => [
@@ -28,17 +31,10 @@ $config = [
         ],
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=;dbname=',
-            'username' => '',
-            'password' => '',
             'charset' => 'utf8',
         ],
         'mail' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            'transport' => [
-              'class' => 'Swift_SmtpTransport',
-              'host' => 'host-here',
-          ],
+            'class' => 'yii\swiftmailer\Mailer'
         ],
         'i18n' => [
             'translations' => [

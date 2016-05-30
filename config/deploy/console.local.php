@@ -2,6 +2,6 @@
 
 $config = [
 
-
 ];
+
 return $config;

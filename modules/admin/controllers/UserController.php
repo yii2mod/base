@@ -16,7 +16,7 @@ use yii2mod\editable\EditableAction;
 class UserController extends Controller
 {
     /**
-     * Behaviors
+     * Returns a list of behaviors that this component should behave as.
      * @return array
      */
     public function behaviors()
@@ -25,7 +25,10 @@ class UserController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'index' => ['get'],
+                    'create' => ['get', 'post'],
+                    'update' => ['get', 'post'],
+                    'delete' => ['post']
                 ],
             ],
         ];
@@ -33,7 +36,6 @@ class UserController extends Controller
 
     /**
      * Declares external actions for the controller.
-     * This method is meant to be overwritten to declare external actions for the controller.
      * @return array
      */
     public function actions()

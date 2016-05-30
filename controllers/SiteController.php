@@ -18,8 +18,6 @@ class SiteController extends Controller
 {
     /**
      * Returns a list of behaviors that this component should behave as.
-     *
-     * Child classes may override this method to specify the behaviors they want to behave as.
      * @return array
      */
     public function behaviors()
@@ -31,6 +29,9 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
+                    'index' => ['get'],
+                    'contact' => ['get', 'post'],
+                    'account' => ['get', 'post'],
                     'logout' => ['post'],
                 ],
             ],
@@ -110,10 +111,12 @@ class SiteController extends Controller
         /* @var $userModel UserModel */
         $userModel = Yii::$app->user->identity;
         $resetPasswordForm = new ResetPasswordForm($userModel);
+
         if ($resetPasswordForm->load(Yii::$app->request->post()) && $resetPasswordForm->resetPassword()) {
             Yii::$app->session->setFlash('success', Yii::t('app', 'Password has been updated.'));
             return $this->refresh();
         }
+
         return $this->render('account', [
             'resetPasswordForm' => $resetPasswordForm,
             'userModel' => $userModel

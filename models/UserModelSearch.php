@@ -1,52 +1,30 @@
 <?php
-/**
- * User Model Search
- * @author Igor Chepurnoy
- */
 
 namespace app\models;
 
 use Yii;
 use yii\data\ActiveDataProvider;
-use yii\helpers\ArrayHelper;
 
-
+/**
+ * Class UserModelSearch
+ * @package app\models
+ */
 class UserModelSearch extends UserModel
 {
-
-    /**
-     * Returns the list of all attribute names of the model.
-     * The default implementation will return all column names of the table associated with this AR class.
-     * @return array list of attribute names.
-     */
-    public function attributes()
-    {
-        $attributes = parent::attributes();
-        return $attributes;
-    }
-
     /**
      * @inheritdoc
      */
     public function rules()
     {
-        return ArrayHelper::merge([
-            [['username', 'id', 'createdAt', 'email'], 'safe'],
-        ], parent::rules());
+        return [
+            [['username', 'id', 'createdAt', 'email', 'status'], 'safe'],
+        ];
     }
 
     /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return parent::attributeLabels();
-    }
-
-    /**
-     * Setup search function for filtering and sorting
-     * based on fullName field
-     * @author Igor Chepurnoy
+     * Setup search function for filtering and sorting based on fullName field
+     * @param $params
+     * @return ActiveDataProvider
      */
     public function search($params)
     {

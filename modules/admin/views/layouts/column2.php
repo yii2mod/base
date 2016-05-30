@@ -17,19 +17,22 @@ AdminAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?php echo Yii::$app->language ?>">
 <head>
-    <meta charset="<?php echo Yii::$app->charset ?>"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php $this->registerMetaTag(['charset' => Yii::$app->charset]); ?>
+    <?php $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1']); ?>
     <?php echo Html::csrfMetaTags() ?>
-    <title><?php echo Html::encode($this->title) ?></title>
+    <title><?php echo implode(' | ', array_filter([Html::encode($this->title), Yii::$app->name])); ?></title>
     <?php $this->head() ?>
 </head>
 <body>
-
 <?php $this->beginBody() ?>
+
 <?php echo AlertBlock::widget([
     'type' => AlertBlock::TYPE_GROWL,
     'useSessionFlash' => true,
-    'delay' => false
+    'delay' => false,
+    'options' => [
+        'id' => 'alert-' . uniqid()
+    ]
 ]);
 ?>
 <div class="wrap">
@@ -91,7 +94,6 @@ AdminAsset::register($this);
     ]);
     NavBar::end();
     ?>
-
     <div class="container">
         <?php echo Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -101,7 +103,7 @@ AdminAsset::register($this);
                 <div class="col-lg-2">
                     <?php echo SideNav::widget(['items' => $this->params['sidebar'],
                         'headingOptions' => ['class' => 'head-style'],
-                        'encodeLabels' => false,
+                        'encodeLabels' => false
                     ]); ?>
                 </div>
             <?php endif; ?>
@@ -111,6 +113,7 @@ AdminAsset::register($this);
         </div>
     </div>
 </div>
+
 <?php $this->endBody() ?>
 </body>
 </html>

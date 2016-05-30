@@ -8,8 +8,9 @@ use yii2mod\user\models\BaseUserDetailsModel;
 use yii2mod\user\models\BaseUserModel;
 
 /**
- * Class UserModel
- * @package app\models
+ * This is the model class for table "User".
+ *
+ * @property UserDetailsModel $userDetails
  */
 class UserModel extends BaseUserModel
 {
@@ -19,12 +20,7 @@ class UserModel extends BaseUserModel
     public $newPassword;
 
     /**
-     * Returns the validation rules for attributes.
-     *
-     * Validation rules are used by [[validate()]] to check if attribute values are valid.
-     * Child classes may override this method to declare different validation rules.
-     * @return array validation rules
-     * @see scenarios()
+     * @inheritdoc
      */
     public function rules()
     {
@@ -40,29 +36,13 @@ class UserModel extends BaseUserModel
     }
 
     /**
-     * Returns the attribute labels.
-     *
-     * Attribute labels are mainly used for display purpose. For example, given an attribute
-     * `firstName`, we can declare a label `First Name` which is more user-friendly and can
-     * be displayed to end users.
-     *
-     * @return array attribute labels (name => label)
+     * @inheritdoc
      */
     public function attributeLabels()
     {
         return ArrayHelper::merge([
             'newPassword' => $this->isNewRecord ? Yii::t('app', 'Password') : Yii::t('app', 'New Password'),
         ], parent::attributeLabels());
-    }
-
-    /**
-     * Returns a list of scenarios and the corresponding active attributes.
-     * @return array
-     */
-    public function scenarios()
-    {
-        $scenarios = parent::scenarios();
-        return $scenarios;
     }
 
     /**
@@ -79,6 +59,7 @@ class UserModel extends BaseUserModel
                 $userDetailsModels->userId = $this->primaryKey;
                 $userDetailsModels->save();
             }
+
             return $this;
         }
 

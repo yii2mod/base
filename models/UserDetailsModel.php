@@ -5,18 +5,17 @@ namespace app\models;
 use yii\helpers\ArrayHelper;
 use Yii;
 use yii2mod\user\models\BaseUserDetailsModel;
+use yii2mod\user\models\BaseUserModel;
 
 /**
- * UserDetails model
- * @author Igor Chepurnoy
+ * This is the model class for table "UserDetails".
+ *
+ * @property UserModel $user
  */
 class UserDetailsModel extends BaseUserDetailsModel
 {
-
     /**
-     * Returns the validation rules for attributes.
-     *
-     * Validation rules are used by [[validate()]] to check if attribute values are valid.
+     * @inheritdoc
      */
     public function rules()
     {
@@ -26,8 +25,7 @@ class UserDetailsModel extends BaseUserDetailsModel
     }
 
     /**
-     * Returns the text label for the specified attribute.
-     * If the attribute looks like `relatedModel.attribute`, then the attribute will be received from the related model.
+     * @inheritdoc
      */
     public function attributeLabels()
     {
@@ -37,7 +35,6 @@ class UserDetailsModel extends BaseUserDetailsModel
     }
 
     /**
-     * User relation
      * @return \yii\db\ActiveQuery
      */
     public function getUser()

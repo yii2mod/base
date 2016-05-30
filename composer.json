@@ -32,7 +32,8 @@
         "kartik-v/yii2-widget-growl": "*",
         "kartik-v/yii2-widget-alert": "*",
         "kartik-v/yii2-widget-sidenav": "*",
-        "yii2mod/yii2-settings": "*"
+        "yii2mod/yii2-settings": "*",
+        "yii2tech/sitemap": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
