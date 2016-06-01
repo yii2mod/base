@@ -22,11 +22,6 @@ class BaseController extends Controller
     public $disabledActions = [];
 
     /**
-     * @var integer execution time for specific action
-     */
-    protected $executionTime;
-
-    /**
      * @var string the running command name
      */
     protected $command;
@@ -58,8 +53,6 @@ class BaseController extends Controller
             $this->stdout("Command '{$this->command}' is disabled.\n", Console::FG_RED);
             return false;
         }
-
-        $this->executionTime = microtime(true);
 
         if (!parent::beforeAction($action)) {
             return false;
