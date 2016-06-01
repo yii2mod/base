@@ -38,6 +38,7 @@ DIRECTORY STRUCTURE
 - Yii2 component for logging cron jobs
 - Account page
 - Key-value storage component
+- Scheduling extension for running cron jobs
 
 
 REQUIREMENTS
