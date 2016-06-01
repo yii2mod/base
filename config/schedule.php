@@ -18,6 +18,7 @@
  *
  * @see https://github.com/yii2mod/yii2-scheduling
  */
+ 
 // for example: generate sitemap every week
 $schedule->command('app/generate-sitemap')->description('Generate Sitemap')->weekly();
 
