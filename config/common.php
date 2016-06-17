@@ -33,7 +33,7 @@ $config = [
             'class' => 'yii\db\Connection',
             'charset' => 'utf8',
         ],
-        'mail' => [
+        'mailer' => [
             'class' => 'yii\swiftmailer\Mailer'
         ],
         'i18n' => [
