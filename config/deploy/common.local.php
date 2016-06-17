@@ -6,7 +6,7 @@ $config = [
             'username' => '',
             'password' => '',
         ],
-        'mail' => [
+        'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
