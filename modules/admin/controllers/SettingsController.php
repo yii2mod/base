@@ -10,7 +10,6 @@ use yii\web\Controller;
  */
 class SettingsController extends Controller
 {
-
     /**
      * @return array
      */
@@ -20,5 +19,4 @@ class SettingsController extends Controller
             'cron' => 'yii2mod\cron\actions\CronLogAction',
         ];
     }
-
 }

@@ -34,7 +34,8 @@
         "kartik-v/yii2-widget-sidenav": "*",
         "yii2mod/yii2-settings": "*",
         "yii2tech/sitemap": "^1.0",
-        "yii2mod/yii2-scheduling": "*"
+        "yii2mod/yii2-scheduling": "*",
+        "yii2tech/admin": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

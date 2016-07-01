@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\helpers\Json;
 use yii\widgets\Pjax;
 use yii2mod\editable\EditableColumn;
 use yii2mod\user\models\enumerables\UserStatus;
@@ -21,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?php echo Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?php Pjax::begin(['enablePushState' => false, 'timeout' => 3000]); ?>
+    <?php Pjax::begin(['enablePushState' => false, 'timeout' => 10000]); ?>
     <?php echo GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -43,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'type' => 'select',
                 'editableOptions' => function ($model) {
                     return [
-                        'source' => Json::encode(UserStatus::listData()),
+                        'source' => UserStatus::listData(),
                         'value' => $model->status,
                     ];
                 },
@@ -53,9 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'createdAt',
                 'label' => 'Created date',
-                'value' => function ($model) {
-                    return date("d-M-Y", $model->createdAt);
-                },
+                'format' => 'date',
                 'filter' => false,
             ],
             [
