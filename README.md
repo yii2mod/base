@@ -84,4 +84,4 @@ the installed application. You only need to do these once for all.
 
 Special thanks to
 ------------
-[![PhpStorm](https://www.jetbrains.com/phpstorm/documentation/docs/logo_phpstorm.png)](https://www.jetbrains.com/phpstorm/)
+[![PhpStorm](http://resources.jetbrains.com/assets/media/open-graph/jetbrains_250x250.png)](https://www.jetbrains.com/phpstorm/)
