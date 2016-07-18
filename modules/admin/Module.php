@@ -11,30 +11,27 @@ use yii2mod\rbac\components\AccessControl;
 class Module extends \yii\base\Module
 {
     /**
-     * Default route
-     * @var string
+     * @var string the default route of this module. Defaults to 'default'.
      */
     public $defaultRoute = 'user';
 
     /**
-     * Default layout
-     * @var string
+     * @var string|boolean the layout that should be applied for views within this module.
      */
     public $layout = 'column2';
 
     /**
-     * Controller namespace
-     * @var string
+     * @var string the namespace that controller classes are in.
      */
     public $controllerNamespace = 'app\modules\admin\controllers';
 
     /**
-     * Init module
+     * @return array
      */
-    public function init()
+    public function behaviors()
     {
-        $this->attachBehavior(AccessControl::className(), new AccessControl());
-        parent::init();
+        return [
+            AccessControl::className()
+        ];
     }
-
 }

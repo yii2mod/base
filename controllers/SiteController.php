@@ -32,8 +32,13 @@ class SiteController extends Controller
                     'index' => ['get'],
                     'contact' => ['get', 'post'],
                     'account' => ['get', 'post'],
+                    'login' => ['get', 'post'],
                     'logout' => ['post'],
-                ],
+                    'signup' => ['get', 'post'],
+                    'request-password-reset' => ['get', 'post'],
+                    'password-reset' => ['get', 'post'],
+                    'page' => ['get', 'post']
+                ]
             ],
         ];
     }
@@ -91,9 +96,9 @@ class SiteController extends Controller
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+                Yii::$app->session->setFlash('success', Yii::t('user', 'Thank you for contacting us. We will respond to you as soon as possible.'));
             } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending email.');
+                Yii::$app->session->setFlash('error', Yii::t('user', 'There was an error sending email.'));
             }
             return $this->refresh();
         } else {
@@ -113,7 +118,7 @@ class SiteController extends Controller
         $resetPasswordForm = new ResetPasswordForm($userModel);
 
         if ($resetPasswordForm->load(Yii::$app->request->post()) && $resetPasswordForm->resetPassword()) {
-            Yii::$app->session->setFlash('success', Yii::t('app', 'Password has been updated.'));
+            Yii::$app->session->setFlash('success', Yii::t('user', 'Password has been updated.'));
             return $this->refresh();
         }
 
@@ -122,5 +127,4 @@ class SiteController extends Controller
             'userModel' => $userModel
         ]);
     }
-
 }

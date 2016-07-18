@@ -10,7 +10,7 @@ use yii2mod\user\models\enumerables\UserStatus;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $searchModel \app\models\UserModelSearch */
 
-$this->title = 'Users';
+$this->title = Yii::t('user', 'Users');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?php echo Html::encode($this->title) ?></h1>
 
     <p>
-        <?php echo Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php echo Html::a(Yii::t('user', 'Create User'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?php Pjax::begin(['enablePushState' => false, 'timeout' => 10000]); ?>
     <?php echo GridView::widget([
@@ -47,16 +47,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     ];
                 },
                 'filter' => UserStatus::listData(),
-                'filterInputOptions' => ['prompt' => 'Select Status', 'class' => 'form-control'],
+                'filterInputOptions' => ['prompt' => Yii::t('user', 'Select Status'), 'class' => 'form-control'],
             ],
             [
                 'attribute' => 'createdAt',
-                'label' => 'Created date',
                 'format' => 'date',
                 'filter' => false,
             ],
             [
-                'header' => 'Action',
+                'header' => Yii::t('user', 'Action'),
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update}{delete}',
             ],

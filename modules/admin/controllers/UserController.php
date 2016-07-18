@@ -62,7 +62,7 @@ class UserController extends Controller
                 'findModel' => function ($id) {
                     return $this->findModel(UserModel::className(), $id);
                 },
-                'flash' => 'User has been deleted.'
+                'flash' => Yii::t('user', 'User has been deleted.')
             ],
         ];
     }
@@ -80,7 +80,7 @@ class UserController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->createUser()) {
-                Yii::$app->session->setFlash('success', 'User has been created.');
+                Yii::$app->session->setFlash('success', Yii::t('user', 'User has been created.'));
                 return $this->redirect(['index']);
             }
         }
@@ -107,7 +107,7 @@ class UserController extends Controller
                 $model->setPassword($model->newPassword);
             }
             $model->save(false);
-            Yii::$app->session->setFlash('success', 'User has been saved.');
+            Yii::$app->session->setFlash('success', Yii::t('user', 'User has been saved.'));
             return $this->redirect(['index']);
         }
 

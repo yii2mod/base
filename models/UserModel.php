@@ -23,8 +23,8 @@ class UserModel extends BaseUserModel
     {
         return ArrayHelper::merge([
             [['username', 'email'], 'required'],
-            ['email', 'unique', 'message' => 'This email address has already been taken.'],
-            ['username', 'unique', 'message' => 'This username has already been taken.'],
+            ['email', 'unique', 'message' => Yii::t('user', 'This email address has already been taken.')],
+            ['username', 'unique', 'message' => Yii::t('user', 'This username has already been taken.')],
             ['username', 'string', 'min' => 2, 'max' => 255],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
@@ -39,7 +39,10 @@ class UserModel extends BaseUserModel
     public function attributeLabels()
     {
         return ArrayHelper::merge([
-            'newPassword' => $this->isNewRecord ? Yii::t('app', 'Password') : Yii::t('app', 'New Password'),
+            'username' => Yii::t('user', 'Username'),
+            'email' => Yii::t('user', 'Email'),
+            'createdAt' => Yii::t('user', 'Created date'),
+            'newPassword' => $this->isNewRecord ? Yii::t('user', 'Password') : Yii::t('user', 'New Password'),
         ], parent::attributeLabels());
     }
 
