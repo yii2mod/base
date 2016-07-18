@@ -46,33 +46,21 @@ class ResetPasswordForm extends Model
     }
 
     /**
-     * Returns the validation rules for attributes.
-     *
-     * Validation rules are used by [[validate()]] to check if attribute values are valid.
-     * Child classes may override this method to declare different validation rules.
-     * @return array validation rules
-     * @see scenarios()
+     * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['password', 'confirmPassword'], 'filter', 'filter' => 'trim'],
+            [['password', 'confirmPassword'], 'trim'],
             ['password', 'required'],
             ['confirmPassword', 'required'],
-            [['password', 'confirmPassword'], 'string', 'min' => '3'],
-            [['password', 'confirmPassword'], 'match', 'pattern' => '/^[a-z0-9]+$/i'],
+            [['password', 'confirmPassword'], 'string', 'min' => 6],
             ['confirmPassword', 'compare', 'compareAttribute' => 'password'],
         ];
     }
 
     /**
-     * Returns the attribute labels.
-     *
-     * Attribute labels are mainly used for display purpose. For example, given an attribute
-     * `firstName`, we can declare a label `First Name` which is more user-friendly and can
-     * be displayed to end users.
-     *
-     * @return array attribute labels (name => label)
+     * @inheritdoc
      */
     public function attributeLabels()
     {

@@ -34,12 +34,6 @@ class m130524_201442_init extends Migration
             'lastLogin' => Schema::TYPE_INTEGER,
         ], $tableOptions);
 
-        //Create user details table
-        $this->createTable('{{%UserDetails}}', [
-            'userId' => Schema::TYPE_PK,
-            'FOREIGN KEY (userId) REFERENCES {{%User}} (id) ON DELETE CASCADE ON UPDATE CASCADE',
-        ], $tableOptions);
-
         //Create Cms table
         $this->createTable('{{%Cms}}', [
             'id' => Schema::TYPE_PK,
@@ -192,9 +186,6 @@ class m130524_201442_init extends Migration
             'updatedAt' => time(),
         ]);
 
-        $this->insert('{{%UserDetails}}', [
-            'userId' => 1,
-        ]);
         $this->execute('SET FOREIGN_KEY_CHECKS=0;');
         //Insert auth assignment
         $this->insert('{{%AuthAssignment}}', [
@@ -285,7 +276,6 @@ class m130524_201442_init extends Migration
     {
         $this->execute('SET FOREIGN_KEY_CHECKS=0;');
         $this->dropTable('{{%User}}');
-        $this->dropTable('{{%UserDetails}}');
         $this->dropTable('{{%Cms}}');
         $this->dropTable('{{%Comment}}');
         $this->dropTable('{{%Session}}');

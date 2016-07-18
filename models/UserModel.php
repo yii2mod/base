@@ -4,13 +4,10 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
-use yii2mod\user\models\BaseUserDetailsModel;
 use yii2mod\user\models\BaseUserModel;
 
 /**
  * This is the model class for table "User".
- *
- * @property UserDetailsModel $userDetails
  */
 class UserModel extends BaseUserModel
 {
@@ -28,9 +25,10 @@ class UserModel extends BaseUserModel
             [['username', 'email'], 'required'],
             ['email', 'unique', 'message' => 'This email address has already been taken.'],
             ['username', 'unique', 'message' => 'This username has already been taken.'],
-            ['username', 'string', 'min' => 2, 'max' => 30],
+            ['username', 'string', 'min' => 2, 'max' => 255],
             ['email', 'email'],
-            ['newPassword', 'string', 'min' => 6, 'max' => 24],
+            ['email', 'string', 'max' => 255],
+            ['newPassword', 'string', 'min' => 6],
             ['newPassword', 'required', 'on' => 'createUser'],
         ], parent::rules());
     }
@@ -54,16 +52,10 @@ class UserModel extends BaseUserModel
         if ($this->validate()) {
             $this->setPassword($this->newPassword);
             $this->generateAuthKey();
-            if ($this->save()) {
-                $userDetailsModels = new BaseUserDetailsModel();
-                $userDetailsModels->userId = $this->primaryKey;
-                $userDetailsModels->save();
-            }
 
-            return $this;
+            return $this->save() ? $this : null;
         }
 
-        return false;
+        return null;
     }
-
 }
