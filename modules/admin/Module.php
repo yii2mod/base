@@ -2,7 +2,7 @@
 
 namespace app\modules\admin;
 
-use yii2mod\rbac\components\AccessControl;
+use yii2mod\rbac\filters\AccessControl;
 
 /**
  * Class Module

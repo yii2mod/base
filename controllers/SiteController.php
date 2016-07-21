@@ -8,7 +8,7 @@ use app\models\UserModel;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use Yii;
-use yii2mod\rbac\components\AccessControl;
+use yii2mod\rbac\filters\AccessControl;
 
 /**
  * Class SiteController

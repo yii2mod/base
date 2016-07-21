@@ -254,17 +254,18 @@ class m130524_201442_init extends Migration
         $this->batchInsert('{{%AuthRule}}', ['name', 'data', 'created_at', 'updated_at'], [
             [
                 'guest',
-                'O:31:"yii2mod\\rbac\\components\\BizRule":4:{s:10:"expression";s:32:"return Yii::$app->user->isGuest;";s:4:"name";s:5:"guest";s:9:"createdAt";i:1417110668;s:9:"updatedAt";i:1417110668;}',
+                'O:28:"yii2mod\rbac\rules\GuestRule":3:{s:4:"name";s:5:"guest";s:9:"createdAt";i:1469117870;s:9:"updatedAt";i:1469117870;}',
                 time(),
                 time()
             ],
             [
                 'user',
-                'O:31:"yii2mod\\rbac\\components\\BizRule":4:{s:10:"expression";s:33:"return !Yii::$app->user->isGuest;";s:4:"name";s:4:"user";s:9:"createdAt";i:1417165484;s:9:"updatedAt";i:1417165484;}',
+                'O:27:"yii2mod\rbac\rules\UserRule":3:{s:4:"name";s:4:"user";s:9:"createdAt";i:1469117882;s:9:"updatedAt";i:1469117882;}',
                 time(),
                 time()
             ]
         ]);
+
         $this->execute('SET FOREIGN_KEY_CHECKS=1;');
     }
 
