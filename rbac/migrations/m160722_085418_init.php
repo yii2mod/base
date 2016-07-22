@@ -28,16 +28,16 @@ class m160722_085418_init extends Migration
         $this->createPermission('/site/request-password-reset');
         $this->createPermission('/site/signup');
         $this->createPermission('/site/account');
-        $this->createPermission('account');
-        $this->createPermission('adminManage');
-        $this->createPermission('contactUs');
-        $this->createPermission('error');
-        $this->createPermission('login');
-        $this->createPermission('logout');
-        $this->createPermission('signup');
-        $this->createPermission('viewCmsPage');
-        $this->createPermission('viewHomePage');
-        $this->createPermission('repairPassword');
+        $this->createPermission('account', 'User has access to the account page.');
+        $this->createPermission('adminManage', 'User has access to the administration panel.');
+        $this->createPermission('contactUs', 'User has access to the contact us page.');
+        $this->createPermission('error', 'User has access to the error page.');
+        $this->createPermission('login', 'User has access to the login page.');
+        $this->createPermission('logout', 'User can logout.');
+        $this->createPermission('signup', 'User has access to the signup page.');
+        $this->createPermission('viewCmsPage', 'User can view cms pages.');
+        $this->createPermission('viewHomePage', 'User has access to the homepage.');
+        $this->createPermission('repairPassword', 'User can reset password.');
 
         // add child
         $this->addChild('repairPassword', '/site/request-password-reset');
