@@ -1,12 +1,12 @@
 <?php
 
-namespace app\migrations;
+namespace app\components;
 
 use Yii;
 
 /**
  * Class Migration
- * @package app\migrations
+ * @package app\components
  */
 class Migration extends \yii\db\Migration
 {

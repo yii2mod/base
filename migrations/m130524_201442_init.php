@@ -1,6 +1,6 @@
 <?php
 
-use app\migrations\Migration;
+use app\components\Migration;
 
 /**
  * Class m130524_201442_init
