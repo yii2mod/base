@@ -6,7 +6,10 @@ $config = [
     'id' => 'console',
     'controllerNamespace' => 'app\commands',
     'controllerMap' => [
-        'rbac' => 'yii2mod\rbac\commands\RbacCommand'
+        'migrate' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'templateFile' => '@app/views/migration.php',
+        ],
     ],
     'components' => [
         'errorHandler' => [
@@ -21,6 +24,11 @@ $config = [
             'baseUrl' => 'http://localhost',
         ],
     ],
+    'modules' => [
+        'rbac' => [
+            'class' => 'yii2mod\rbac\ConsoleModule'
+        ]
+    ]
 ];
 
 if (YII_ENV_DEV) {

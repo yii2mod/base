@@ -1,8 +1,9 @@
 {
     "name": "yii2mod/base",
     "description": "Base application template for Yii2",
+    "keywords": ["yii2mod", "base", "project template", "yii2", "framework", "basic"],
     "homepage": "https://github.com/yii2mod/base/",
-    "type": "yii-extension",
+    "type": "project",
     "license": "MIT",
     "authors": [
         {
@@ -18,7 +19,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
-        "yiisoft/yii2": ">=2.0.5",
+        "yiisoft/yii2": ">=2.0.8",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "yii2mod/yii2-cms": "*",
