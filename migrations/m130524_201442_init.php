@@ -58,7 +58,7 @@ class m130524_201442_init extends Migration
             'entityId' => $this->integer()->notNull(),
             'content' => $this->text()->notNull(),
             'parentId' => $this->integer()->null(),
-            'level' => $this->smallInteger()->notNull(),
+            'level' => $this->smallInteger()->notNull()->defaultValue(1),
             'createdBy' => $this->integer()->notNull(),
             'updatedBy' => $this->integer()->notNull(),
             'relatedTo' => $this->string(500)->notNull(),
