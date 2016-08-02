@@ -41,6 +41,7 @@ class m160722_085418_init extends Migration
 
         // add child
         $this->addChild('repairPassword', '/site/request-password-reset');
+        $this->addChild('repairPassword', '/site/password-reset');
         $this->addChild('guest', 'repairPassword');
         $this->addChild('adminManage', '/admin/*');
         $this->addChild('contactUs', '/site/captcha');
