@@ -60,10 +60,13 @@ class m130524_201442_init extends Migration
             'createdBy' => $this->integer()->notNull(),
             'updatedBy' => $this->integer()->notNull(),
             'relatedTo' => $this->string(500)->notNull(),
-            'status' => $this->boolean()->defaultValue(1),
+            'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'createdAt' => $this->integer()->notNull(),
             'updatedAt' => $this->integer()->notNull()
         ], $this->tableOptions);
+
+        $this->createIndex('idx-Comment-entity', '{{%Comment}}', 'entity');
+        $this->createIndex('idx-Comment-status', '{{%Comment}}', 'status');
 
         // Insert pages in CMS table
         $this->insert('{{%Cms}}', [
