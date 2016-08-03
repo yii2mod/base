@@ -12,11 +12,11 @@ class m130524_201442_init extends Migration
         // Create user table
         $this->createTable('{{%User}}', [
             'id' => $this->primaryKey(),
-            'username' => $this->string()->notNull(),
+            'username' => $this->string()->notNull()->unique(),
             'authKey' => $this->string(32)->notNull(),
             'passwordHash' => $this->string()->notNull(),
-            'passwordResetToken' => $this->string(),
-            'email' => $this->string()->notNull(),
+            'passwordResetToken' => $this->string()->unique(),
+            'email' => $this->string()->notNull()->unique(),
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'createdAt' => $this->integer()->notNull(),
             'updatedAt' => $this->integer()->notNull(),
@@ -25,11 +25,9 @@ class m130524_201442_init extends Migration
 
         // Create admin user
         $this->insert('{{%User}}', [
-            'id' => 1,
             'username' => 'admin',
-            'authKey' => '6OFUxxVvoz067LISkZBY0JmZ-30NJK5j',
-            'passwordHash' => '$2y$13$BtICgI3WpoMuUe3/t4AXOuRQD6cx90mttQUfi7uYkC2nvGE8dh4Ve',
-            'passwordResetToken' => 'FFFONvY8njNEkm16-czMKmoWSQtT9eoC_1417103710',
+            'authKey' => Yii::$app->getSecurity()->generateRandomString(),
+            'passwordHash' => Yii::$app->getSecurity()->generatePasswordHash(123123),
             'email' => 'admin@mail.com',
             'status' => 1,
             'createdAt' => time(),
