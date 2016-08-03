@@ -40,13 +40,13 @@ class m130524_201442_init extends Migration
             'url' => $this->string()->notNull(),
             'title' => $this->string()->notNull(),
             'content' => $this->text()->notNull(),
-            'status' => $this->boolean()->notNull()->defaultValue(1),
-            'commentAvailable' => $this->boolean()->notNull()->defaultValue(0),
+            'status' => $this->smallInteger()->notNull()->defaultValue(1),
+            'commentAvailable' => $this->smallInteger()->notNull()->defaultValue(0),
             'metaTitle' => $this->text()->notNull(),
             'metaDescription' => $this->text(),
             'metaKeywords' => $this->text(),
             'createdAt' => $this->integer()->notNull(),
-            'updatedAt' => $this->integer()->notNull(),
+            'updatedAt' => $this->integer()->notNull()
         ], $this->tableOptions);
 
         // Create Comment table
