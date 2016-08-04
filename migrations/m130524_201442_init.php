@@ -131,8 +131,8 @@ class m130524_201442_init extends Migration
             'dateFinished' => $this->timestamp()->null(),
         ], $this->tableOptions);
 
-        $this->createIndex('idx-CronSchedule-jobCode', '{{%CronSchedule}}', ['jobCode']);
-        $this->createIndex('idx-CronSchedule-status', '{{%CronSchedule}}', ['status']);
+        $this->createIndex('idx-CronSchedule-jobCode', '{{%CronSchedule}}', 'jobCode');
+        $this->createIndex('idx-CronSchedule-status', '{{%CronSchedule}}', 'status');
     }
 
     public function down()
