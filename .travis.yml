@@ -29,7 +29,7 @@ install:
     
 before_script:
   - mysql -e 'CREATE DATABASE yii2base;';
-  - cd tests/codeception/bin && php yii migrate --interactive=0 && php yii migrate --migrationPath=@yii/rbac/migrations --interactive=0 && php yii rbac/migrate --interactive=0 && cd ../../..
+  - cd tests/codeception/bin && php yii migrate --interactive=0 && php yii rbac/migrate --interactive=0 && cd ../../..
 
 script:
   - |
