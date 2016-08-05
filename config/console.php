@@ -7,8 +7,16 @@ $config = [
     'controllerNamespace' => 'app\commands',
     'controllerMap' => [
         'migrate' => [
-            'class' => 'yii\console\controllers\MigrateController',
+            'class' => 'cyberz\migrations\controllers\MigrationsController',
             'templateFile' => '@app/views/migration.php',
+            'migrationLookup' => [
+                '@vendor/yii2mod/yii2-cms/migrations',
+                '@vendor/yii2mod/yii2-cron-log/migrations',
+                '@vendor/yii2mod/yii2-user/migrations',
+                '@vendor/yii2mod/yii2-comments/migrations',
+                '@vendor/yii2mod/yii2-settings/migrations',
+                '@yii/rbac/migrations'
+            ]
         ],
     ],
     'components' => [
