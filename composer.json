@@ -60,9 +60,6 @@
                     "web/assets": "0777",
                     "yii": "0755"
                 }
-            ],
-            "generateCookieValidationKey": [
-                "config/web.php"
             ]
         },
         "asset-installer-paths": {
