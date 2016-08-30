@@ -1,11 +1,11 @@
 <?php
 
 use app\assets\AdminAsset;
-use kartik\sidenav\SideNav;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
+use yii\widgets\Menu;
 use yii2mod\notify\BootstrapNotify;
 
 /* @var $this \yii\web\View */
@@ -92,10 +92,14 @@ AdminAsset::register($this);
             <div class="row">
                 <?php if (isset($this->params['sidebar'])): ?>
                     <div class="col-lg-2">
-                        <?php echo SideNav::widget(['items' => $this->params['sidebar'],
-                            'headingOptions' => ['class' => 'head-style'],
-                            'encodeLabels' => false
-                        ]); ?>
+                        <?php echo Menu::widget([
+                            'items' => $this->params['sidebar'],
+                            'encodeLabels' => false,
+                            'options' => [
+                                'class' => 'nav nav-pills nav-stacked admin-side-nav'
+                            ]
+                        ]);
+                        ?>
                     </div>
                 <?php endif; ?>
                 <div class="col-lg-10">

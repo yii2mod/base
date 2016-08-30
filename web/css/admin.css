@@ -89,6 +89,22 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+
 .navbar {
     border-radius: 0 !important;
+}
+
+.admin-side-nav {
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(216, 207, 207, 0.9);
+    border-radius: 4px;
+}
+
+.admin-side-nav > li > a {
+    border-radius: 0;
+}
+
+.admin-side-nav li a {
+    border-radius: 0;
+    border-bottom: 1px solid #ddd;
 }

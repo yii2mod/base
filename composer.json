@@ -29,7 +29,6 @@
         "yii2mod/yii2-settings": "*",
         "yii2mod/yii2-scheduling": "*",
         "yii2mod/yii2-bootstrap-notify": "*",
-        "kartik-v/yii2-widget-sidenav": "*",
         "yii2tech/sitemap": "^1.0",
         "yii2tech/admin": "*",
         "cyberz/yii2-multipath-migrations": "*"
