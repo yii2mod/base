@@ -5,7 +5,6 @@ use yii\bootstrap\Html;
 use yii\widgets\DetailView;
 
 /* @var $resetPasswordForm \app\models\forms\ResetPasswordForm */
-/* @var $userModel \app\models\UserModel */
 
 $this->title = Yii::t('user', 'My Account');
 ?>
@@ -36,10 +35,10 @@ $this->title = Yii::t('user', 'My Account');
                 </div>
                 <div class="table-responsive">
                     <?php echo DetailView::widget([
-                        'model' => $userModel,
+                        'model' => Yii::$app->user->identity,
                         'attributes' => [
-                            "username",
-                            "email",
+                            'username',
+                            'email',
                             'lastLogin:date'
                         ],
                     ]); ?>

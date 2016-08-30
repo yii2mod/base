@@ -4,7 +4,6 @@ namespace app\models\forms;
 
 use app\models\UserModel;
 use Yii;
-use yii\base\InvalidConfigException;
 use yii\base\Model;
 
 /**
@@ -14,7 +13,7 @@ use yii\base\Model;
 class ResetPasswordForm extends Model
 {
     /**
-     * @var string Password
+     * @var string password
      */
     public $password;
 
@@ -29,19 +28,15 @@ class ResetPasswordForm extends Model
     private $_user;
 
     /**
-     * Construct
+     * ResetPasswordForm constructor.
      *
      * @param UserModel $user
-     * @param  array $config name-value pairs that will be used to initialize the object properties
-     *
-     * @throws InvalidConfigException
+     * @param array $config
      */
-    public function __construct($user, $config = [])
+    public function __construct(UserModel $user, $config = [])
     {
         $this->_user = $user;
-        if (!$this->_user) {
-            throw new InvalidConfigException('UserModel must be set.');
-        }
+
         parent::__construct($config);
     }
 
@@ -77,12 +72,11 @@ class ResetPasswordForm extends Model
      */
     public function resetPassword()
     {
-        $user = $this->_user;
         if ($this->validate()) {
-            $user->setPassword($this->password);
-            return $user->save(true, ['passwordHash']);
-        } else {
-            return false;
+            $this->_user->setPassword($this->password);
+            return $this->_user->save(true, ['passwordHash']);
         }
+
+        return false;
     }
 }

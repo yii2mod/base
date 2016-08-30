@@ -118,8 +118,7 @@ class SiteController extends Controller
      */
     public function actionAccount()
     {
-        $userModel = Yii::$app->user->identity;
-        $resetPasswordForm = new ResetPasswordForm($userModel);
+        $resetPasswordForm = new ResetPasswordForm(Yii::$app->user->identity);
 
         if ($resetPasswordForm->load(Yii::$app->request->post()) && $resetPasswordForm->resetPassword()) {
             Yii::$app->session->setFlash('success', Yii::t('user', 'Password has been updated.'));
@@ -127,8 +126,7 @@ class SiteController extends Controller
         }
 
         return $this->render('account', [
-            'resetPasswordForm' => $resetPasswordForm,
-            'userModel' => $userModel
+            'resetPasswordForm' => $resetPasswordForm
         ]);
     }
 }
