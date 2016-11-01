@@ -8,8 +8,7 @@ class LoginCest
     {
         $I->haveFixtures([
             'user' => [
-                'class' => UserFixture::className(),
-                'dataFile' => codecept_data_dir() . 'user.php'
+                'class' => UserFixture::className()
             ]
         ]);
         $I->amOnRoute('site/login');

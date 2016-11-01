@@ -22,8 +22,7 @@ class LoginFormTest extends \Codeception\Test\Unit
     {
         $this->tester->haveFixtures([
             'user' => [
-                'class' => UserFixture::className(),
-                'dataFile' => codecept_data_dir() . 'user.php'
+                'class' => UserFixture::className()
             ]
         ]);
     }
