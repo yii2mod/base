@@ -11,7 +11,7 @@ use yii2mod\user\models\enumerables\UserStatus;
 
 <div class="user-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id' => 'create-user-form']); ?>
 
     <div class="row">
         <div class="col-md-6">
