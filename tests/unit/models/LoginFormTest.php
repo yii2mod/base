@@ -2,12 +2,31 @@
 
 namespace tests\models;
 
+use app\tests\fixtures\UserFixture;
 use Yii;
 use yii2mod\user\models\LoginForm;
 
 class LoginFormTest extends \Codeception\Test\Unit
 {
+    /**
+     * @var \UnitTester
+     */
+    protected $tester;
+
+    /**
+     * @var LoginForm
+     */
     private $model;
+
+    protected function _before()
+    {
+        $this->tester->haveFixtures([
+            'user' => [
+                'class' => UserFixture::className(),
+                'dataFile' => codecept_data_dir() . 'user.php'
+            ]
+        ]);
+    }
 
     protected function _after()
     {
