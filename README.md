@@ -81,7 +81,7 @@ the installed application. You only need to do these once for all.
 
 
 ####To login into the application, use the following credentials:
-- email - `admin@mail.com`
+- email - `admin@example.org`
 - password - `123123`
 
 TESTING

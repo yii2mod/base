@@ -45,7 +45,7 @@ $config = [
         ],
     ],
     'params' => [
-        'adminEmail' => 'admin@example.com',
+        'adminEmail' => 'admin@example.org',
         'user.passwordResetTokenExpire' => 3600,
     ],
 ];

@@ -25,7 +25,7 @@ class CreateUserCest
     public function createUser(FunctionalTester $I)
     {
         $I->amOnRoute('site/login');
-        $I->submitForm($this->loginFormId, $this->loginFormParams('admin@mail.com', '123123'));
+        $I->submitForm($this->loginFormId, $this->loginFormParams('admin@example.org', '123123'));
         $I->amOnRoute('/admin/user/create');
         $I->see('Create User');
         $I->submitForm($this->createUserFormId, $this->createUserFormParams('created-user', 'created-user@example.com', '123123'));

@@ -37,7 +37,7 @@ class LoginCest
 
     public function checkValidLogin(FunctionalTester $I)
     {
-        $I->submitForm('#login-form', $this->formParams('admin@mail.com', '123123'));
+        $I->submitForm('#login-form', $this->formParams('admin@example.org', '123123'));
         $I->see('Logout (admin)', 'form button[type=submit]');
         $I->dontSeeLink('Login');
         $I->dontSeeLink('Signup');

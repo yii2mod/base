@@ -15,7 +15,7 @@ use yii2tech\sitemap\File;
  *  ~~~
  *   php yii app/generate-sitemap - Sitemap composing
  *   php yii app/clear-table User - Delete all data from specific table
- *   php yii app/assign-role-to-user admin admin@mail.com - Assign role to the user
+ *   php yii app/assign-role-to-user admin admin@example.org - Assign role to the user
  *  ~~~
  *
  * @package app\commands
