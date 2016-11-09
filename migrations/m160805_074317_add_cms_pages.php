@@ -9,7 +9,7 @@ class m160805_074317_add_cms_pages extends Migration
 {
     public function up()
     {
-        $this->insert('{{%Cms}}', [
+        $this->insert('{{%cms}}', [
             'url' => 'about-us',
             'title' => 'About us',
             'content' => 'About us content',
@@ -20,7 +20,7 @@ class m160805_074317_add_cms_pages extends Migration
             'updatedAt' => time(),
         ]);
 
-        $this->insert('{{%Cms}}', [
+        $this->insert('{{%cms}}', [
             'url' => 'terms-and-conditions',
             'title' => 'Terms & Conditions',
             'content' => 'Content',
@@ -31,7 +31,7 @@ class m160805_074317_add_cms_pages extends Migration
             'updatedAt' => time(),
         ]);
 
-        $this->insert('{{%Cms}}', [
+        $this->insert('{{%cms}}', [
             'url' => 'privacy-policy',
             'title' => 'Privacy Policy',
             'content' => 'Content',
@@ -45,8 +45,8 @@ class m160805_074317_add_cms_pages extends Migration
 
     public function down()
     {
-        $this->delete('{{%Cms}}', ['url' => 'about-us']);
-        $this->delete('{{%Cms}}', ['url' => 'terms-and-conditions']);
-        $this->delete('{{%Cms}}', ['url' => 'privacy-policy']);
+        $this->delete('{{%cms}}', ['url' => 'about-us']);
+        $this->delete('{{%cms}}', ['url' => 'terms-and-conditions']);
+        $this->delete('{{%cms}}', ['url' => 'privacy-policy']);
     }
 }

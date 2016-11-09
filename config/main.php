@@ -30,8 +30,7 @@ $config = [
             'cookieValidationKey' => 'fYPq2eLM',
         ],
         'session' => [
-            'class' => 'yii\web\DbSession',
-            'sessionTable' => '{{%Session}}',
+            'class' => 'yii\web\DbSession'
         ],
         'user' => [
             'identityClass' => 'app\models\UserModel',

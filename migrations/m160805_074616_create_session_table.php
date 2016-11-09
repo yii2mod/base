@@ -9,7 +9,7 @@ class m160805_074616_create_session_table extends Migration
 {
     public function up()
     {
-        $this->createTable('{{%Session}}', [
+        $this->createTable('{{%session}}', [
             'id' => 'CHAR(40) NOT NULL PRIMARY KEY',
             'expire' => 'INTEGER',
             'data' => 'LONGBLOB'
@@ -18,6 +18,6 @@ class m160805_074616_create_session_table extends Migration
 
     public function down()
     {
-        $this->dropTable('{{%Session}}');
+        $this->dropTable('{{%session}}');
     }
 }
