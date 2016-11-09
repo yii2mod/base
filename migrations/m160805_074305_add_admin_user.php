@@ -13,7 +13,7 @@ class m160805_074305_add_admin_user extends Migration
             'username' => 'admin',
             'authKey' => Yii::$app->getSecurity()->generateRandomString(),
             'passwordHash' => Yii::$app->getSecurity()->generatePasswordHash(123123),
-            'email' => 'admin@mail.com',
+            'email' => 'admin@example.org',
             'status' => 1,
             'createdAt' => time(),
             'updatedAt' => time(),
@@ -22,6 +22,6 @@ class m160805_074305_add_admin_user extends Migration
 
     public function down()
     {
-        $this->delete('{{%User}}', ['email' => 'admin@mail.com']);
+        $this->delete('{{%User}}', ['email' => 'admin@example.org']);
     }
 }

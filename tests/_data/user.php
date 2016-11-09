@@ -5,7 +5,7 @@ return [
         'username' => 'admin',
         'authKey' => Yii::$app->getSecurity()->generateRandomString(),
         'passwordHash' => Yii::$app->getSecurity()->generatePasswordHash(123123),
-        'email' => 'admin@mail.com',
+        'email' => 'admin@example.org',
         'status' => 1,
         'createdAt' => time(),
         'updatedAt' => time(),

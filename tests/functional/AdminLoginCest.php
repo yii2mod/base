@@ -19,14 +19,14 @@ class AdminLoginCest
 
     public function checkLogin(FunctionalTester $I)
     {
-        $I->submitForm($this->formId, $this->formParams('admin@mail.com', '123123'));
+        $I->submitForm($this->formId, $this->formParams('admin@example.org', '123123'));
         $I->see('Logout (admin)', 'form button[type=submit]');
         $I->seeLink('Administration');
     }
 
     public function checkAdminPanel(FunctionalTester $I)
     {
-        $I->submitForm($this->formId, $this->formParams('admin@mail.com', '123123'));
+        $I->submitForm($this->formId, $this->formParams('admin@example.org', '123123'));
         $I->see('Logout (admin)', 'form button[type=submit]');
         $I->seeLink('Administration');
         $I->click('Administration');
