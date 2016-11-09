@@ -2,10 +2,7 @@
 
 use app\components\Migration;
 
-/**
- * Class m160805_074305_add_admin_user
- */
-class m160805_074305_add_admin_user extends Migration
+class m161109_121722_add_admin_user extends Migration
 {
     public function up()
     {

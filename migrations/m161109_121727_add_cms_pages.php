@@ -2,10 +2,7 @@
 
 use app\components\Migration;
 
-/**
- * Class m160805_074317_add_cms_pages
- */
-class m160805_074317_add_cms_pages extends Migration
+class m161109_121727_add_cms_pages extends Migration
 {
     public function up()
     {

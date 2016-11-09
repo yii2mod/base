@@ -3,9 +3,9 @@
 use app\components\Migration;
 
 /**
- * Class m160805_074616_create_session_table
+ * Handles the creation of table `session`.
  */
-class m160805_074616_create_session_table extends Migration
+class m161109_121736_create_session_table extends Migration
 {
     public function up()
     {
