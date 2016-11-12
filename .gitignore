@@ -12,6 +12,11 @@ nbproject
 # windows thumbnail cache
 Thumbs.db
 
+# local configs
+config/common.local.php
+config/console.local.php
+config/main.local.php
+
 # composer vendor dir
 /vendor
 
@@ -21,9 +26,6 @@ runtime/logs
 
 # composer itself is not needed
 composer.phar
-
-#composer.lock file
-composer.lock
 
 # Mac DS_Store Files
 .DS_Store
