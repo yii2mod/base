@@ -16,8 +16,8 @@ class SignupFormTest extends \Codeception\Test\Unit
     {
         $this->tester->haveFixtures([
             'user' => [
-                'class' => UserFixture::className()
-            ]
+                'class' => UserFixture::className(),
+            ],
         ]);
     }
 
@@ -37,7 +37,6 @@ class SignupFormTest extends \Codeception\Test\Unit
         expect($user->email)->equals('some_email@example.com');
         expect($user->validatePassword('some_password'))->true();
     }
-
 
     public function testNotCorrectSignup()
     {

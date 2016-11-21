@@ -17,7 +17,7 @@ class UserModel extends BaseUserModel
     public $newPassword;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -34,7 +34,7 @@ class UserModel extends BaseUserModel
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -48,6 +48,7 @@ class UserModel extends BaseUserModel
 
     /**
      * Create user
+     *
      * @return UserModel|null the saved model or null if saving fails
      */
     public function createUser()

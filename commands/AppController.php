@@ -45,6 +45,7 @@ class AppController extends BaseController
      * Delete all data from specific table
      *
      * @param $tableName
+     *
      * @return int
      *
      * @throws \yii\db\Exception
@@ -61,6 +62,7 @@ class AppController extends BaseController
      *
      * @param $roleName string user role
      * @param $email string user email
+     *
      * @return int
      */
     public function actionAssignRoleToUser($roleName, $email)
@@ -71,17 +73,20 @@ class AppController extends BaseController
 
         if (empty($user)) {
             $this->stdout("User with `{$email}` does not exists.\n", Console::FG_RED);
+
             return self::EXIT_CODE_ERROR;
         }
 
         if (empty($role)) {
             $this->stdout("Role `{$roleName}` does not exists.\n", Console::FG_RED);
+
             return self::EXIT_CODE_ERROR;
         }
 
         // Check if role is already assigned to the user
         if (in_array($roleName, array_keys($authManager->getRolesByUser($user->id)))) {
             $this->stdout("Role `{$roleName}` already assigned to this user.\n", Console::FG_BLUE);
+
             return self::EXIT_CODE_NORMAL;
         }
 

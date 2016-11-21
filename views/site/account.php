@@ -39,7 +39,7 @@ $this->title = Yii::t('user', 'My Account');
                         'attributes' => [
                             'username',
                             'email',
-                            'lastLogin:date'
+                            'lastLogin:date',
                         ],
                     ]); ?>
                 </div>

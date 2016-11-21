@@ -23,7 +23,7 @@ return yii\helpers\ArrayHelper::merge(
                     'domain' => 'localhost',
                 ],
                 */
-            ]
-        ]
+            ],
+        ],
     ]
 );

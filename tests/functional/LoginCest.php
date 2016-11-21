@@ -8,8 +8,8 @@ class LoginCest
     {
         $I->haveFixtures([
             'user' => [
-                'class' => UserFixture::className()
-            ]
+                'class' => UserFixture::className(),
+            ],
         ]);
         $I->amOnRoute('site/login');
     }

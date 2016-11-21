@@ -4,13 +4,14 @@ namespace app\controllers;
 
 use app\models\forms\ContactForm;
 use app\models\forms\ResetPasswordForm;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
 use Yii;
+use yii\filters\VerbFilter;
+use yii\web\Controller;
 use yii2mod\rbac\filters\AccessControl;
 
 /**
  * Class SiteController
+ *
  * @package app\controllers
  */
 class SiteController extends Controller
@@ -35,8 +36,8 @@ class SiteController extends Controller
                     'signup' => ['get', 'post'],
                     'request-password-reset' => ['get', 'post'],
                     'password-reset' => ['get', 'post'],
-                    'page' => ['get', 'post']
-                ]
+                    'page' => ['get', 'post'],
+                ],
             ],
         ];
     }
@@ -57,19 +58,19 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
             'login' => [
-                'class' => 'yii2mod\user\actions\LoginAction'
+                'class' => 'yii2mod\user\actions\LoginAction',
             ],
             'logout' => [
-                'class' => 'yii2mod\user\actions\LogoutAction'
+                'class' => 'yii2mod\user\actions\LogoutAction',
             ],
             'signup' => [
-                'class' => 'yii2mod\user\actions\SignupAction'
+                'class' => 'yii2mod\user\actions\SignupAction',
             ],
             'request-password-reset' => [
-                'class' => 'yii2mod\user\actions\RequestPasswordResetAction'
+                'class' => 'yii2mod\user\actions\RequestPasswordResetAction',
             ],
             'password-reset' => [
-                'class' => 'yii2mod\user\actions\PasswordResetAction'
+                'class' => 'yii2mod\user\actions\PasswordResetAction',
             ],
             'page' => [
                 'class' => 'yii2mod\cms\actions\PageAction',
@@ -122,11 +123,12 @@ class SiteController extends Controller
 
         if ($resetPasswordForm->load(Yii::$app->request->post()) && $resetPasswordForm->resetPassword()) {
             Yii::$app->session->setFlash('success', Yii::t('user', 'Password has been updated.'));
+
             return $this->refresh();
         }
 
         return $this->render('account', [
-            'resetPasswordForm' => $resetPasswordForm
+            'resetPasswordForm' => $resetPasswordForm,
         ]);
     }
 }

@@ -6,12 +6,13 @@ use yii\data\ActiveDataProvider;
 
 /**
  * Class UserModelSearch
+ *
  * @package app\models
  */
 class UserModelSearch extends UserModel
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -22,7 +23,9 @@ class UserModelSearch extends UserModel
 
     /**
      * Setup search function for filtering and sorting based on fullName field
+     *
      * @param $params
+     *
      * @return ActiveDataProvider
      */
     public function search($params)
@@ -31,14 +34,13 @@ class UserModelSearch extends UserModel
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => 10
-            ]
+                'pageSize' => 10,
+            ],
         ]);
 
         $dataProvider->setSort([
             'defaultOrder' => ['id' => SORT_DESC],
         ]);
-
 
         // load the search form data and validate
         if (!($this->load($params))) {
@@ -53,5 +55,4 @@ class UserModelSearch extends UserModel
 
         return $dataProvider;
     }
-
-} 
+}

@@ -6,22 +6,23 @@ use yii2mod\rbac\filters\AccessControl;
 
 /**
  * Class Module
+ *
  * @package app\modules\admin
  */
 class Module extends \yii\base\Module
 {
     /**
-     * @var string the default route of this module. Defaults to 'default'.
+     * @var string the default route of this module. Defaults to 'default'
      */
     public $defaultRoute = 'user';
 
     /**
-     * @var string|boolean the layout that should be applied for views within this module.
+     * @var string|bool the layout that should be applied for views within this module
      */
     public $layout = 'column2';
 
     /**
-     * @var string the namespace that controller classes are in.
+     * @var string the namespace that controller classes are in
      */
     public $controllerNamespace = 'app\modules\admin\controllers';
 
@@ -31,7 +32,7 @@ class Module extends \yii\base\Module
     public function behaviors()
     {
         return [
-            AccessControl::className()
+            AccessControl::className(),
         ];
     }
 }

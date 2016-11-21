@@ -6,6 +6,7 @@ use Yii;
 
 /**
  * Class Migration
+ *
  * @package app\components
  */
 class Migration extends \yii\db\Migration
@@ -16,7 +17,7 @@ class Migration extends \yii\db\Migration
     protected $tableOptions;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function init()
     {
