@@ -9,6 +9,7 @@ use yii\helpers\Console;
 
 /**
  * Class BaseController
+ *
  * @package app\commands
  */
 class BaseController extends Controller
@@ -27,7 +28,7 @@ class BaseController extends Controller
     protected $command;
 
     /**
-     * @return array behavior configurations.
+     * @return array behavior configurations
      */
     public function behaviors()
     {
@@ -35,7 +36,7 @@ class BaseController extends Controller
             'cronLogger' => [
                 'class' => 'yii2mod\cron\behaviors\CronLoggerBehavior',
                 'actions' => ['*'],
-            ]
+            ],
         ];
     }
 
@@ -43,6 +44,7 @@ class BaseController extends Controller
      * Before action event
      *
      * @param \yii\base\Action $action
+     *
      * @return bool
      */
     public function beforeAction($action)
@@ -51,6 +53,7 @@ class BaseController extends Controller
 
         if ($this->isDisabledAction($action->id)) {
             $this->stdout("Command '{$this->command}' is disabled.\n", Console::FG_RED);
+
             return false;
         }
 
@@ -68,6 +71,7 @@ class BaseController extends Controller
      *
      * @param \yii\base\Action $action
      * @param mixed $result
+     *
      * @return mixed
      */
     public function afterAction($action, $result)
@@ -81,8 +85,11 @@ class BaseController extends Controller
 
     /**
      * Check whether the current action is disabled
+     *
      * @param $id string action id
+     *
      * @return bool
+     *
      * @throws InvalidConfigException
      */
     protected function isDisabledAction($id)

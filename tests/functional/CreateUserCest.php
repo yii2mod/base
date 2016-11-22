@@ -9,7 +9,7 @@ class CreateUserCest
     {
         return [
             'LoginForm[email]' => $login,
-            'LoginForm[password]' => $password
+            'LoginForm[password]' => $password,
         ];
     }
 
@@ -18,7 +18,7 @@ class CreateUserCest
         return [
             'UserModel[username]' => $username,
             'UserModel[email]' => $email,
-            'UserModel[newPassword]' => $password
+            'UserModel[newPassword]' => $password,
         ];
     }
 
@@ -31,7 +31,7 @@ class CreateUserCest
         $I->submitForm($this->createUserFormId, $this->createUserFormParams('created-user', 'created-user@example.com', '123123'));
         $I->seeRecord('app\models\UserModel', [
             'username' => 'created-user',
-            'email' => 'created-user@example.com'
+            'email' => 'created-user@example.com',
         ]);
     }
 }

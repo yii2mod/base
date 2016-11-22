@@ -8,6 +8,7 @@ use yii\base\Model;
 
 /**
  * Class ResetPasswordForm
+ *
  * @package app\models\forms
  */
 class ResetPasswordForm extends Model
@@ -41,7 +42,7 @@ class ResetPasswordForm extends Model
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -55,7 +56,7 @@ class ResetPasswordForm extends Model
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -68,12 +69,13 @@ class ResetPasswordForm extends Model
     /**
      * Resets password.
      *
-     * @return bool if password was reset.
+     * @return bool if password was reset
      */
     public function resetPassword()
     {
         if ($this->validate()) {
             $this->_user->setPassword($this->password);
+
             return $this->_user->save(true, ['passwordHash']);
         }
 

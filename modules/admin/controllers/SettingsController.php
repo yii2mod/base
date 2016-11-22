@@ -6,6 +6,7 @@ use yii\web\Controller;
 
 /**
  * Class SettingController
+ *
  * @package app\modules\admin\controllers
  */
 class SettingsController extends Controller

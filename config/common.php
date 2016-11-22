@@ -8,7 +8,7 @@ $config = [
     'components' => [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
-            'defaultRoles' => ['guest', 'user']
+            'defaultRoles' => ['guest', 'user'],
         ],
         'formatter' => [
             'class' => 'yii\i18n\Formatter',
@@ -30,12 +30,12 @@ $config = [
             'charset' => 'utf8',
         ],
         'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer'
+            'class' => 'yii\swiftmailer\Mailer',
         ],
         'i18n' => [
             'translations' => [
                 '*' => [
-                    'class' => 'yii\i18n\PhpMessageSource'
+                    'class' => 'yii\i18n\PhpMessageSource',
                 ],
             ],
         ],

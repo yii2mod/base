@@ -63,6 +63,6 @@ return [
     'overwrite' => true,
     // Message categories to ignore
     'ignoreCategories' => [
-        'yii'
-    ]
+        'yii',
+    ],
 ];

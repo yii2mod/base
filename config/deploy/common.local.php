@@ -1,4 +1,5 @@
 <?php
+
 $config = [
     'components' => [
         'db' => [
@@ -14,7 +15,7 @@ $config = [
         ],
     ],
     'params' => [
-    ]
+    ],
 ];
 
 return $config;

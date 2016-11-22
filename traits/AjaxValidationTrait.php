@@ -10,6 +10,7 @@ use yii\widgets\ActiveForm;
 
 /**
  * Class AjaxValidationTrait performs ajax validation.
+ *
  * @package app\traits
  *
  * ~~~
@@ -30,6 +31,7 @@ trait AjaxValidationTrait
      * Performs ajax validation.
      *
      * @param Model $model
+     *
      * @throws \yii\base\ExitException
      */
     protected function performAjaxValidation(Model $model)

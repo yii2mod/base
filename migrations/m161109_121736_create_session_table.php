@@ -12,7 +12,7 @@ class m161109_121736_create_session_table extends Migration
         $this->createTable('{{%session}}', [
             'id' => 'CHAR(40) NOT NULL PRIMARY KEY',
             'expire' => 'INTEGER',
-            'data' => 'LONGBLOB'
+            'data' => 'LONGBLOB',
         ], $this->tableOptions);
     }
 

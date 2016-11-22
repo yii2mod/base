@@ -48,8 +48,8 @@ AdminAsset::register($this);
                         [
                             'label' => '<i class="glyphicon glyphicon-plus"></i> Create User',
                             'url' => ['/admin/user/create'],
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 [
                     'label' => '<i class="glyphicon glyphicon-file"></i> CMS',
@@ -58,12 +58,12 @@ AdminAsset::register($this);
                 [
                     'label' => '<i class="glyphicon glyphicon-user"></i> RBAC',
                     'url' => ['/admin/rbac/assignment/index'],
-                    'active' => $this->context->module->id == 'rbac'
+                    'active' => $this->context->module->id == 'rbac',
                 ],
                 [
                     'label' => '<i class="glyphicon glyphicon-wrench"></i> Settings Storage',
                     'url' => ['/admin/settings-storage'],
-                    'active' => $this->context->module->id == 'settings-storage'
+                    'active' => $this->context->module->id == 'settings-storage',
                 ],
                 [
                     'label' => '<i class="glyphicon glyphicon-cog"></i> Cron Schedule Log',
@@ -79,7 +79,7 @@ AdminAsset::register($this);
                 ['label' => '<i class="glyphicon glyphicon-off"></i> Logout (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post'],
-                ]
+                ],
             ],
             'encodeLabels' => false,
         ]);
@@ -96,8 +96,8 @@ AdminAsset::register($this);
                             'items' => $this->params['sidebar'],
                             'encodeLabels' => false,
                             'options' => [
-                                'class' => 'nav nav-pills nav-stacked admin-side-nav'
-                            ]
+                                'class' => 'nav nav-pills nav-stacked admin-side-nav',
+                            ],
                         ]);
                         ?>
                     </div>

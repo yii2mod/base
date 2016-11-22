@@ -2,16 +2,17 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\UserModel;
 use app\models\UserModelSearch;
 use app\traits\FindModelTrait;
 use Yii;
-use app\models\UserModel;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
+use yii\web\Controller;
 use yii2mod\editable\EditableAction;
 
 /**
  * Class UserController
+ *
  * @package app\modules\admin\controllers
  */
 class UserController extends Controller
@@ -32,7 +33,7 @@ class UserController extends Controller
                     'index' => ['get'],
                     'create' => ['get', 'post'],
                     'update' => ['get', 'post'],
-                    'delete' => ['post']
+                    'delete' => ['post'],
                 ],
             ],
         ];
@@ -49,7 +50,7 @@ class UserController extends Controller
             'edit-user' => [
                 'class' => EditableAction::className(),
                 'modelClass' => UserModel::className(),
-                'forceCreate' => false
+                'forceCreate' => false,
             ],
             'index' => [
                 'class' => 'yii2tech\admin\actions\Index',
@@ -62,7 +63,7 @@ class UserController extends Controller
                 'findModel' => function ($id) {
                     return $this->findModel(UserModel::className(), $id);
                 },
-                'flash' => Yii::t('user', 'User has been deleted.')
+                'flash' => Yii::t('user', 'User has been deleted.'),
             ],
         ];
     }
@@ -81,6 +82,7 @@ class UserController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             if ($model->createUser()) {
                 Yii::$app->session->setFlash('success', Yii::t('user', 'User has been created.'));
+
                 return $this->redirect(['index']);
             }
         }
@@ -95,7 +97,8 @@ class UserController extends Controller
      *
      * If update is successful, the browser will be redirected to the 'view' page.
      *
-     * @param integer $id
+     * @param int $id
+     *
      * @return mixed
      */
     public function actionUpdate($id)
@@ -108,6 +111,7 @@ class UserController extends Controller
             }
             $model->save(false);
             Yii::$app->session->setFlash('success', Yii::t('user', 'User has been saved.'));
+
             return $this->redirect(['index']);
         }
 

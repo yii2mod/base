@@ -7,6 +7,7 @@ use yii\web\NotFoundHttpException;
 
 /**
  * Class FindModelTrait
+ *
  * @package app\traits
  */
 trait FindModelTrait
@@ -17,6 +18,7 @@ trait FindModelTrait
      * @param $modelClass ActiveRecord
      * @param mixed $condition primary key value or a set of column values
      * @param string $notFoundMessage
+     *
      * @return ActiveRecord
      *
      * @throws NotFoundHttpException
