@@ -9,7 +9,9 @@ $config = Symfony\CS\Config::create()
     ->fixers([
         '-phpdoc_params',
         '-phpdoc_short_description',
+        '-phpdoc_inline_tag',
         '-pre_increment',
+        '-heredoc_to_nowdoc',
         '-spaces_cast',
         '-include',
         '-phpdoc_no_package',
