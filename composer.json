@@ -31,13 +31,13 @@
         "yii2mod/yii2-bootstrap-notify": "*",
         "yii2tech/sitemap": "^1.0",
         "yii2tech/admin": "*",
-        "friendsofphp/php-cs-fixer": "~1.7",
         "cyberz/yii2-multipath-migrations": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-gii": "~2.0.0",
         "yiisoft/yii2-faker": "~2.0.0",
+        "friendsofphp/php-cs-fixer": "~1.7",
         "codeception/base": "^2.2.3",
         "codeception/verify": "~0.3.1"
     },
