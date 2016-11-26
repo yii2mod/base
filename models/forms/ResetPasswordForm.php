@@ -5,6 +5,7 @@ namespace app\models\forms;
 use app\models\UserModel;
 use Yii;
 use yii\base\Model;
+use yii\web\IdentityInterface;
 
 /**
  * Class ResetPasswordForm
@@ -31,10 +32,10 @@ class ResetPasswordForm extends Model
     /**
      * ResetPasswordForm constructor.
      *
-     * @param UserModel $user
+     * @param IdentityInterface $user
      * @param array $config
      */
-    public function __construct(UserModel $user, $config = [])
+    public function __construct(IdentityInterface $user, $config = [])
     {
         $this->_user = $user;
 
