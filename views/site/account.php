@@ -17,7 +17,7 @@ $this->title = Yii::t('user', 'My Account');
                 </div>
 
                 <div class="panel-body">
-                    <?php $form = ActiveForm::begin(); ?>
+                    <?php $form = ActiveForm::begin(['id' => 'change-password-form']); ?>
                     <?php echo $form->field($resetPasswordForm, 'password')->passwordInput(); ?>
                     <?php echo $form->field($resetPasswordForm, 'confirmPassword')->passwordInput(); ?>
                     <div class="form-group">
