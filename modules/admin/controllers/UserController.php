@@ -2,8 +2,8 @@
 
 namespace app\modules\admin\controllers;
 
+use app\modules\admin\models\search\UserSearch;
 use app\models\UserModel;
-use app\models\UserModelSearch;
 use app\traits\FindModelTrait;
 use Yii;
 use yii\filters\VerbFilter;
@@ -20,15 +20,13 @@ class UserController extends Controller
     use FindModelTrait;
 
     /**
-     * Returns a list of behaviors that this component should behave as.
-     *
-     * @return array
+     * @inheritdoc
      */
     public function behaviors()
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'index' => ['get'],
                     'create' => ['get', 'post'],
@@ -40,28 +38,26 @@ class UserController extends Controller
     }
 
     /**
-     * Declares external actions for the controller.
-     *
-     * @return array
+     * @inheritdoc
      */
     public function actions()
     {
         return [
             'edit-user' => [
-                'class' => EditableAction::className(),
-                'modelClass' => UserModel::className(),
+                'class' => EditableAction::class,
+                'modelClass' => UserModel::class,
                 'forceCreate' => false,
             ],
             'index' => [
                 'class' => 'yii2tech\admin\actions\Index',
                 'newSearchModel' => function () {
-                    return new UserModelSearch();
+                    return new UserSearch();
                 },
             ],
             'delete' => [
                 'class' => 'yii2tech\admin\actions\Delete',
                 'findModel' => function ($id) {
-                    return $this->findModel(UserModel::className(), $id);
+                    return $this->findModel(UserModel::class, $id);
                 },
                 'flash' => Yii::t('user', 'User has been deleted.'),
             ],
@@ -69,9 +65,9 @@ class UserController extends Controller
     }
 
     /**
-     * Creates a new UserModel model.
+     * Creates a new user.
      *
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * If creation is successful, the browser will be redirected to the 'index' page.
      *
      * @return mixed
      */
@@ -93,9 +89,9 @@ class UserController extends Controller
     }
 
     /**
-     * Updates an existing UserModel model.
+     * Updates an existing user.
      *
-     * If update is successful, the browser will be redirected to the 'view' page.
+     * If update is successful, the browser will be redirected to the 'index' page.
      *
      * @param int $id
      *
@@ -103,7 +99,7 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel(UserModel::className(), $id);
+        $model = $this->findModel(UserModel::class, $id);
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if (!empty($model->newPassword)) {

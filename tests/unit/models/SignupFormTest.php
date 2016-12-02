@@ -12,11 +12,14 @@ class SignupFormTest extends \Codeception\Test\Unit
      */
     protected $tester;
 
+    /**
+     * @inheritdoc
+     */
     protected function _before()
     {
         $this->tester->haveFixtures([
             'user' => [
-                'class' => UserFixture::className(),
+                'class' => UserFixture::class,
             ],
         ]);
     }

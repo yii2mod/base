@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @var \yii2mod\scheduling\Schedule
+ * @var \yii2mod\scheduling\Schedule $schedule
  *
  * Add to cron the following command:
  *
@@ -18,5 +18,5 @@
  * @see https://github.com/yii2mod/yii2-scheduling
  */
 
-// for example: generate sitemap every week
+// generate sitemap every week
 $schedule->command('app/generate-sitemap')->description('Generate Sitemap')->weekly();

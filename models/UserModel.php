@@ -7,7 +7,8 @@ use yii\helpers\ArrayHelper;
 use yii2mod\user\models\BaseUserModel;
 
 /**
- * This is the model class for table "User".
+ * Class UserModel
+ * @package app\models
  */
 class UserModel extends BaseUserModel
 {

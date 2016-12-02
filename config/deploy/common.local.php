@@ -8,10 +8,7 @@ $config = [
             'password' => '',
         ],
         'mailer' => [
-            'transport' => [
-                'class' => 'Swift_SmtpTransport',
-                'host' => 'localhost',
-            ],
+            'useFileTransport' => true
         ],
     ],
     'params' => [

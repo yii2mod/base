@@ -7,34 +7,34 @@ use app\models\forms\ContactForm;
 class ContactFormTest extends \Codeception\Test\Unit
 {
     /**
-     * @var ContactForm
-     */
-    private $model;
-
-    /**
      * @var \UnitTester
      */
     public $tester;
 
+    /**
+     * @var ContactForm
+     */
+    private $_model;
+
     public function testEmailIsSentOnContact()
     {
         /* @var ContactForm $model */
-        $this->model = $this->getMockBuilder('app\models\forms\ContactForm')
+        $this->_model = $this->getMockBuilder('app\models\forms\ContactForm')
             ->setMethods(['validate'])
             ->getMock();
 
-        $this->model->expects($this->once())
+        $this->_model->expects($this->once())
             ->method('validate')
             ->will($this->returnValue(true));
 
-        $this->model->attributes = [
+        $this->_model->attributes = [
             'name' => 'Tester',
             'email' => 'tester@example.com',
             'subject' => 'very important letter subject',
             'body' => 'body of current message',
         ];
 
-        expect_that($this->model->contact('admin@example.com'));
+        expect_that($this->_model->contact('admin@example.com'));
 
         // using Yii2 module actions to check email was sent
         $this->tester->seeEmailIsSent();

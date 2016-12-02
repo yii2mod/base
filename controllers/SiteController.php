@@ -17,16 +17,14 @@ use yii2mod\rbac\filters\AccessControl;
 class SiteController extends Controller
 {
     /**
-     * Returns a list of behaviors that this component should behave as.
-     *
-     * @return array
+     * @inheritdoc
      */
     public function behaviors()
     {
         return [
-            AccessControl::className(),
+            AccessControl::class,
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'index' => ['get'],
                     'contact' => ['get', 'post'],
@@ -43,9 +41,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Declares external actions for the controller.
-     *
-     * @return array
+     * @inheritdoc
      */
     public function actions()
     {

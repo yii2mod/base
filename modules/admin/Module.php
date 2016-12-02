@@ -27,12 +27,12 @@ class Module extends \yii\base\Module
     public $controllerNamespace = 'app\modules\admin\controllers';
 
     /**
-     * @return array
+     * @inheritdoc
      */
     public function behaviors()
     {
         return [
-            AccessControl::className(),
+            AccessControl::class,
         ];
     }
 }
