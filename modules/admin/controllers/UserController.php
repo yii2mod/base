@@ -2,8 +2,8 @@
 
 namespace app\modules\admin\controllers;
 
-use app\modules\admin\models\search\UserSearch;
 use app\models\UserModel;
+use app\modules\admin\models\search\UserSearch;
 use app\traits\FindModelTrait;
 use Yii;
 use yii\filters\VerbFilter;

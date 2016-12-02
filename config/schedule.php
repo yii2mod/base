@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @var \yii2mod\scheduling\Schedule $schedule
+ * @var \yii2mod\scheduling\Schedule
  *
  * Add to cron the following command:
  *

@@ -8,7 +8,7 @@ $config = [
             'password' => '',
         ],
         'mailer' => [
-            'useFileTransport' => true
+            'useFileTransport' => true,
         ],
     ],
     'params' => [

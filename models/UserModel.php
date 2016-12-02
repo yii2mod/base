@@ -8,6 +8,7 @@ use yii2mod\user\models\BaseUserModel;
 
 /**
  * Class UserModel
+ *
  * @package app\models
  */
 class UserModel extends BaseUserModel

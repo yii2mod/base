@@ -7,6 +7,7 @@ use yii\data\ActiveDataProvider;
 
 /**
  * Class UserSearch
+ *
  * @package app\modules\admin\models\search
  */
 class UserSearch extends UserModel
@@ -40,7 +41,7 @@ class UserSearch extends UserModel
             ],
             'sort' => [
                 'defaultOrder' => ['id' => SORT_DESC],
-            ]
+            ],
         ]);
 
         $this->load($params);
