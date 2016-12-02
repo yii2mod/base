@@ -47,7 +47,6 @@ class ChangePasswordViaAccountPageCest
         $I->see('Confirm New Password must be equal to "New Password".');
     }
 
-
     public function checkCorrectChangePassword(FunctionalTester $I)
     {
         $I->submitForm('#login-form', $this->loginFormParams('test-user@example.com', '123123'));
