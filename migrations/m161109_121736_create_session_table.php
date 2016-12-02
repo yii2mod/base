@@ -1,4 +1,4 @@
-className()<?php
+<?php
 
 use app\components\Migration;
 
