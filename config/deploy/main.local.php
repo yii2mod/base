@@ -1,7 +1,6 @@
 <?php
 
 $config = [
-
 ];
 
 return $config;

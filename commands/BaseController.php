@@ -89,8 +89,8 @@ class BaseController extends Controller
      * @param $id string action id
      *
      * @throws InvalidConfigException
-     * @return bool
      *
+     * @return bool
      */
     protected function isDisabledAction($id)
     {

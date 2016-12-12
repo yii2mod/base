@@ -20,8 +20,8 @@ trait FindModelTrait
      * @param string $notFoundMessage
      *
      * @throws NotFoundHttpException
-     * @return ActiveRecord
      *
+     * @return ActiveRecord
      */
     protected function findModel($modelClass, $condition, $notFoundMessage = 'The requested page does not exist.')
     {

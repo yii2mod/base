@@ -47,8 +47,8 @@ class AppController extends BaseController
      * @param $tableName
      *
      * @throws \yii\db\Exception
-     * @return int
      *
+     * @return int
      */
     public function actionClearTable($tableName)
     {
