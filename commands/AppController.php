@@ -4,9 +4,10 @@ namespace app\commands;
 
 use app\models\UserModel;
 use Yii;
+use yii\console\Exception;
 use yii\helpers\Console;
+use yii\rbac\Role;
 use yii2mod\cms\models\CmsModel;
-use yii2mod\cms\models\enumerables\CmsStatus;
 use yii2tech\sitemap\File;
 
 /**
@@ -16,12 +17,30 @@ use yii2tech\sitemap\File;
  *   php yii app/generate-sitemap - Sitemap composing
  *   php yii app/clear-table User - Delete all data from specific table
  *   php yii app/assign-role-to-user admin admin@example.org - Assign role to the user
+ *   php yii app/revoke-role-from-user admin admin@example.org - Revoke role from the user
  *  ~~~
  *
- * @package app\commands
+ * @author Igor Chepurnoy <chepurnoi.igor@gmail.com>
+ *
+ * @since 1.0
  */
 class AppController extends BaseController
 {
+    /**
+     * @var \yii\rbac\ManagerInterface
+     */
+    private $_authManager;
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+
+        $this->_authManager = Yii::$app->authManager;
+    }
+
     /**
      * Generate sitemap
      */
@@ -31,7 +50,7 @@ class AppController extends BaseController
 
         $siteMapFile->writeUrl(['site/index'], ['priority' => '0.9']);
         $siteMapFile->writeUrl(['site/contact']);
-        $pages = CmsModel::find()->where(['status' => CmsStatus::ENABLED])->all();
+        $pages = CmsModel::find()->enabled()->all();
         foreach ($pages as $page) {
             $siteMapFile->writeUrl([$page->url]);
         }
@@ -60,40 +79,88 @@ class AppController extends BaseController
     /**
      * Assign role to the user
      *
-     * @param $roleName string user role
-     * @param $email string user email
+     * @param string $roleName
+     * @param string $email
      *
      * @return int
      */
     public function actionAssignRoleToUser($roleName, $email)
     {
-        $authManager = Yii::$app->authManager;
-        $user = UserModel::findByEmail($email);
-        $role = $authManager->getRole($roleName);
+        $user = $this->findUserByEmail($email);
+        $role = $this->findRole($roleName);
 
-        if (empty($user)) {
-            $this->stdout("User with `{$email}` does not exists.\n", Console::FG_RED);
-
-            return self::EXIT_CODE_ERROR;
-        }
-
-        if (empty($role)) {
-            $this->stdout("Role `{$roleName}` does not exists.\n", Console::FG_RED);
-
-            return self::EXIT_CODE_ERROR;
-        }
-
-        // Check if role is already assigned to the user
-        if (in_array($roleName, array_keys($authManager->getRolesByUser($user->id)))) {
-            $this->stdout("Role `{$roleName}` already assigned to this user.\n", Console::FG_BLUE);
+        if (in_array($roleName, array_keys($this->_authManager->getRolesByUser($user->id)))) {
+            $this->stdout("This role already assigned to this user.\n", Console::FG_BLUE);
 
             return self::EXIT_CODE_NORMAL;
         }
 
-        $authManager->assign($role, $user->id);
+        $this->_authManager->assign($role, $user->id);
 
-        $this->stdout("The role `{$roleName}` has been successfully assigned to the user with email {$email}\n", Console::FG_YELLOW);
+        $this->stdout("The role '{$roleName}' has been successfully assigned to the user.\n", Console::FG_BLUE);
 
         return self::EXIT_CODE_NORMAL;
+    }
+
+    /**
+     * Revoke role from the user
+     *
+     * @param string $roleName
+     * @param string $email
+     *
+     * @return int
+     *
+     * @throws Exception
+     */
+    public function actionRevokeRoleFromUser($roleName, $email)
+    {
+        $user = $this->findUserByEmail($email);
+        $role = $this->findRole($roleName);
+
+        if (!in_array($roleName, array_keys($this->_authManager->getRolesByUser($user->id)))) {
+            throw new Exception('This role is not assigned to this user.');
+        }
+
+        $this->_authManager->revoke($role, $user->id);
+
+        $this->stdout("The role '{$roleName}' has been successfully revoked from the user.\n", Console::FG_BLUE);
+
+        return self::EXIT_CODE_NORMAL;
+    }
+
+    /**
+     * Find user by email
+     *
+     * @param string $email
+     *
+     * @return UserModel
+     *
+     * @throws Exception
+     */
+    protected function findUserByEmail($email)
+    {
+        if (($user = UserModel::findByEmail($email)) !== null) {
+            return $user;
+        }
+
+        throw new Exception("The user with e-mail '{$email}' is not found.");
+    }
+
+    /**
+     * Returns the named role.
+     *
+     * @param string $roleName
+     *
+     * @return Role
+     *
+     * @throws Exception
+     */
+    protected function findRole($roleName)
+    {
+        if (($role = $this->_authManager->getRole($roleName)) !== null) {
+            return $role;
+        }
+
+        throw new Exception("The role '{$roleName}' is not found.");
     }
 }
