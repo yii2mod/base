@@ -14,6 +14,12 @@ return yii\helpers\ArrayHelper::merge(
             'mailer' => [
                 'useFileTransport' => true,
             ],
+            'assetManager' => [
+                'basePath' => __DIR__ . '/../web/assets',
+            ],
+            'urlManager' => [
+                'showScriptName' => true,
+            ],
             'request' => [
                 'cookieValidationKey' => 'test',
                 'enableCsrfValidation' => false,
