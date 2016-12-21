@@ -26,11 +26,6 @@ $config = [
         'mutex' => [
             'class' => 'yii\mutex\FileMutex',
         ],
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'baseUrl' => 'http://localhost',
-        ],
     ],
     'modules' => [
         'rbac' => [
