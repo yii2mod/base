@@ -11,19 +11,9 @@ use yii\widgets\ActiveForm;
 /**
  * Class AjaxValidationTrait performs ajax validation.
  *
- * @package app\traits
+ * @author Igor Chepurnoy <chepurnoi.igor@gmail.com>
  *
- * ~~~
- *  // in your controller
- *
- *  use AjaxValidationTrait;
- *
- *  // in your action
- *
- *  $model = new User;
- *  $this->performAjaxValidation($model);
- *  .....
- * ~~~
+ * @since 1.0
  */
 trait AjaxValidationTrait
 {

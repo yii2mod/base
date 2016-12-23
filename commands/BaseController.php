@@ -10,15 +10,14 @@ use yii\helpers\Console;
 /**
  * Class BaseController
  *
- * @package app\commands
+ * @author Igor Chepurnoy <chepurnoi.igor@gmail.com>
+ *
+ * @since 1.0
  */
 class BaseController extends Controller
 {
     /**
      * @var array list of disabled actions
-     * ~~~
-     *   ['index'], // OR ['*'] - to disable all actions
-     * ~~~
      */
     public $disabledActions = [];
 
@@ -28,7 +27,7 @@ class BaseController extends Controller
     protected $command;
 
     /**
-     * @return array behavior configurations
+     * @inheritdoc
      */
     public function behaviors()
     {

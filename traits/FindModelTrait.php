@@ -8,7 +8,9 @@ use yii\web\NotFoundHttpException;
 /**
  * Class FindModelTrait
  *
- * @package app\traits
+ * @author Igor Chepurnoy <chepurnoi.igor@gmail.com>
+ *
+ * @since 1.0
  */
 trait FindModelTrait
 {

@@ -13,12 +13,12 @@ use yii2tech\sitemap\File;
 /**
  * Class AppController
  *
- *  ~~~
- *   php yii app/generate-sitemap - Sitemap composing
- *   php yii app/clear-table User - Delete all data from specific table
- *   php yii app/assign-role-to-user admin admin@example.org - Assign role to the user
- *   php yii app/revoke-role-from-user admin admin@example.org - Revoke role from the user
- *  ~~~
+ * ```php
+ * php yii app/generate-sitemap - Sitemap composing
+ * php yii app/clear-table User - Delete all data from specific table
+ * php yii app/assign-role-to-user admin admin@example.org - Assign role to the user
+ * php yii app/revoke-role-from-user admin admin@example.org - Revoke role from the user
+ * ```
  *
  * @author Igor Chepurnoy <chepurnoi.igor@gmail.com>
  *
