@@ -5,6 +5,8 @@ services:
             context: ./data/docker/db
             args:
                 HOST_UID: ${HOST_UID}
+        volumes:
+            - ./runtime/db_data:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: secret
             MYSQL_DATABASE: yii2mod_base
