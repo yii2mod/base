@@ -40,6 +40,7 @@ DIRECTORY STRUCTURE
 - Key-value storage component
 - Scheduling extension for running cron jobs
 - Support multipath migrations
+- Support Docker
 
 
 REQUIREMENTS
