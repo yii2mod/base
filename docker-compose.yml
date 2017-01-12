@@ -24,3 +24,16 @@ services:
             - db
         depends_on:
             - db
+
+    db_admin:
+        build: ./data/docker/dbadmin
+        ports:
+            - "8088:80"
+        links:
+            - db
+        depends_on:
+            - db
+        environment:
+            PMA_HOST: db
+            PMA_USER: root
+            PMA_PASSWORD: secret

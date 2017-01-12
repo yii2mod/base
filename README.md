@@ -137,6 +137,7 @@ When done, you need to execute migrations in the web container by the following 
 
 After this steps, you can access your app from [http://localhost](http://localhost).
 
+> Also, you can access to phpmyadmin by the following url [http://localhost:8088/](http://localhost:8088/).
 
 TESTING
 -------
