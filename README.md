@@ -88,7 +88,7 @@ the installed application. You only need to do these once for all.
 Installing using Docker
 -----------------------
 
-You need to have [docker](http://www.docker.com) (1.10.0+) and
+> You need to have [docker](http://www.docker.com) (1.10.0+) and
 [docker-compose](https://docs.docker.com/compose/install/) (1.6.0+) installed.
 
 You can install the application using the following commands:
