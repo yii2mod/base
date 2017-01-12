@@ -85,10 +85,13 @@ the installed application. You only need to do these once for all.
 - password - `123123`
 
 
-## Installing using Docker
+Installing using Docker
+-----------------------
 
 You need to have [docker](http://www.docker.com) (1.10.0+) and
 [docker-compose](https://docs.docker.com/compose/install/) (1.6.0+) installed.
+
+You can install the application using the following commands:
 
 ```sh
 composer create-project --no-install yii2mod/base yii2mod-base
