@@ -1,0 +1,26 @@
+version: '2'
+services:
+    db:
+        build:
+            context: ./data/docker/db
+            args:
+                HOST_UID: ${HOST_UID}
+        environment:
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_DATABASE: yii2mod_base
+            MYSQL_USER: yii2mod
+            MYSQL_PASSWORD: secret
+
+    web:
+        build:
+            context: ./data/docker/web
+            args:
+                HOST_UID: ${HOST_UID}
+        volumes:
+            - .:/var/www/html
+        ports:
+            - "80:80"
+        links:
+            - db
+        depends_on:
+            - db

@@ -45,7 +45,7 @@ DIRECTORY STRUCTURE
 REQUIREMENTS
 ------------
 
-The minimum requirement by this application template that your Web server supports PHP 5.4.0.
+The minimum requirement by this application template that your Web server supports PHP 5.5
 
 
 INSTALLATION
@@ -58,7 +58,7 @@ If you do not have [Composer](http://getcomposer.org/), follow the instructions 
 
 With Composer installed, you can then install the application using the following commands:
 
-    composer global require "fxp/composer-asset-plugin:~1.1.1"
+    composer global require "fxp/composer-asset-plugin:^1.2.0"
     composer create-project --prefer-dist --stability=dev yii2mod/base application
 
 The first command installs the [composer asset plugin](https://github.com/francoispluchino/composer-asset-plugin/)
@@ -83,6 +83,56 @@ the installed application. You only need to do these once for all.
 ####To login into the application, use the following credentials:
 - email - `admin@example.org`
 - password - `123123`
+
+
+## Installing using Docker
+
+You need to have [docker](http://www.docker.com) (1.10.0+) and
+[docker-compose](https://docs.docker.com/compose/install/) (1.6.0+) installed.
+
+```sh
+composer create-project --no-install yii2mod/base yii2mod-base
+cd yii2mod-base
+cp .env.dist .env
+docker-compose up --build
+```
+It may take some minutes to download the required docker images. When
+done, you need to install vendors as follows:
+
+```sh
+docker exec -it yii2modbase_web_1 bash
+composer install
+chown -R www-data:www-data runtime web/assets vendor
+```
+
+After this steps, you need to update `common.local.php` file in the config directory as follows:
+```php
+<?php
+
+$config = [
+    'components' => [
+        'db' => [
+            'dsn' => 'mysql:host=db;dbname=yii2mod_base',
+            'username' => 'yii2mod',
+            'password' => 'secret',
+        ],
+        'mailer' => [
+            'useFileTransport' => true,
+        ],
+    ],
+    'params' => [
+    ],
+];
+
+return $config;
+```
+
+When done, you need to execute migrations in the web container by the following commands:
+- `php yii migrate`
+- `php yii rbac/migrate`
+
+After this steps, you can access your app from [http://localhost](http://localhost).
+
 
 TESTING
 -------
