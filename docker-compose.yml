@@ -20,8 +20,6 @@ services:
                 HOST_UID: ${HOST_UID}
         volumes:
             - .:/var/www/html
-        ports:
-            - "80:80"
         links:
             - db
         depends_on:
@@ -29,8 +27,6 @@ services:
 
     db_admin:
         build: ./data/docker/dbadmin
-        ports:
-            - "8088:80"
         links:
             - db
         depends_on:

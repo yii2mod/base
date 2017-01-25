@@ -97,7 +97,8 @@ You can install the application using the following commands:
 ```sh
 composer create-project --no-install yii2mod/base yii2mod-base
 cd yii2mod-base
-cp .env.dist .env
+cp .env{.dist,}
+cp docker-compose.override.yml{.dist,}
 docker-compose up --build
 ```
 It may take some minutes to download the required docker images. When
