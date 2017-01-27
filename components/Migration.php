@@ -25,6 +25,7 @@ class Migration extends \yii\db\Migration
 
         switch (Yii::$app->db->driverName) {
             case 'mysql':
+            case 'mariadb':
                 $this->tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
                 break;
             default:
