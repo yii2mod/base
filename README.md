@@ -38,8 +38,8 @@ DIRECTORY STRUCTURE
 - Account page
 - [Key-value storage component](https://github.com/yii2mod/yii2-settings)
 - [Scheduling extension for running cron jobs](https://github.com/yii2mod/yii2-scheduling)
-- Support multipath migrations
-- Support Docker
+- [Support multipath migrations](https://github.com/yii2mod/base/blob/master/config/console.php#L10)
+- [Support Docker](https://github.com/yii2mod/base#installing-using-docker)
 
 
 REQUIREMENTS
