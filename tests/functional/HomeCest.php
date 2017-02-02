@@ -1,5 +1,9 @@
 <?php
 
+namespace app\tests\functional;
+
+use FunctionalTester;
+
 class HomeCest
 {
     public function checkOpen(FunctionalTester $I)

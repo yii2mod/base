@@ -1,7 +1,5 @@
 <?php
 
-Yii::setAlias('@tests', dirname(__DIR__) . '/tests/codeception');
-
 $config = [
     'id' => 'console',
     'controllerNamespace' => 'app\commands',
@@ -17,6 +15,10 @@ $config = [
                 '@vendor/yii2mod/yii2-settings/migrations',
                 '@yii/rbac/migrations',
             ],
+        ],
+        'fixture' => [
+            'class' => 'yii\console\controllers\FixtureController',
+            'namespace' => 'app\tests\fixtures',
         ],
     ],
     'components' => [

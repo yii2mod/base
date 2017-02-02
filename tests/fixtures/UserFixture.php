@@ -9,7 +9,7 @@ class UserFixture extends ActiveFixture
     /**
      * @var string
      */
-    public $dataFile = '@codecept_data_dir/user.php';
+    public $dataFile = '@tests/_data/user.php';
 
     /**
      * @var string

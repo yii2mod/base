@@ -1,5 +1,7 @@
 <?php
 
+Yii::setAlias('@tests', dirname(__DIR__) . '/tests');
+
 $config = [
     'name' => 'Yii2 Basic Template',
     'language' => 'en-US',
