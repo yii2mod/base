@@ -28,16 +28,17 @@ class UserSearch extends UserModel
      *
      * @param $params
      *
+     * @param int $pageSize
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $pageSize = 10)
     {
         $query = UserModel::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => 10,
+                'pageSize' => $pageSize,
             ],
             'sort' => [
                 'defaultOrder' => ['id' => SORT_DESC],

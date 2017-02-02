@@ -32,10 +32,16 @@ class LoginCest
         $I->see('Password cannot be blank.');
     }
 
-    public function checkWrongPassword(FunctionalTester $I)
+    public function checkWrongEmail(FunctionalTester $I)
     {
         $I->submitForm('#login-form', $this->formParams('admin', 'wrong'));
-        $I->see('Incorrect username or password.');
+        $I->see('Email is not a valid email address.');
+    }
+
+    public function checkWrongPassword(FunctionalTester $I)
+    {
+        $I->submitForm('#login-form', $this->formParams('admin@example.org', 'wrong'));
+        $I->see('Incorrect email or password.');
     }
 
     public function checkValidLogin(FunctionalTester $I)

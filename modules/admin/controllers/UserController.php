@@ -59,7 +59,7 @@ class UserController extends Controller
                 'findModel' => function ($id) {
                     return $this->findModel(UserModel::class, $id);
                 },
-                'flash' => Yii::t('user', 'User has been deleted.'),
+                'flash' => Yii::t('app', 'User has been deleted.'),
             ],
         ];
     }
@@ -73,11 +73,11 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new UserModel(['scenario' => 'createUser']);
+        $model = new UserModel(['scenario' => 'create']);
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->createUser()) {
-                Yii::$app->session->setFlash('success', Yii::t('user', 'User has been created.'));
+            if ($model->create()) {
+                Yii::$app->session->setFlash('success', Yii::t('app', 'User has been created.'));
 
                 return $this->redirect(['index']);
             }
@@ -99,14 +99,15 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
+        /* @var $model UserModel */
         $model = $this->findModel(UserModel::class, $id);
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if (!empty($model->newPassword)) {
-                $model->setPassword($model->newPassword);
+            if (!empty($model->plainPassword)) {
+                $model->setPassword($model->plainPassword);
             }
             $model->save(false);
-            Yii::$app->session->setFlash('success', Yii::t('user', 'User has been saved.'));
+            Yii::$app->session->setFlash('success', Yii::t('app', 'User has been saved.'));
 
             return $this->redirect(['index']);
         }
