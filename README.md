@@ -30,15 +30,14 @@ DIRECTORY STRUCTURE
       web/                contains the entry script and Web resources
 
 ## FEATURES
-- Sign in, Sign up, etc
+- [Sign in, Sign up](https://github.com/yii2mod/yii2-user)
 - User management
-- RBAC with predefined `guest`, `user` and `admin` roles
-- RBAC migrations support
-- Content management components: cms, comments
-- Yii2 component for logging cron jobs
+- [RBAC with predefined `guest`, `user` and `admin` roles](https://github.com/yii2mod/yii2-rbac)
+- Content management components: [cms](https://github.com/yii2mod/yii2-cms), [comments](https://github.com/yii2mod/yii2-comments)
+- [Yii2 component for logging cron jobs](https://github.com/yii2mod/yii2-cron-log)
 - Account page
-- Key-value storage component
-- Scheduling extension for running cron jobs
+- [Key-value storage component](https://github.com/yii2mod/yii2-settings)
+- [Scheduling extension for running cron jobs](https://github.com/yii2mod/yii2-scheduling)
 - Support multipath migrations
 - Support Docker
 
