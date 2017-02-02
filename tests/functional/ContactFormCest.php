@@ -1,5 +1,9 @@
 <?php
 
+namespace app\tests\functional;
+
+use FunctionalTester;
+
 class ContactFormCest
 {
     public function _before(FunctionalTester $I)

@@ -1,5 +1,9 @@
 <?php
 
+namespace app\tests\functional;
+
+use FunctionalTester;
+
 class CreateUserCest
 {
     protected $loginFormId = '#login-form';
