@@ -6,14 +6,14 @@ use yii\widgets\DetailView;
 
 /* @var $resetPasswordForm \app\models\forms\ResetPasswordForm */
 
-$this->title = Yii::t('user', 'My Account');
+$this->title = Yii::t('app', 'My Account');
 ?>
 <div class="container">
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <?php echo Yii::t('user', 'Change Password'); ?>
+                    <?php echo Yii::t('app', 'Change Password'); ?>
                 </div>
 
                 <div class="panel-body">
@@ -21,8 +21,8 @@ $this->title = Yii::t('user', 'My Account');
                     <?php echo $form->field($resetPasswordForm, 'password')->passwordInput(); ?>
                     <?php echo $form->field($resetPasswordForm, 'confirmPassword')->passwordInput(); ?>
                     <div class="form-group">
-                        <?php echo Html::resetButton(Yii::t('user', 'Cancel'), ['class' => 'btn btn-default']) ?>
-                        <?php echo Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-success']) ?>
+                        <?php echo Html::resetButton(Yii::t('app', 'Cancel'), ['class' => 'btn btn-default']) ?>
+                        <?php echo Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
                     </div>
                     <?php ActiveForm::end(); ?>
                 </div>
@@ -31,7 +31,7 @@ $this->title = Yii::t('user', 'My Account');
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading no-bottom-border">
-                    <?php echo Yii::t('user', 'Personal Information'); ?>
+                    <?php echo Yii::t('app', 'Personal Information'); ?>
                 </div>
                 <div class="table-responsive">
                     <?php echo DetailView::widget([

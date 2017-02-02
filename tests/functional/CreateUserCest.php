@@ -2,12 +2,22 @@
 
 namespace app\tests\functional;
 
+use app\tests\fixtures\UserFixture;
 use FunctionalTester;
 
 class CreateUserCest
 {
     protected $loginFormId = '#login-form';
     protected $createUserFormId = '#create-user-form';
+
+    public function _before(FunctionalTester $I)
+    {
+        $I->haveFixtures([
+            'user' => [
+                'class' => UserFixture::class,
+            ],
+        ]);
+    }
 
     protected function loginFormParams($login, $password)
     {
@@ -22,7 +32,7 @@ class CreateUserCest
         return [
             'UserModel[username]' => $username,
             'UserModel[email]' => $email,
-            'UserModel[newPassword]' => $password,
+            'UserModel[plainPassword]' => $password,
         ];
     }
 
@@ -33,6 +43,7 @@ class CreateUserCest
         $I->amOnRoute('/admin/user/create');
         $I->see('Create User');
         $I->submitForm($this->createUserFormId, $this->createUserFormParams('created-user', 'created-user@example.com', '123123'));
+        $I->see('Users', 'h1');
         $I->seeRecord('app\models\UserModel', [
             'username' => 'created-user',
             'email' => 'created-user@example.com',

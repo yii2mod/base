@@ -1,7 +1,14 @@
 {
     "name": "yii2mod/base",
     "description": "Base application template for Yii2",
-    "keywords": ["yii2mod", "base", "project template", "yii2", "framework", "basic"],
+    "keywords": [
+        "yii2mod",
+        "base",
+        "project template",
+        "yii2",
+        "framework",
+        "basic"
+    ],
     "homepage": "https://github.com/yii2mod/base/",
     "type": "project",
     "license": "MIT",
@@ -19,12 +26,12 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=5.5",
+        "php": ">=5.6",
         "yiisoft/yii2": ">=2.0.8",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "yii2mod/yii2-cms": "*",
-        "yii2mod/yii2-user": "*",
+        "yii2mod/yii2-user": "dev-master",
         "yii2mod/yii2-rbac": "*",
         "yii2mod/yii2-cron-log": "*",
         "yii2mod/yii2-settings": "*",
@@ -43,7 +50,8 @@
         "codeception/verify": "~0.3.1"
     },
     "config": {
-        "process-timeout": 1800
+        "process-timeout": 1800,
+        "bin-dir": "bin"
     },
     "scripts": {
         "post-create-project-cmd": [

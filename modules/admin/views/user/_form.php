@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii2mod\user\models\enumerables\UserStatus;
+use yii2mod\user\models\enums\UserStatus;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\UserModel */
@@ -21,12 +21,12 @@ use yii2mod\user\models\enumerables\UserStatus;
 
             <?php echo $form->field($model, 'status')->dropDownList(UserStatus::listData()); ?>
 
-            <?php echo $form->field($model, 'newPassword')->passwordInput(['autocomplete' => 'off']); ?>
+            <?php echo $form->field($model, 'plainPassword')->passwordInput(['autocomplete' => 'off']); ?>
         </div>
     </div>
 
     <div class="form-group">
-        <?php echo Html::submitButton($model->isNewRecord ? Yii::t('user', 'Create') : Yii::t('user', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?php echo Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

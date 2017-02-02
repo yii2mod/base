@@ -33,6 +33,9 @@ $config = [
         'rbac' => [
             'class' => 'yii2mod\rbac\ConsoleModule',
         ],
+        'user' => [
+            'class' => 'yii2mod\user\ConsoleModule',
+        ],
     ],
 ];
 

@@ -4,13 +4,13 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 use yii2mod\editable\EditableColumn;
-use yii2mod\user\models\enumerables\UserStatus;
+use yii2mod\user\models\enums\UserStatus;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $searchModel \app\models\UserModelSearch */
+/* @var $searchModel \app\modules\admin\models\search\UserSearch */
 
-$this->title = Yii::t('user', 'Users');
+$this->title = Yii::t('app', 'Users');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
@@ -18,22 +18,22 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?php echo Html::encode($this->title) ?></h1>
 
     <p>
-        <?php echo Html::a(Yii::t('user', 'Create User'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?php echo Html::a(Yii::t('app', 'Create User'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?php Pjax::begin(['enablePushState' => false, 'timeout' => 10000]); ?>
+    <?php Pjax::begin(['timeout' => 10000]); ?>
     <?php echo GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             'id',
             [
-                'class' => EditableColumn::className(),
+                'class' => EditableColumn::class,
                 'attribute' => 'username',
                 'url' => ['edit-user'],
             ],
             'email:email',
             [
-                'class' => EditableColumn::className(),
+                'class' => EditableColumn::class,
                 'attribute' => 'status',
                 'url' => ['edit-user'],
                 'value' => function ($model) {
@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ];
                 },
                 'filter' => UserStatus::listData(),
-                'filterInputOptions' => ['prompt' => Yii::t('user', 'Select Status'), 'class' => 'form-control'],
+                'filterInputOptions' => ['prompt' => Yii::t('app', 'Select Status'), 'class' => 'form-control'],
             ],
             [
                 'attribute' => 'createdAt',
@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => false,
             ],
             [
-                'header' => Yii::t('user', 'Action'),
+                'header' => Yii::t('app', 'Action'),
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update}{delete}',
             ],
