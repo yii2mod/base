@@ -2,7 +2,7 @@ language: php
 
 php:
   - 5.6
-  - 7.0
+  - 7.1
 
 # faster builds on new travis setup not using sudo
 sudo: false
@@ -26,4 +26,4 @@ before_script:
 
 script:
   - vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run --diff
-  - composer exec codecept run
+  - bin/codecept run
