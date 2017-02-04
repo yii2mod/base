@@ -76,13 +76,9 @@ the installed application. You only need to do these once for all.
 2. Apply migrations:
     - `php yii migrate` - create default tables for application
     - `php yii rbac/migrate` - create roles, permissions and rules
+    - `php yii fixture "*"` - load fixtures (cms pages and users)
 
 3. Set document root of your web server to `/path/to/application/web/` folder.
-
-
-####To login into the application, use the following credentials:
-- email - `admin@example.org`
-- password - `123123`
 
 
 Installing using Docker
@@ -131,9 +127,10 @@ $config = [
 return $config;
 ```
 
-When done, you need to execute migrations in the web container by the following commands:
+When done, you need to execute the following commands in the web container:
 - `php yii migrate`
 - `php yii rbac/migrate`
+- `php yii fixture "*"`
 
 After this steps, you can access your app from [http://localhost](http://localhost).
 

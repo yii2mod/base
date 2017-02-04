@@ -2,7 +2,7 @@
 
 namespace app\tests\functional;
 
-use app\tests\fixtures\UserFixture;
+use app\tests\fixtures\UserAssignmentFixture;
 use FunctionalTester;
 
 class LoginCest
@@ -11,7 +11,7 @@ class LoginCest
     {
         $I->haveFixtures([
             'user' => [
-                'class' => UserFixture::class,
+                'class' => UserAssignmentFixture::class,
             ],
         ]);
         $I->amOnRoute('site/login');

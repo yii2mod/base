@@ -4,7 +4,7 @@ namespace app\tests\unit\models;
 
 use app\models\forms\ResetPasswordForm;
 use app\models\UserModel;
-use app\tests\fixtures\UserFixture;
+use app\tests\fixtures\UserAssignmentFixture;
 use Yii;
 
 class ResetPasswordFormTest extends \Codeception\Test\Unit
@@ -26,7 +26,7 @@ class ResetPasswordFormTest extends \Codeception\Test\Unit
     {
         $this->tester->haveFixtures([
             'user' => [
-                'class' => UserFixture::class,
+                'class' => UserAssignmentFixture::class,
             ],
         ]);
     }

@@ -2,7 +2,7 @@
 
 namespace app\tests\unit\models;
 
-use app\tests\fixtures\UserFixture;
+use app\tests\fixtures\UserAssignmentFixture;
 use Yii;
 use yii2mod\user\models\LoginForm;
 
@@ -25,7 +25,7 @@ class LoginFormTest extends \Codeception\Test\Unit
     {
         $this->tester->haveFixtures([
             'user' => [
-                'class' => UserFixture::class,
+                'class' => UserAssignmentFixture::class,
             ],
         ]);
     }

@@ -2,7 +2,7 @@
 
 namespace app\tests\functional;
 
-use app\tests\fixtures\UserFixture;
+use app\tests\fixtures\UserAssignmentFixture;
 use FunctionalTester;
 
 class ChangePasswordViaAccountPageCest
@@ -11,7 +11,7 @@ class ChangePasswordViaAccountPageCest
     {
         $I->haveFixtures([
             'user' => [
-                'class' => UserFixture::class,
+                'class' => UserAssignmentFixture::class,
             ],
         ]);
         $I->amOnRoute('site/login');

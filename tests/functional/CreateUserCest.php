@@ -2,7 +2,7 @@
 
 namespace app\tests\functional;
 
-use app\tests\fixtures\UserFixture;
+use app\tests\fixtures\UserAssignmentFixture;
 use FunctionalTester;
 
 class CreateUserCest
@@ -14,7 +14,7 @@ class CreateUserCest
     {
         $I->haveFixtures([
             'user' => [
-                'class' => UserFixture::class,
+                'class' => UserAssignmentFixture::class,
             ],
         ]);
     }

@@ -11,3 +11,6 @@ modules:
     enabled:
       - Filesystem
       - Yii2
+    config:
+        Yii2:
+            cleanup: false

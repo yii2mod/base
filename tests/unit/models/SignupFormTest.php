@@ -2,7 +2,7 @@
 
 namespace app\tests\unit\models;
 
-use app\tests\fixtures\UserFixture;
+use app\tests\fixtures\UserAssignmentFixture;
 use yii2mod\user\models\SignupForm;
 
 class SignupFormTest extends \Codeception\Test\Unit
@@ -19,7 +19,7 @@ class SignupFormTest extends \Codeception\Test\Unit
     {
         $this->tester->haveFixtures([
             'user' => [
-                'class' => UserFixture::class,
+                'class' => UserAssignmentFixture::class,
             ],
         ]);
     }
