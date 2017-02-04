@@ -2,6 +2,7 @@
 
 namespace app\tests\functional;
 
+use app\tests\fixtures\UserAssignmentFixture;
 use FunctionalTester;
 
 class AdminLoginCest
@@ -10,6 +11,12 @@ class AdminLoginCest
 
     public function _before(FunctionalTester $I)
     {
+        $I->haveFixtures([
+            'user' => [
+                'class' => UserAssignmentFixture::class,
+            ],
+        ]);
+
         $I->amOnRoute('site/login');
     }
 

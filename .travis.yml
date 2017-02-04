@@ -11,12 +11,13 @@ sudo: false
 cache:
   directories:
     - $HOME/.composer/cache
+    - vendor
 
 install:
   - travis_retry composer self-update && composer --version
   - travis_retry composer global require "fxp/composer-asset-plugin:^1.2.0"
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - travis_retry composer create-project --stability=dev-master
+  - travis_retry composer create-project
 
 before_script:
   - mysql -e 'CREATE DATABASE yii2mod_base_test;';
