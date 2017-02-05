@@ -55,10 +55,7 @@
     },
     "scripts": {
         "post-create-project-cmd": [
-            "yii\\composer\\Installer::postCreateProject",
-            "php -r \"copy('config/deploy/common.local.php', 'config/common.local.php');\"",
-            "php -r \"copy('config/deploy/main.local.php', 'config/main.local.php');\"",
-            "php -r \"copy('config/deploy/console.local.php', 'config/console.local.php');\""
+            "yii\\composer\\Installer::postCreateProject"
         ]
     },
     "extra": {
@@ -68,6 +65,13 @@
                     "runtime": "0777",
                     "web/assets": "0777",
                     "yii": "0755"
+                }
+            ],
+            "copyFiles": [
+                {
+                    "config/deploy/console.local.php": "config/console.local.php",
+                    "config/deploy/main.local.php": "config/main.local.php",
+                    "config/deploy/common.local.php": "config/common.local.php"
                 }
             ]
         },
