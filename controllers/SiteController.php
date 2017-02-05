@@ -22,7 +22,29 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-            AccessControl::class,
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => [
+                    'login',
+                    'logout',
+                    'signup',
+                    'request-password-reset',
+                    'password-reset',
+                    'account',
+                ],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'signup', 'request-password-reset', 'password-reset'],
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout', 'account'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [
