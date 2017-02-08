@@ -3,6 +3,5 @@ services:
     web:
         ports:
             - "80:80"
-    db_admin:
-        ports:
-            - "8088:80"
+        environment:
+            APPLICATION_ENV: dev
