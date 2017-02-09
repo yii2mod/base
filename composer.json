@@ -56,6 +56,9 @@
     "scripts": {
         "post-create-project-cmd": [
             "yii\\composer\\Installer::postCreateProject"
+        ],
+        "post-install-cmd": [
+            "yii\\composer\\Installer::postInstall"
         ]
     },
     "extra": {
@@ -66,13 +69,18 @@
                     "web/assets": "0777",
                     "yii": "0755"
                 }
-            ],
+            ]
+        },
+        "yii\\composer\\Installer::postInstall": {
             "copyFiles": [
                 {
                     "config/deploy/console.local.php": "config/console.local.php",
                     "config/deploy/main.local.php": "config/main.local.php",
                     "config/deploy/common.local.php": "config/common.local.php"
                 }
+            ],
+            "generateCookieValidationKey": [
+                "config/main.local.php"
             ]
         },
         "asset-installer-paths": {
