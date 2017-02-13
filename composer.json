@@ -37,6 +37,7 @@
         "yii2mod/yii2-settings": "*",
         "yii2mod/yii2-scheduling": "*",
         "yii2mod/yii2-bootstrap-notify": "*",
+        "yii2mod/yii2-editable": "*",
         "yii2tech/sitemap": "^1.0",
         "yii2tech/admin": "*",
         "cyberz/yii2-multipath-migrations": "*"
