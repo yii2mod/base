@@ -45,7 +45,7 @@ DIRECTORY STRUCTURE
 REQUIREMENTS
 ------------
 
-The minimum requirement by this application template that your Web server supports PHP 5.5
+The minimum requirement by this application template that your Web server supports PHP 5.6
 
 
 INSTALLATION
