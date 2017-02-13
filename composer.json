@@ -31,7 +31,7 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "yii2mod/yii2-cms": "*",
-        "yii2mod/yii2-user": "dev-master",
+        "yii2mod/yii2-user": "*",
         "yii2mod/yii2-rbac": "*",
         "yii2mod/yii2-cron-log": "*",
         "yii2mod/yii2-settings": "*",
