@@ -50,7 +50,9 @@ class AppController extends BaseController
      */
     public function actionClearTable($tableName)
     {
-        Yii::$app->db->createCommand()->delete($tableName)->execute();
+        if ($this->confirm(Yii::t('app', 'Are you sure you want to clear this table?'))) {
+            Yii::$app->db->createCommand()->delete($tableName)->execute();
+        }
 
         return self::EXIT_CODE_NORMAL;
     }
