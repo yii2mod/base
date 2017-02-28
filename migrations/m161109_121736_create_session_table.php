@@ -1,6 +1,6 @@
 <?php
 
-use app\components\Migration;
+use yii\db\Migration;
 
 /**
  * Handles the creation of table `session`.
@@ -25,7 +25,7 @@ class m161109_121736_create_session_table extends Migration
             'id' => 'CHAR(40) NOT NULL PRIMARY KEY',
             'expire' => 'INTEGER',
             'data' => $dataType,
-        ], $this->tableOptions);
+        ]);
     }
 
     public function down()
