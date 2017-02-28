@@ -17,14 +17,6 @@ class LoginCest
         $I->amOnRoute('site/login');
     }
 
-    protected function formParams($login, $password)
-    {
-        return [
-            'LoginForm[email]' => $login,
-            'LoginForm[password]' => $password,
-        ];
-    }
-
     public function checkEmpty(FunctionalTester $I)
     {
         $I->submitForm('#login-form', $this->formParams('', ''));
@@ -50,5 +42,13 @@ class LoginCest
         $I->see('Logout (admin)', 'form button[type=submit]');
         $I->dontSeeLink('Login');
         $I->dontSeeLink('Signup');
+    }
+
+    protected function formParams($login, $password)
+    {
+        return [
+            'LoginForm[email]' => $login,
+            'LoginForm[password]' => $password,
+        ];
     }
 }

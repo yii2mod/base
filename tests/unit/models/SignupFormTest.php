@@ -12,18 +12,6 @@ class SignupFormTest extends \Codeception\Test\Unit
      */
     protected $tester;
 
-    /**
-     * @inheritdoc
-     */
-    protected function _before()
-    {
-        $this->tester->haveFixtures([
-            'user' => [
-                'class' => UserAssignmentFixture::class,
-            ],
-        ]);
-    }
-
     public function testCorrectSignup()
     {
         $model = new SignupForm([
@@ -57,5 +45,17 @@ class SignupFormTest extends \Codeception\Test\Unit
             ->equals('This username has already been taken.');
         expect($model->getFirstError('email'))
             ->equals('This email address has already been taken.');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function _before()
+    {
+        $this->tester->haveFixtures([
+            'user' => [
+                'class' => UserAssignmentFixture::class,
+            ],
+        ]);
     }
 }

@@ -7,6 +7,9 @@ use FunctionalTester;
 
 class AdminLoginCest
 {
+    /**
+     * @var string
+     */
     protected $formId = '#login-form';
 
     public function _before(FunctionalTester $I)
@@ -18,14 +21,6 @@ class AdminLoginCest
         ]);
 
         $I->amOnRoute('site/login');
-    }
-
-    protected function formParams($login, $password)
-    {
-        return [
-            'LoginForm[email]' => $login,
-            'LoginForm[password]' => $password,
-        ];
     }
 
     public function checkLogin(FunctionalTester $I)
@@ -46,5 +41,13 @@ class AdminLoginCest
         $I->seeLink('RBAC');
         $I->seeLink('Settings Storage');
         $I->seeLink('Cron Schedule Log');
+    }
+
+    protected function formParams($login, $password)
+    {
+        return [
+            'LoginForm[email]' => $login,
+            'LoginForm[password]' => $password,
+        ];
     }
 }
