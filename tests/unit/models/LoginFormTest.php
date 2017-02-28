@@ -18,26 +18,6 @@ class LoginFormTest extends \Codeception\Test\Unit
      */
     private $_model;
 
-    /**
-     * @inheritdoc
-     */
-    protected function _before()
-    {
-        $this->tester->haveFixtures([
-            'user' => [
-                'class' => UserAssignmentFixture::class,
-            ],
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function _after()
-    {
-        Yii::$app->user->logout();
-    }
-
     public function testLoginNoUser()
     {
         $this->_model = new LoginForm([
@@ -71,5 +51,25 @@ class LoginFormTest extends \Codeception\Test\Unit
         expect_that($this->_model->login());
         expect_not(Yii::$app->user->isGuest);
         expect($this->_model->errors)->hasntKey('password');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function _before()
+    {
+        $this->tester->haveFixtures([
+            'user' => [
+                'class' => UserAssignmentFixture::class,
+            ],
+        ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function _after()
+    {
+        Yii::$app->user->logout();
     }
 }

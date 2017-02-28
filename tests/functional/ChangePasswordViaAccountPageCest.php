@@ -17,22 +17,6 @@ class ChangePasswordViaAccountPageCest
         $I->amOnRoute('site/login');
     }
 
-    protected function loginFormParams($login, $password)
-    {
-        return [
-            'LoginForm[email]' => $login,
-            'LoginForm[password]' => $password,
-        ];
-    }
-
-    protected function resetPasswordFormParams($newPassword, $confirmPassword)
-    {
-        return [
-            'ResetPasswordForm[password]' => $newPassword,
-            'ResetPasswordForm[confirmPassword]' => $confirmPassword,
-        ];
-    }
-
     public function checkEmpty(FunctionalTester $I)
     {
         $I->submitForm('#login-form', $this->loginFormParams('test-user@example.com', '123123'));
@@ -56,5 +40,21 @@ class ChangePasswordViaAccountPageCest
         $I->click('My Account');
         $I->submitForm('#change-password-form', $this->resetPasswordFormParams('123456', '123456'));
         $I->see('Password has been updated.');
+    }
+
+    protected function loginFormParams($login, $password)
+    {
+        return [
+            'LoginForm[email]' => $login,
+            'LoginForm[password]' => $password,
+        ];
+    }
+
+    protected function resetPasswordFormParams($newPassword, $confirmPassword)
+    {
+        return [
+            'ResetPasswordForm[password]' => $newPassword,
+            'ResetPasswordForm[confirmPassword]' => $confirmPassword,
+        ];
     }
 }

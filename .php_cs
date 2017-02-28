@@ -13,6 +13,7 @@ $config = PhpCsFixer\Config::create()
     ->setUsingCache(false)
     ->setRules([
         '@Symfony' => true,
+        'phpdoc_order' => true,
         'phpdoc_align' => false,
         'phpdoc_summary' => false,
         'phpdoc_inline_tag' => false,
@@ -23,7 +24,10 @@ $config = PhpCsFixer\Config::create()
         'phpdoc_no_package' => false,
         'concat_space' => ['spacing' => 'one'],
         'ordered_imports' => true,
+        'ordered_class_elements' => true,
+        'phpdoc_add_missing_param_annotation' => true,
         'array_syntax' => ['syntax' => 'short'],
+        'visibility_required' => true,
     ])
     ->setFinder($finder);
 

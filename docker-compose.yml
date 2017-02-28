@@ -1,10 +1,12 @@
 version: '2'
 services:
     db:
+        container_name: yii2mod-db-container
         build:
             context: ./data/docker/db
             args:
                 HOST_UID: ${HOST_UID}
+        restart: always
         volumes:
             - ./runtime/db_data:/var/lib/mysql
         environment:
@@ -14,10 +16,12 @@ services:
             MYSQL_PASSWORD: secret
 
     web:
+        container_name: yii2mod-web-container
         build:
             context: ./data/docker/web
             args:
                 HOST_UID: ${HOST_UID}
+        restart: always
         volumes:
             - .:/var/www/html
         links:

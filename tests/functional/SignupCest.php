@@ -6,6 +6,9 @@ use FunctionalTester;
 
 class SignupCest
 {
+    /**
+     * @var string
+     */
     protected $formId = '#form-signup';
 
     public function _before(FunctionalTester $I)

@@ -19,26 +19,6 @@ class ResetPasswordFormTest extends \Codeception\Test\Unit
      */
     private $_model;
 
-    /**
-     * @inheritdoc
-     */
-    protected function _before()
-    {
-        $this->tester->haveFixtures([
-            'user' => [
-                'class' => UserAssignmentFixture::class,
-            ],
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function _after()
-    {
-        Yii::$app->user->logout();
-    }
-
     public function testCheckEmptyForm()
     {
         $user = UserModel::findOne(['email' => 'test-user@example.com']);
@@ -71,5 +51,25 @@ class ResetPasswordFormTest extends \Codeception\Test\Unit
 
         expect($this->_model->resetPassword())->true();
         expect($this->_model->errors)->isEmpty();
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function _before()
+    {
+        $this->tester->haveFixtures([
+            'user' => [
+                'class' => UserAssignmentFixture::class,
+            ],
+        ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function _after()
+    {
+        Yii::$app->user->logout();
     }
 }

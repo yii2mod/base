@@ -100,7 +100,7 @@ It may take some minutes to download the required docker images. When
 done, you need to install vendors as follows:
 
 ```sh
-docker exec -it yii2modbase_web_1 bash
+docker exec -it yii2mod-web-container bash
 composer install
 chown -R www-data:www-data runtime web/assets vendor
 ```
