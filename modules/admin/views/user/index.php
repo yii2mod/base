@@ -57,8 +57,6 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'header' => Yii::t('app', 'Action'),
                 'class' => 'yii\grid\ActionColumn',
-                'headerOptions' => ['class' => 'grid-action-header'],
-                'contentOptions' => ['class' => 'grid-action-buttons'],
                 'template' => '{switch} {update} {delete}',
                 'buttons' => [
                     'switch' => function ($url, $model) {
