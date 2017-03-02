@@ -27,9 +27,6 @@ $config = [
         'settings' => [
             'class' => 'yii2mod\settings\components\Settings',
         ],
-        'request' => [
-            'cookieValidationKey' => 'fYPq2eLM',
-        ],
         'session' => [
             'class' => 'yii\web\DbSession',
         ],
