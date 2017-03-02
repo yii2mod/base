@@ -8,6 +8,7 @@ use app\traits\FindModelTrait;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii2mod\editable\EditableAction;
 
 /**
@@ -18,6 +19,11 @@ use yii2mod\editable\EditableAction;
 class UserController extends Controller
 {
     use FindModelTrait;
+
+    /**
+     * Name of the session key in which the original user id is saved.
+     */
+    const ORIGINAL_USER_SESSION_KEY = 'original_user';
 
     /**
      * @inheritdoc
@@ -115,5 +121,29 @@ class UserController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+
+    /**
+     * Switches to the given user for the rest of the Session.
+     *
+     * @param int $id
+     *
+     * @throws ForbiddenHttpException
+     *
+     * @return string
+     */
+    public function actionSwitch($id)
+    {
+        if (Yii::$app->session->has(self::ORIGINAL_USER_SESSION_KEY)) {
+            $user = $this->findModel(UserModel::class, Yii::$app->session->get(self::ORIGINAL_USER_SESSION_KEY));
+            Yii::$app->session->remove(self::ORIGINAL_USER_SESSION_KEY);
+        } else {
+            $user = $this->findModel(UserModel::class, $id);
+            Yii::$app->session->set(self::ORIGINAL_USER_SESSION_KEY, Yii::$app->user->id);
+        }
+
+        Yii::$app->user->switchIdentity($user, 3600);
+
+        return $this->goHome();
     }
 }

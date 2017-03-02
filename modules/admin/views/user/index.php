@@ -57,7 +57,25 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'header' => Yii::t('app', 'Action'),
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{update}{delete}',
+                'headerOptions' => ['class' => 'grid-action-header'],
+                'contentOptions' => ['class' => 'grid-action-buttons'],
+                'template' => '{switch} {update} {delete}',
+                'buttons' => [
+                    'switch' => function ($url, $model) {
+                        $options = [
+                            'title' => Yii::t('app', 'Become this user'),
+                            'aria-label' => Yii::t('app', 'Become this user'),
+                            'data-pjax' => '0',
+                            'data-confirm' => Yii::t('app', 'Are you sure you want to switch to this user for the rest of this Session?'),
+                            'data-method' => 'POST',
+                        ];
+
+                        $url = ['switch', 'id' => $model->id];
+                        $icon = '<span class="glyphicon glyphicon-user"></span>';
+
+                        return Html::a($icon, $url, $options);
+                    },
+                ],
             ],
         ],
     ]);
