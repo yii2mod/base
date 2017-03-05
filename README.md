@@ -41,6 +41,7 @@ DIRECTORY STRUCTURE
 - [Support multipath migrations](https://github.com/yii2mod/base/blob/master/config/console.php#L10)
 - [Support Docker](https://github.com/yii2mod/base#installing-using-docker)
 - [Included PHP Coding Standards Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer)
+- Support environments (dev, prod)
 
 
 REQUIREMENTS
