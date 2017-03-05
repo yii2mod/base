@@ -2,6 +2,11 @@
 
 Yii::setAlias('@tests', dirname(__DIR__) . '/tests');
 
+$params = array_merge(
+    require(__DIR__ . '/params.php'),
+    require(__DIR__ . '/params-local.php')
+);
+
 $config = [
     'name' => 'Yii2 Basic Template',
     'language' => 'en-US',
@@ -42,10 +47,7 @@ $config = [
             ],
         ],
     ],
-    'params' => [
-        'adminEmail' => 'admin@example.org',
-        'user.passwordResetTokenExpire' => 3600,
-    ],
+    'params' => $params,
 ];
 
 return $config;
