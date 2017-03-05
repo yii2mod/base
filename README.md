@@ -116,7 +116,7 @@ composer install
 chown -R www-data:www-data runtime web/assets vendor
 ```
 
-After this steps, you need to update `common.local.php` file in the config directory as follows:
+After this steps, you need to update `common-local.php` file in the config directory as follows:
 ```php
 <?php
 
