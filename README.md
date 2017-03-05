@@ -72,7 +72,7 @@ CONFIGURATION
 After you install the application, you have to conduct the following steps to initialize
 the installed application. You only need to do these once for all.
 
-1) Init application by the following command:
+1) Init the application by the following command:
 ```bash
 ./init --env=Development
 ```
@@ -80,9 +80,9 @@ the installed application. You only need to do these once for all.
 2) Create a new database and adjust the `components['db']` configuration in `config/common-local.php` accordingly.
 
 3) Apply migrations:
-    - `php yii migrate` - create default tables for application
-    - `php yii rbac/migrate` - create roles, permissions and rules
-    - `php yii fixture "*"` - load fixtures (cms pages and users)
+    * `php yii migrate` - create default tables for application
+    * `php yii rbac/migrate` - create roles, permissions and rules
+    * `php yii fixture "*"` - load fixtures (cms pages and users)
 
 4) Set document root of your web server to `/path/to/application/web/` folder.
 
