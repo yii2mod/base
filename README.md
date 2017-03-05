@@ -99,19 +99,13 @@ You can install the application using the following commands:
 composer create-project --no-install yii2mod/base yii2mod-base
 cd yii2mod-base
 ./init --env=Development
-```
-
-> In .env file your need to set your UID.
-> You can get your UID by the following command in the terminal: id -u <username>
-
-
-```sh
 cp .env{.dist,}
-```
-```sh
 cp docker-compose.override.yml{.dist,}
 docker-compose up --build
 ```
+> In `.env` file your need to set your UID.
+> You can get your UID by the following command in the terminal: `id -u <username>`
+
 It may take some minutes to download the required docker images. When
 done, you need to install vendors as follows:
 
