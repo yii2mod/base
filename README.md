@@ -72,14 +72,19 @@ CONFIGURATION
 After you install the application, you have to conduct the following steps to initialize
 the installed application. You only need to do these once for all.
 
-1. Create a new database and adjust the `components['db']` configuration in `config/common-local.php` accordingly.
+1) Init application by the following command:
+```bash
+./init --env=Development
+```
 
-2. Apply migrations:
+2) Create a new database and adjust the `components['db']` configuration in `config/common-local.php` accordingly.
+
+3) Apply migrations:
     - `php yii migrate` - create default tables for application
     - `php yii rbac/migrate` - create roles, permissions and rules
     - `php yii fixture "*"` - load fixtures (cms pages and users)
 
-3. Set document root of your web server to `/path/to/application/web/` folder.
+4) Set document root of your web server to `/path/to/application/web/` folder.
 
 
 Installing using Docker
@@ -93,6 +98,7 @@ You can install the application using the following commands:
 ```sh
 composer create-project --no-install yii2mod/base yii2mod-base
 cd yii2mod-base
+./init --env=Development
 cp .env{.dist,}
 cp docker-compose.override.yml{.dist,}
 docker-compose up --build
