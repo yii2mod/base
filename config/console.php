@@ -6,7 +6,6 @@ $config = [
     'controllerMap' => [
         'migrate' => [
             'class' => 'cyberz\migrations\controllers\MigrationsController',
-            'templateFile' => '@app/views/migration.php',
             'migrationLookup' => [
                 '@vendor/yii2mod/yii2-cms/migrations',
                 '@vendor/yii2mod/yii2-cron-log/migrations',
