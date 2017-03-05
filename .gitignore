@@ -1,3 +1,6 @@
+# yii console commands
+/yii
+
 # phpstorm project files
 .idea
 
@@ -11,11 +14,6 @@ nbproject
 
 # windows thumbnail cache
 Thumbs.db
-
-# local configs
-config/common.local.php
-config/console.local.php
-config/main.local.php
 
 # composer vendor dir
 /vendor

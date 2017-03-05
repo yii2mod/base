@@ -8,10 +8,9 @@ $config = [
             'password' => '',
         ],
         'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
             'useFileTransport' => true,
         ],
-    ],
-    'params' => [
     ],
 ];
 

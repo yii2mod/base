@@ -3,5 +3,3 @@ services:
     web:
         ports:
             - "80:80"
-        environment:
-            APPLICATION_ENV: dev
