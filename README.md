@@ -156,8 +156,12 @@ By default there are 3 test suites:
 - `functional`
 - `acceptance`
 
-Tests can be executed by running
+### Running tests
 
+1. Create a new database and configure database connection in `config/test_db.php` accordingly.
+2. Execute migrations by the following command:
+      - `./yii_test migrate --interactive=0 && ./yii_test rbac/migrate --interactive=0`
+3. Run unit and functional tests:
 ```
 bin/codecept run
 ``` 
@@ -188,32 +192,23 @@ To execute acceptance tests do the following:
     java -jar ~/selenium-server-standalone-x.xx.x.jar
     ``` 
 
-5. (Optional) Create `yii2_basic_tests` database and update it by applying migrations if you have them.
-
-   ```
-   tests/bin/yii migrate
-   ```
-
-   The database configuration can be found at `config/test_db.php`.
-
-
-6. Start web server:
+5. Start web server:
 
     ```
-    tests/bin/yii serve
+    ./yii_test serve
     ```
 
-7. Now you can run all available tests
+6. Now you can run all available tests
 
    ```
    # run all available tests
-   composer exec codecept run
+   bin/codecept run
 
    # run acceptance tests
-   composer exec codecept run acceptance
+   bin/codecept run acceptance
 
    # run only unit and functional tests
-   composer exec codecept run unit,functional
+   bin/codecept run unit,functional
    ```
 
 ### Code coverage support
@@ -223,13 +218,13 @@ to collect code coverage. You can run your tests and collect coverage with the f
 
 ```
 #collect coverage for all tests
-composer exec codecept run -- --coverage-html --coverage-xml
+bin/codecept run -- --coverage-html --coverage-xml
 
 #collect coverage only for unit tests
-composer exec codecept run unit -- --coverage-html --coverage-xml
+bin/codecept run unit -- --coverage-html --coverage-xml
 
 #collect coverage for unit and functional tests
-composer exec codecept run functional,unit -- --coverage-html --coverage-xml
+bin/codecept run functional,unit -- --coverage-html --coverage-xml
 ```
 
 You can see code coverage output under the `tests/_output` directory.
