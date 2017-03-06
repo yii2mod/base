@@ -159,7 +159,7 @@ By default there are 3 test suites:
 Tests can be executed by running
 
 ```
-composer exec codecept run
+bin/codecept run
 ``` 
 
 The command above will execute unit and functional tests. Unit tests are testing the system components, while functional
