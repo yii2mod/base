@@ -24,7 +24,7 @@ install:
 
 before_script:
   - mysql -e 'CREATE DATABASE yii2mod_base_test;'
-  - cd tests/bin && php yii migrate --interactive=0 && php yii rbac/migrate --interactive=0 && cd ../..
+  - ./yii_test migrate --interactive=0 && ./yii_test rbac/migrate --interactive=0
 
 script:
   - vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run --diff
