@@ -40,3 +40,4 @@ tests/_support/_generated
 
 /.env
 /docker-compose.override.yml
+/.php_cs.cache
