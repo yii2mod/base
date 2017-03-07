@@ -10,7 +10,6 @@ $finder = PhpCsFixer\Finder::create()
     ->in([__DIR__]);
 
 $config = PhpCsFixer\Config::create()
-    ->setUsingCache(false)
     ->setRules([
         '@Symfony' => true,
         'phpdoc_order' => true,
