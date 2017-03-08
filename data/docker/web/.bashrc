@@ -11,7 +11,10 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias ll='ls -ahl'
-alias ownr='chown -R www-data:www-data runtime web/assets vendor bin'
+alias ownr='chown -R www-data:www-data .'
+alias usr='su www-data'
+alias cs-fix='bin/php-cs-fixer fix'
+alias run-tests='bin/codecept run'
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
