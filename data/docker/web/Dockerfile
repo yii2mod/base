@@ -1,4 +1,4 @@
-FROM php:7.1.2-apache
+FROM php:7.1.3-apache
 
 MAINTAINER Igor Chepurnoi <chepurnoi.igor@gmail.com>
 
@@ -42,7 +42,8 @@ RUN curl -sS -o /root/.bash_aliases https://raw.githubusercontent.com/morontt/do
 
 RUN set -x && curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
-    && composer global require "fxp/composer-asset-plugin:^1.2.0"
+    && composer global require "fxp/composer-asset-plugin:^1.2.0" \
+    && composer global require hirak/prestissimo --prefer-dist --no-interaction
 
 RUN usermod -u ${HOST_UID} www-data
 RUN groupmod -g ${HOST_UID} www-data

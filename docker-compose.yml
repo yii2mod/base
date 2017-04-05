@@ -28,3 +28,13 @@ services:
             - db
         depends_on:
             - db
+
+    redis:
+        container_name: yii2mod-redis-container
+        restart: always
+        build:
+            context: ./data/docker/redis
+            args:
+                HOST_UID: ${HOST_UID}
+        volumes:
+            - ./runtime/redis_data:/data

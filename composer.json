@@ -30,6 +30,7 @@
         "yiisoft/yii2": "~2.0.11",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
+        "yiisoft/yii2-redis": "~2.0.0",
         "yii2mod/yii2-cms": "*",
         "yii2mod/yii2-user": "*",
         "yii2mod/yii2-rbac": "*",
@@ -52,12 +53,12 @@
     },
     "config": {
         "process-timeout": 1800,
-        "bin-dir": "bin"
-    },
-    "extra": {
-        "asset-installer-paths": {
-            "npm-asset-library": "vendor/npm",
-            "bower-asset-library": "vendor/bower"
+        "bin-dir": "bin",
+        "fxp-asset": {
+            "installer-paths": {
+                "npm-asset-library": "vendor/npm",
+                "bower-asset-library": "vendor/bower"
+            }
         }
     }
 }

@@ -36,6 +36,9 @@ $config = [
             'class' => 'yii\db\Connection',
             'charset' => 'utf8',
         ],
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
         ],
