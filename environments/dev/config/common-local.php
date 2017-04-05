@@ -8,8 +8,10 @@ $config = [
             'password' => '',
         ],
         'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
             'useFileTransport' => true,
+        ],
+        'redis' => [
+            'hostname' => 'redis',
         ],
     ],
 ];

@@ -6,9 +6,16 @@ $config = [
             'dsn' => 'mysql:host=;dbname=',
             'username' => '',
             'password' => '',
+            'enableSchemaCache' => true,
         ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
+        'redis' => [
+            'hostname' => 'redis',
+        ],
+        'cache' => [
+            'class' => 'yii\redis\Cache',
+        ],
+        'authManager' => [
+            'cache' => 'cache',
         ],
     ],
 ];

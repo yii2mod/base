@@ -103,7 +103,7 @@ cd yii2mod-base
 ./init --env=Development
 cp .env{.dist,}
 cp docker-compose.override.yml{.dist,}
-docker-compose up --build
+docker-compose up -d --build
 ```
 > In `.env` file your need to set your UID.
 > You can get your UID by the following command in the terminal: `id -u <username>`

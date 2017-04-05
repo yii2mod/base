@@ -17,7 +17,7 @@ trait FindModelTrait
     /**
      * Finds model
      *
-     * @param $modelClass ActiveRecord
+     * @param mixed $modelClass
      * @param mixed $condition primary key value or a set of column values
      * @param string $notFoundMessage
      *
@@ -31,6 +31,21 @@ trait FindModelTrait
             return $model;
         } else {
             throw new NotFoundHttpException($notFoundMessage);
+        }
+    }
+
+    /**
+     * @param mixed $modelClass
+     * @param mixed $condition primary key value or a set of column values
+     *
+     * @return ActiveRecord
+     */
+    protected function findModelOrCreate($modelClass, $condition)
+    {
+        if (($model = $modelClass::findOne($condition)) !== null) {
+            return $model;
+        } else {
+            return new $modelClass($condition);
         }
     }
 }
