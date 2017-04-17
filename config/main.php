@@ -6,13 +6,18 @@ $config = [
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',
-            'controllerMap' => [
-                'cms' => 'yii2mod\cms\controllers\CmsController',
-                'comments' => 'yii2mod\comments\controllers\ManageController',
-            ],
             'modules' => [
                 'rbac' => [
                     'class' => 'yii2mod\rbac\Module',
+                    'controllerMap' => [
+                        'route' => [
+                            'class' => 'yii2mod\rbac\controllers\RouteController',
+                            'modelClass' => [
+                                'class' => 'yii2mod\rbac\models\RouteModel',
+                                'excludeModules' => ['debug', 'gii'],
+                            ],
+                        ],
+                    ],
                 ],
                 'settings-storage' => [
                     'class' => 'yii2mod\settings\Module',
@@ -21,14 +26,26 @@ $config = [
         ],
         'comment' => [
             'class' => 'yii2mod\comments\Module',
+            'controllerMap' => [
+                'manage' => [
+                    'class' => 'yii2mod\comments\controllers\ManageController',
+                    'layout' => '@app/modules/admin/views/layouts/column2',
+                ],
+            ],
+        ],
+        'cms' => [
+            'class' => 'yii2mod\cms\Module',
+            'controllerMap' => [
+                'manage' => [
+                    'class' => 'yii2mod\cms\controllers\ManageController',
+                    'layout' => '@app/modules/admin/views/layouts/column2',
+                ],
+            ],
         ],
     ],
     'components' => [
         'settings' => [
             'class' => 'yii2mod\settings\components\Settings',
-        ],
-        'request' => [
-            'cookieValidationKey' => 'fYPq2eLM',
         ],
         'session' => [
             'class' => 'yii\web\DbSession',

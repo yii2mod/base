@@ -53,7 +53,7 @@ AdminAsset::register($this);
                 ],
                 [
                     'label' => '<i class="glyphicon glyphicon-file"></i> CMS',
-                    'url' => ['/admin/cms/index'],
+                    'url' => ['/cms/manage/index'],
                 ],
                 [
                     'label' => '<i class="glyphicon glyphicon-user"></i> RBAC',
