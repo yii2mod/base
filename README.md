@@ -98,7 +98,7 @@ Installing using Docker
 You can install the application using the following commands:
 
 ```sh
-composer create-project --no-install yii2mod/base yii2mod-base
+composer create-project --no-install --stability=dev yii2mod/base yii2mod-base
 cd yii2mod-base
 ./init --env=Development
 cp .env{.dist,}
