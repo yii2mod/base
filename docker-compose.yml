@@ -26,8 +26,10 @@ services:
             - .:/var/www/html
         links:
             - db
+            - redis
         depends_on:
             - db
+            - redis
 
     redis:
         container_name: yii2mod-redis-container

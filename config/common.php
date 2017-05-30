@@ -12,6 +12,13 @@ $config = [
     'language' => 'en-US',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'container' => [
+        'definitions' => [
+            'yii\test\InitDbFixture' => [
+                'schemas' => [],
+            ],
+        ],
+    ],
     'components' => [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',

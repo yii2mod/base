@@ -3,3 +3,5 @@ services:
     web:
         ports:
             - "80:80"
+        build:
+            dockerfile: dev/Dockerfile
