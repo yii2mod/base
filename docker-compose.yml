@@ -8,7 +8,7 @@ services:
                 HOST_UID: ${HOST_UID}
         restart: always
         volumes:
-            - ./runtime/db_data:/var/lib/mysql
+            - ./data/volumes/db:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: secret
             MYSQL_DATABASE: yii2mod_base
@@ -39,4 +39,4 @@ services:
             args:
                 HOST_UID: ${HOST_UID}
         volumes:
-            - ./runtime/redis_data:/data
+            - ./data/volumes/redis:/data

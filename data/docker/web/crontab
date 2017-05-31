@@ -1,0 +1,1 @@
+* * * * * root /usr/local/bin/php /var/www/html/yii schedule/run >> /var/log/cron.log 2>&1

@@ -22,6 +22,8 @@ RUN apt-get update && apt-get install -y apt-utils && apt-get install -y \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
         libpng12-dev \
+        supervisor \
+        cron \
     && docker-php-ext-install -j$(nproc) iconv mcrypt \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
@@ -47,4 +49,14 @@ RUN usermod -u ${HOST_UID} www-data && groupmod -g ${HOST_UID} www-data && chsh 
 
 RUN cp /root/.bashrc /var/www
 
+# setup cron
+ADD ./crontab /etc/cron.d/cron-jobs
+RUN chmod 0644 /etc/cron.d/cron-jobs && touch /var/log/cron.log
+
+# setup supervisor
+RUN mkdir -p /var/log/supervisor
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 EXPOSE 80
+
+CMD ["/usr/bin/supervisord"]
