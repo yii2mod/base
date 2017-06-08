@@ -6,7 +6,7 @@ $config = [
     'controllerMap' => [
         'migrate' => [
             'class' => 'yii\console\controllers\MigrateController',
-            'migrationLookup' => [
+            'migrationPath' => [
                 '@vendor/yii2mod/yii2-cms/migrations',
                 '@vendor/yii2mod/yii2-cron-log/migrations',
                 '@vendor/yii2mod/yii2-user/migrations',
