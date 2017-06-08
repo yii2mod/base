@@ -13,6 +13,7 @@ $config = [
                 '@vendor/yii2mod/yii2-comments/migrations',
                 '@vendor/yii2mod/yii2-settings/migrations',
                 '@yii/rbac/migrations',
+                '@app/migrations',
             ],
         ],
         'fixture' => [
