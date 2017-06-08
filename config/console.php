@@ -5,7 +5,7 @@ $config = [
     'controllerNamespace' => 'app\commands',
     'controllerMap' => [
         'migrate' => [
-            'class' => 'cyberz\migrations\controllers\MigrationsController',
+            'class' => 'yii\console\controllers\MigrateController',
             'migrationLookup' => [
                 '@vendor/yii2mod/yii2-cms/migrations',
                 '@vendor/yii2mod/yii2-cron-log/migrations',

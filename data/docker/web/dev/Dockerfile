@@ -42,7 +42,7 @@ RUN a2enmod rewrite remoteip
 
 RUN set -x && curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
-    && composer global require "fxp/composer-asset-plugin:^1.2.0" \
+    && composer global require "fxp/composer-asset-plugin:^1.3.0" \
     && composer global require hirak/prestissimo --prefer-dist --no-interaction
 
 RUN usermod -u ${HOST_UID} www-data && groupmod -g ${HOST_UID} www-data && chsh -s /bin/bash www-data

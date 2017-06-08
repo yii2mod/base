@@ -27,7 +27,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=5.6",
-        "yiisoft/yii2": "~2.0.11",
+        "yiisoft/yii2": "~2.0.12",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "yiisoft/yii2-redis": "~2.0.0",
@@ -40,8 +40,7 @@
         "yii2mod/yii2-bootstrap-notify": "*",
         "yii2mod/yii2-editable": "*",
         "yii2tech/sitemap": "^1.0",
-        "yii2tech/admin": "*",
-        "cyberz/yii2-multipath-migrations": "*"
+        "yii2tech/admin": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
