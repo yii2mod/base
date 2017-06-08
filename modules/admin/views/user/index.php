@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filterInputOptions' => ['prompt' => Yii::t('app', 'Select Status'), 'class' => 'form-control'],
             ],
             [
-                'attribute' => 'createdAt',
+                'attribute' => 'created_at',
                 'format' => 'date',
                 'filter' => false,
             ],
