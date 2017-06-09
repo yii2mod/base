@@ -77,7 +77,7 @@ class ResetPasswordForm extends Model
         if ($this->validate()) {
             $this->_user->setPassword($this->password);
 
-            return $this->_user->save(true, ['passwordHash']);
+            return $this->_user->save(true, ['password_hash']);
         }
 
         return false;
