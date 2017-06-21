@@ -117,7 +117,7 @@ composer install
 chown -R www-data:www-data runtime web/assets vendor
 ```
 
-After this steps, you need to update `common-local.php` file in the config directory as follows:
+After this steps, you need to update `db` section in the `common-local.php` file as follows:
 ```php
 <?php
 
@@ -125,14 +125,9 @@ $config = [
     'components' => [
         'db' => [
             'dsn' => 'mysql:host=db;dbname=yii2mod_base',
-            'username' => 'yii2mod',
+            'username' => 'docker',
             'password' => 'secret',
         ],
-        'mailer' => [
-            'useFileTransport' => true,
-        ],
-    ],
-    'params' => [
     ],
 ];
 
