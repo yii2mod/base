@@ -13,9 +13,9 @@ use yii\data\ActiveDataProvider;
 class UserSearch extends UserModel
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['id', 'status'], 'integer'],
@@ -31,7 +31,7 @@ class UserSearch extends UserModel
      *
      * @return ActiveDataProvider
      */
-    public function search($params, $pageSize = 10)
+    public function search(array $params, int $pageSize = 10): ActiveDataProvider
     {
         $query = UserModel::find();
 

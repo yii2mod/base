@@ -25,7 +25,7 @@ trait FindModelTrait
      *
      * @return ActiveRecord
      */
-    protected function findModel($modelClass, $condition, $notFoundMessage = 'The requested page does not exist.')
+    protected function findModel($modelClass, $condition, string $notFoundMessage = 'The requested page does not exist.')
     {
         if (($model = $modelClass::findOne($condition)) !== null) {
             return $model;

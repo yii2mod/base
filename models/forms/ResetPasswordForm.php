@@ -43,9 +43,9 @@ class ResetPasswordForm extends Model
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['password', 'confirmPassword'], 'trim'],
@@ -57,9 +57,9 @@ class ResetPasswordForm extends Model
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
             'password' => Yii::t('app', 'New Password'),
@@ -72,7 +72,7 @@ class ResetPasswordForm extends Model
      *
      * @return bool if password was reset
      */
-    public function resetPassword()
+    public function resetPassword(): bool
     {
         if ($this->validate()) {
             $this->_user->setPassword($this->password);

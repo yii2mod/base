@@ -28,7 +28,7 @@ class UserController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             'verbs' => [
@@ -46,7 +46,7 @@ class UserController extends Controller
     /**
      * @inheritdoc
      */
-    public function actions()
+    public function actions(): array
     {
         return [
             'edit-user' => [
@@ -62,7 +62,7 @@ class UserController extends Controller
             ],
             'delete' => [
                 'class' => 'yii2tech\admin\actions\Delete',
-                'findModel' => function ($id) {
+                'findModel' => function (int $id) {
                     return $this->findModel(UserModel::class, $id);
                 },
                 'flash' => Yii::t('app', 'User has been deleted.'),
@@ -103,7 +103,7 @@ class UserController extends Controller
      *
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate(int $id)
     {
         /* @var $model UserModel */
         $model = $this->findModel(UserModel::class, $id);
@@ -132,7 +132,7 @@ class UserController extends Controller
      *
      * @return string
      */
-    public function actionSwitch($id)
+    public function actionSwitch(int $id)
     {
         if (Yii::$app->session->has(self::ORIGINAL_USER_SESSION_KEY)) {
             $user = $this->findModel(UserModel::class, Yii::$app->session->get(self::ORIGINAL_USER_SESSION_KEY));

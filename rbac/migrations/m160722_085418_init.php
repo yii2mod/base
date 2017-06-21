@@ -11,12 +11,6 @@ class m160722_085418_init extends Migration
 
         $this->createRole('admin', 'Admin has all available permissions.');
         $this->createRole('user', 'Authenticated user.', 'user');
-
-        $this->createPermission('/admin/*');
-        $this->createPermission('fullAdministrator', 'Full Administrator');
-
-        $this->addChild('fullAdministrator', '/admin/*');
-        $this->addChild('admin', 'fullAdministrator');
     }
 
     public function safeDown()
@@ -25,8 +19,5 @@ class m160722_085418_init extends Migration
 
         $this->removeRole('admin');
         $this->removeRole('user');
-
-        $this->removePermission('/admin/*');
-        $this->removePermission('fullAdministrator');
     }
 }

@@ -29,7 +29,7 @@ class BaseController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             'cronLogger' => [
@@ -46,7 +46,7 @@ class BaseController extends Controller
      *
      * @return bool
      */
-    public function beforeAction($action)
+    public function beforeAction($action): bool
     {
         $this->command = $action->controller->id . '/' . $action->id;
 
@@ -91,7 +91,7 @@ class BaseController extends Controller
      *
      * @return bool
      */
-    protected function isDisabledAction($id)
+    protected function isDisabledAction($id): bool
     {
         if (!is_array($this->disabledActions)) {
             throw new InvalidConfigException('The "disabledActions" property must be an array.');

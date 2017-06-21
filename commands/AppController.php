@@ -23,7 +23,7 @@ class AppController extends BaseController
     /**
      * Generate sitemap
      */
-    public function actionGenerateSitemap()
+    public function actionGenerateSitemap(): int
     {
         $siteMapFile = new File();
 
@@ -48,7 +48,7 @@ class AppController extends BaseController
      *
      * @return int
      */
-    public function actionClearTable($tableName)
+    public function actionClearTable($tableName): int
     {
         if ($this->confirm(Yii::t('app', 'Are you sure you want to clear this table?'))) {
             Yii::$app->db->createCommand()->delete($tableName)->execute();

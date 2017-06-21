@@ -14,7 +14,7 @@ class SettingsController extends Controller
     /**
      * @return array
      */
-    public function actions()
+    public function actions(): array
     {
         return [
             'cron' => 'yii2mod\cron\actions\CronLogAction',

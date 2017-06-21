@@ -12,7 +12,7 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: secret
             MYSQL_DATABASE: yii2mod_base
-            MYSQL_USER: yii2mod
+            MYSQL_USER: docker
             MYSQL_PASSWORD: secret
 
     web:

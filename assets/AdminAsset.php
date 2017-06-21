@@ -1,19 +1,13 @@
 <?php
-/**
- * @see      http://www.yiiframework.com/
- *
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license   http://www.yiiframework.com/license/
- */
 
 namespace app\assets;
 
 use yii\web\AssetBundle;
 
 /**
- * @author Qiang Xue <qiang.xue@gmail.com>
+ * Class AdminAsset
  *
- * @since  2.0
+ * @package app\assets
  */
 class AdminAsset extends AssetBundle
 {
@@ -21,6 +15,7 @@ class AdminAsset extends AssetBundle
      * @var string
      */
     public $basePath = '@webroot';
+
     /**
      * @var string
      */
