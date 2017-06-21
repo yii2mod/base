@@ -19,14 +19,14 @@
             "homepage": "http://disem.org/"
         },
         {
-            "name": "Igor Chepurnoy",
-            "email": "igorzfort@gmail.com"
+            "name": "Igor Chepurnoi",
+            "email": "chepurnoi.igor@gmail.com"
         }
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.1",
+        "php": ">=5.6",
         "yiisoft/yii2": "~2.0.12",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
