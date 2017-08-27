@@ -28,6 +28,11 @@ $config = [
         'mutex' => [
             'class' => 'yii\mutex\FileMutex',
         ],
+        'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            'hostInfo' => 'http://domain.com',
+            'scriptUrl' => '/index.php',
+        ],
     ],
     'modules' => [
         'rbac' => [
