@@ -30,7 +30,7 @@ $config = [
         ],
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
-            'hostInfo' => 'http://domain.com',
+            'hostInfo' => 'http://example.com',
             'scriptUrl' => '/index.php',
         ],
     ],
