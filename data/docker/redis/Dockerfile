@@ -1,4 +1,4 @@
-FROM redis:3.0
+FROM redis:4.0
 
 MAINTAINER Igor Chepurnoi <chepurnoi.igor@gmail.com>
 
