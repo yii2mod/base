@@ -26,7 +26,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.0.0",
         "yiisoft/yii2": "~2.0.12",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",

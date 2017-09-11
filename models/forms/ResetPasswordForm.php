@@ -35,7 +35,7 @@ class ResetPasswordForm extends Model
      * @param IdentityInterface $user
      * @param array $config
      */
-    public function __construct(IdentityInterface $user, $config = [])
+    public function __construct(IdentityInterface $user, array $config = [])
     {
         $this->_user = $user;
 
