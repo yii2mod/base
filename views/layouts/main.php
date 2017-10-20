@@ -13,7 +13,7 @@ use yii2mod\notify\BootstrapNotify;
 
 AppAsset::register($this);
 ?>
-<?php $this->beginPage() ?>
+<?php $this->beginPage(); ?>
     <!DOCTYPE html>
     <html lang="<?php echo Yii::$app->language; ?>">
     <head>
@@ -21,10 +21,10 @@ AppAsset::register($this);
         <?php $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1']); ?>
         <?php echo Html::csrfMetaTags(); ?>
         <title><?php echo implode(' | ', array_filter([Html::encode($this->title), Yii::$app->name])); ?></title>
-        <?php $this->head() ?>
+        <?php $this->head(); ?>
     </head>
     <body>
-    <?php $this->beginBody() ?>
+    <?php $this->beginBody(); ?>
     <?php echo BootstrapNotify::widget(); ?>
     <div class="wrap">
         <?php NavBar::begin([
@@ -81,7 +81,7 @@ AppAsset::register($this);
         </div>
     </footer>
 
-    <?php $this->endBody() ?>
+    <?php $this->endBody(); ?>
     </body>
     </html>
-<?php $this->endPage() ?>
+<?php $this->endPage(); ?>

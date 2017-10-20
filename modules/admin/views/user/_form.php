@@ -15,9 +15,9 @@ use yii2mod\user\models\enums\UserStatus;
 
     <div class="row">
         <div class="col-md-6">
-            <?php echo $form->field($model, 'username')->textInput(['maxlength' => 255]) ?>
+            <?php echo $form->field($model, 'username')->textInput(['maxlength' => 255]); ?>
 
-            <?php echo $form->field($model, 'email')->textInput(['maxlength' => 255]) ?>
+            <?php echo $form->field($model, 'email')->textInput(['maxlength' => 255]); ?>
 
             <?php echo $form->field($model, 'status')->dropDownList(UserStatus::listData()); ?>
 
@@ -26,7 +26,7 @@ use yii2mod\user\models\enums\UserStatus;
     </div>
 
     <div class="form-group">
-        <?php echo Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?php echo Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']); ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -13,18 +13,18 @@ use yii2mod\notify\BootstrapNotify;
 
 AdminAsset::register($this);
 ?>
-<?php $this->beginPage() ?>
+<?php $this->beginPage(); ?>
     <!DOCTYPE html>
-    <html lang="<?php echo Yii::$app->language ?>">
+    <html lang="<?php echo Yii::$app->language; ?>">
     <head>
         <?php $this->registerMetaTag(['charset' => Yii::$app->charset]); ?>
         <?php $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1']); ?>
-        <?php echo Html::csrfMetaTags() ?>
+        <?php echo Html::csrfMetaTags(); ?>
         <title><?php echo implode(' | ', array_filter([Html::encode($this->title), Yii::$app->name])); ?></title>
-        <?php $this->head() ?>
+        <?php $this->head(); ?>
     </head>
     <body>
-    <?php $this->beginBody() ?>
+    <?php $this->beginBody(); ?>
     <?php echo BootstrapNotify::widget(); ?>
     <div class="wrap">
         <?php NavBar::begin([
@@ -88,7 +88,7 @@ AdminAsset::register($this);
         <div class="container">
             <?php echo Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
+            ]); ?>
             <div class="row">
                 <?php if (isset($this->params['sidebar'])): ?>
                     <div class="col-lg-2">
@@ -109,7 +109,7 @@ AdminAsset::register($this);
         </div>
     </div>
 
-    <?php $this->endBody() ?>
+    <?php $this->endBody(); ?>
     </body>
     </html>
-<?php $this->endPage() ?>
+<?php $this->endPage(); ?>

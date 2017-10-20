@@ -27,6 +27,7 @@ $config = PhpCsFixer\Config::create()
         'phpdoc_add_missing_param_annotation' => true,
         'array_syntax' => ['syntax' => 'short'],
         'visibility_required' => true,
+        'yoda_style' => false,
     ])
     ->setFinder($finder);
 
