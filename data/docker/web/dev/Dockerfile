@@ -1,4 +1,4 @@
-FROM php:7.1.7-apache
+FROM php:7.1.10-apache
 
 MAINTAINER Igor Chepurnoi <chepurnoi.igor@gmail.com>
 
@@ -7,9 +7,6 @@ ARG HOST_UID=1000
 VOLUME ["/var/www/html"]
 
 ENV DEBIAN_FRONTEND noninteractive
-
-RUN echo Europe/Kiev > /etc/timezone && \
-    dpkg-reconfigure -f noninteractive tzdata
 
 RUN apt-get update && apt-get install -y apt-utils && apt-get install -y \
         zlib1g-dev \
