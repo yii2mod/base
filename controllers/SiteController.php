@@ -115,7 +115,7 @@ class SiteController extends Controller
     {
         $model = new ContactForm();
 
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->contact(Yii::$app->params['adminEmail'])) {
                 Yii::$app->session->setFlash('success', Yii::t('app', 'Thank you for contacting us. We will respond to you as soon as possible.'));
             } else {
