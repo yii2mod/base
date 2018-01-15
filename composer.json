@@ -28,19 +28,19 @@
     "require": {
         "php": ">=7.0.0",
         "yiisoft/yii2": "~2.0.12",
-        "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "yiisoft/yii2-redis": "~2.0.0",
-        "yii2mod/yii2-cms": "*",
-        "yii2mod/yii2-user": "*",
-        "yii2mod/yii2-rbac": "*",
-        "yii2mod/yii2-cron-log": "*",
-        "yii2mod/yii2-settings": "*",
-        "yii2mod/yii2-scheduling": "*",
-        "yii2mod/yii2-bootstrap-notify": "*",
-        "yii2mod/yii2-editable": "*",
+        "yii2mod/yii2-cms": "~1.9",
+        "yii2mod/yii2-user": "~2.1",
+        "yii2mod/yii2-rbac": "~2.2",
+        "yii2mod/yii2-cron-log": "~1.5",
+        "yii2mod/yii2-settings": "~2.4",
+        "yii2mod/yii2-scheduling": "~1.1",
+        "yii2mod/yii2-bootstrap-notify": "~1.2",
+        "yii2mod/yii2-editable": "~1.5",
         "yii2tech/sitemap": "^1.0",
-        "yii2tech/admin": "*"
+        "yii2tech/admin": "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -53,6 +53,7 @@
     "config": {
         "process-timeout": 1800,
         "bin-dir": "bin",
+        "sort-packages": true,
         "fxp-asset": {
             "installer-paths": {
                 "npm-asset-library": "vendor/npm",

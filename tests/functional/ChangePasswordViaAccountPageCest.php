@@ -39,7 +39,7 @@ class ChangePasswordViaAccountPageCest
         $I->submitForm('#login-form', $this->loginFormParams('test-user@example.com', '123123'));
         $I->click('My Account');
         $I->submitForm('#change-password-form', $this->resetPasswordFormParams('123456', '123456'));
-        $I->see('Password has been updated.');
+        $I->canSeeInSource('Password has been updated.');
     }
 
     protected function loginFormParams($login, $password)

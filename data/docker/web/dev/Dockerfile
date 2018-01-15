@@ -1,4 +1,4 @@
-FROM php:7.1.10-apache
+FROM php:7.1-apache
 
 MAINTAINER Igor Chepurnoi <chepurnoi.igor@gmail.com>
 
