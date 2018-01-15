@@ -23,6 +23,6 @@ before_script:
   - ./yii_test migrate --interactive=0 && ./yii_test rbac/migrate --interactive=0
 
 script:
-  - composer validate --no-check-all --strict
+  - composer validate --strict
   - vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run --diff
   - bin/codecept run
