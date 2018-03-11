@@ -131,6 +131,12 @@ $config = [
             'username' => 'docker',
             'password' => 'secret',
         ],
+        'mailer' => [
+            'useFileTransport' => true,
+        ],
+        'redis' => [
+            'hostname' => 'redis',
+        ],
     ],
 ];
 
