@@ -104,8 +104,7 @@ You can install the application using the following commands:
 composer create-project --no-install --stability=dev yii2mod/base yii2mod-base
 cd yii2mod-base
 ./init --env=Development
-cp .env{.dist,}
-cp docker-compose.override.yml{.dist,}
+cp .env{.dist,} && cp docker-compose.override.yml{.dist,}
 docker-compose up -d --build
 ```
 > In `.env` file your need to set your UID.
@@ -115,7 +114,7 @@ It may take some minutes to download the required docker images. When
 done, you need to install vendors as follows:
 
 ```sh
-docker exec -it yii2mod-web-container bash
+docker-compose exec web bash
 composer install
 chown -R www-data:www-data runtime web/assets vendor
 ```
