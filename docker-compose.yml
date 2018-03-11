@@ -1,7 +1,6 @@
 version: '2'
 services:
     db:
-        container_name: yii2mod-db-container
         build:
             context: ./data/docker/db
             args:
@@ -16,7 +15,6 @@ services:
             MYSQL_PASSWORD: secret
 
     web:
-        container_name: yii2mod-web-container
         build:
             context: ./data/docker/web
             args:
@@ -32,7 +30,6 @@ services:
             - redis
 
     redis:
-        container_name: yii2mod-redis-container
         restart: always
         build:
             context: ./data/docker/redis

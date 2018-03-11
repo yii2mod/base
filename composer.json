@@ -27,7 +27,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=7.0.0",
-        "yiisoft/yii2": "~2.0.12",
+        "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "yiisoft/yii2-redis": "~2.0.0",
@@ -47,8 +47,9 @@
         "yiisoft/yii2-gii": "~2.0.0",
         "yiisoft/yii2-faker": "~2.0.0",
         "friendsofphp/php-cs-fixer": "~2.0",
-        "codeception/base": "^2.2.3",
-        "codeception/verify": "~0.3.1"
+        "codeception/base": "~2.3.0",
+        "codeception/verify": "~0.4.0",
+        "codeception/specify": "~0.4.6"
     },
     "config": {
         "process-timeout": 1800,
