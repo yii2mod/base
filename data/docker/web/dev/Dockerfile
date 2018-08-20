@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y apt-utils && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
-        libpng12-dev \
+        libpng-dev \
         supervisor \
         cron \
     && docker-php-ext-install -j$(nproc) iconv mcrypt \
