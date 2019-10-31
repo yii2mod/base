@@ -232,6 +232,8 @@ bin/codecept run functional,unit -- --coverage-html --coverage-xml
 
 You can see code coverage output under the `tests/_output` directory.
 
-Special thanks to
-------------
-[![PhpStorm](http://resources.jetbrains.com/assets/media/open-graph/jetbrains_250x250.png)](https://www.jetbrains.com/phpstorm/)
+
+## Support us
+
+Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/yii2mod). 
+All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
