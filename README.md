@@ -18,6 +18,11 @@ features to your application.
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yii2mod/base/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/base/?branch=master) 
 [![Build Status](https://travis-ci.org/yii2mod/base.svg?branch=master)](https://travis-ci.org/yii2mod/base)
 
+## Support us
+
+Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/yii2mod). 
+All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
+
 DIRECTORY STRUCTURE
 -------------------
 
@@ -231,9 +236,3 @@ bin/codecept run functional,unit -- --coverage-html --coverage-xml
 ```
 
 You can see code coverage output under the `tests/_output` directory.
-
-
-## Support us
-
-Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/yii2mod). 
-All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
